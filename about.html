@@ -44,28 +44,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .nav-dropdown a{font-size:clamp(14px,3vw,20px);font-weight:400;text-decoration:none;color:var(--gray);padding:6px 28px;border-radius:4px;transition:color .2s,background .2s;}
 .nav-dropdown a:hover{color:var(--black);background:rgba(0,0,0,.05);}
 
-/* ── STICKY ABOUT US HEADER ── */
+/* ── FIXED & CENTERED ABOUT US HEADER ── */
 .about-sticky-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  padding:28px 48px 20px;
-  margin-top:60px; /* nav height offset */
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 24px;
+  text-align: center;
 }
 .about-sticky-header .eyebrow{
   font-size:11px;
   letter-spacing:.2em;
   text-transform:uppercase;
   color:var(--gray);
-  margin-bottom:6px;
+  margin-bottom:4px;
 }
 .about-sticky-header h1{
-  font-size:clamp(42px,8vw,90px);
+  font-size:clamp(32px, 6vw, 64px);
   font-weight:900;
-  letter-spacing:-2px;
-  line-height:1;
+  letter-spacing:-1px;
+  line-height:1.1;
   color:var(--black);
   text-transform:uppercase;
 }
@@ -73,21 +75,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
   width:36px;
   height:2px;
   background:var(--black);
-  margin-top:16px;
+  margin: 12px auto 0;
 }
 
 /* ── MAIN CONTENT ── */
-main{flex:1;}
-.page-wrap{max-width:760px;margin:0 auto;padding:48px 48px 80px;}
+main{
+  flex:1;
+  margin-top: 200px;
+}
+.page-wrap{max-width:760px;margin:0 auto;padding:24px 24px 60px;}
 
 /* ── CHAT SECTION ── */
-.chat-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
-.chat-intro{font-size:.95rem;font-weight:300;color:#555;margin-bottom:32px;line-height:1.7;}
+.chat-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;text-align: center;}
+.chat-intro{font-size:.95rem;font-weight:300;color:#555;margin-bottom:32px;line-height:1.7;text-align: center;}
 
-.chat-widget{border:1px solid #000;}
+.chat-widget{border:1px solid #000; background:#fff;}
 
 .chat-messages{
-  height:400px;
+  height:420px;
   overflow-y:auto;
   padding:28px;
   display:flex;
@@ -121,11 +126,23 @@ main{flex:1;}
 .typing-dots span:nth-child(3){animation-delay:.4s;}
 @keyframes dot{0%,80%,100%{transform:translateY(0);opacity:.3;}40%{transform:translateY(-6px);opacity:1;}}
 
-.chips-row{
-  display:flex;flex-wrap:wrap;gap:8px;
-  padding:16px 28px;
+.chips-container{
   background:#fff;
   border-top:1px solid #f0f0f0;
+  padding: 12px 24px;
+  transition: opacity 0.2s;
+}
+.chips-hint{
+  font-size: 11px;
+  color: var(--gray);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.chips-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
 }
 .chip{
   padding:7px 16px;
@@ -173,25 +190,72 @@ main{flex:1;}
 .ask-btn:hover{opacity:.75;}
 .ask-btn:disabled{opacity:.35;cursor:not-allowed;}
 
-/* ── FOOTER ── */
-footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px solid var(--border);margin-top:auto;}
-.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:40px;margin-bottom:32px;align-items:start;}
-.footer-col-title{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--black);margin-bottom:10px;}
-.footer-col p,.footer-col a{font-size:13px;font-weight:300;line-height:1.7;color:rgba(0,0,0,.65);text-decoration:none;display:block;transition:color .2s;}
-.footer-col a:hover{color:var(--black);}
-.footer-loc-name{font-weight:700;color:var(--black);font-size:13px;line-height:1.7;display:block;margin-top:5px;}
-.footer-loc-name:first-child{margin-top:0;}
-.footer-logo{display:flex;align-items:flex-start;justify-content:flex-end;}
-.footer-logo img{width:150px;height:auto;display:block;}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:rgba(0,0,0,.45);letter-spacing:.02em;}
-.footer-legal{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
-.footer-legal a{color:rgba(0,0,0,.55);text-decoration:underline;text-decoration-color:rgba(0,0,0,.25);transition:color .2s;white-space:nowrap;}
-.footer-legal a:hover{color:var(--black);}
-.footer-copy{white-space:nowrap;margin-left:auto;text-align:right;}
+/* ── LOGO LINK CENTERED CONTAINER ── */
+.end-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 20px;
+  background: #fff;
+}
+.end-logo-container a {
+  transition: transform 0.2s ease;
+}
+.end-logo-container a:hover {
+  transform: scale(1.03);
+}
+.end-logo-container img {
+  width: 130px;
+  height: auto;
+  display: block;
+}
 
-@media(max-width:900px){nav{padding:13px 20px;}footer{padding:40px 24px 24px;}.footer-grid{grid-template-columns:1fr 1fr;gap:24px 18px;}.about-sticky-header{padding:20px 24px 16px;}}
-@media(max-width:768px){footer{padding:32px 20px 20px;}.footer-grid{grid-template-columns:1fr 1fr;}.page-wrap{padding:32px 20px 60px;}.footer-copy{margin-left:0;text-align:center;}.footer-bottom{flex-direction:column;align-items:center;gap:8px;text-align:center;}.footer-legal{justify-content:center;gap:14px;}}
-@media(max-width:600px){nav{padding:12px 16px;}.about-sticky-header h1{letter-spacing:-1px;}.ask-btn{padding:0 18px;letter-spacing:1px;}}
+/* ── FOOTER BAR ── */
+.footer-legal-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  border-top: 1px solid var(--border);
+  background: #fff;
+}
+.footer-left-links {
+  display: flex;
+  gap: 24px;
+}
+.footer-left-links a {
+  font-size: 13px;
+  color: var(--gray);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.15s ease;
+}
+.footer-left-links a:hover {
+  color: var(--black);
+}
+.end-copyright {
+  font-size: 13px;
+  color: var(--gray);
+  letter-spacing: 0.02em;
+}
+
+@media(max-width:900px){
+  nav{padding:13px 20px;}
+  .about-sticky-header{top:55px; padding:16px 20px;}
+  main{margin-top: 180px;}
+}
+@media(max-width:600px){
+  nav{padding:12px 16px;}
+  main{margin-top: 170px;}
+  .ask-btn{padding:0 18px;letter-spacing:1px;}
+  .footer-legal-bar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 20px 24px;
+  }
+}
 </style>
 </head>
 <body>
@@ -208,8 +272,11 @@ footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px 
       <a href="https://www.instagram.com/danersbeefbread?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
       </a>
+      <!-- FIXED TIKTOK LOGO VECTOR -->
       <a href="https://www.tiktok.com/@daners_beefbread?_r=1&_t=ZS-96MZFXNPeF8" target="_blank" rel="noopener" aria-label="TikTok">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.03 1.6 4.17 1.22 1.42 2.97 2.27 4.78 2.45v3.91c-1.68-.02-3.32-.51-4.74-1.41-.3-.19-.58-.4-.85-.64V14.5c.03 2.51-1.12 4.93-3.1 6.47-2.32 1.83-5.59 2.19-8.29.93-2.73-1.25-4.52-4.13-4.49-7.14.01-3.23 2.14-6.14 5.25-7.05 1.57-.47 3.26-.29 4.7.49v4.06c-.84-.52-1.84-.71-2.81-.52-1.54.32-2.78 1.63-3.03 3.18-.37 2.12 1.11 4.15 3.25 4.45 2.11.33 4.14-1.1 4.47-3.21.05-.33.06-.67.06-1V0h.35z"/>
+        </svg>
       </a>
     </div>
   </div>
@@ -234,7 +301,7 @@ footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px 
   <a href="about.html" data-i18n="nav-about" class="active-page">About Us</a>
 </div>
 
-<!-- ── STICKY ABOUT US HEADER ── -->
+<!-- ── FIXED ABOUT US HEADER ── -->
 <div class="about-sticky-header">
   <div class="eyebrow" data-i18n="about-eyebrow">DANERS&rsquo; Beef &amp; Bread</div>
   <h1 data-i18n="about-title">About Us</h1>
@@ -249,19 +316,16 @@ footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px 
 
     <div class="chat-widget">
       <div class="chat-messages" id="chatMessages">
-        <div class="msg bot">
-          <div class="msg-sender">DANERS&rsquo;</div>
-          <div class="bubble" data-i18n="chat-welcome">Welcome to Daners Beef &amp; Bread! Ask me anything about our menu, ingredients, opening hours, or allergens.</div>
+        <div class="msg bot" data-kb-id="welcome">
+          <div class="msg-sender" data-i18n="chat-sender-bot">DANERS&rsquo;</div>
+          <div class="bubble" id="welcomeBubble" data-i18n="chat-welcome">Welcome to Daners Beef &amp; Bread! Ask me anything about our menu, our story, opening hours, or allergens.</div>
         </div>
       </div>
 
-      <div class="chips-row" id="chipsRow">
-        <button class="chip" onclick="sendChip(this)" data-i18n-chip="chip1">What&apos;s on the menu?</button>
-        <button class="chip" onclick="sendChip(this)" data-i18n-chip="chip2">Opening hours?</button>
-        <button class="chip" onclick="sendChip(this)" data-i18n-chip="chip3">Where is your beef from?</button>
-        <button class="chip" onclick="sendChip(this)" data-i18n-chip="chip4">Vegetarian options?</button>
-        <button class="chip" onclick="sendChip(this)" data-i18n-chip="chip5">Allergen info?</button>
-        <button class="chip" onclick="sendChip(this)" data-i18n-chip="chip6">Takeaway available?</button>
+      <!-- Suggestion Chips -->
+      <div class="chips-container" id="chipsContainer">
+        <div class="chips-hint" id="chipsHint" data-i18n="chips-suggestions">Suggestions:</div>
+        <div class="chips-row" id="chipsRow"></div>
       </div>
 
       <div class="input-row">
@@ -272,48 +336,21 @@ footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px 
   </div>
 </main>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-grid">
-    <div class="footer-col quicklinks">
-      <div class="footer-col-title" data-i18n="fq">Quick Links</div>
-      <a href="index.html" data-i18n="fhome">Home</a>
-      <a href="menu.html" data-i18n="fmenu">Menü</a>
-      <a href="isemarkt.html" data-i18n="nav-isemarkt">Isemarkt</a>
-      <a href="susi.html" data-i18n="nav-susi">SUSI</a>
-      <a href="jobs.html" data-i18n="fjobs">Jobs</a>
-      <a href="contact.html" data-i18n="nav-contact">Kontakt</a>
-      <a href="about.html" data-i18n="nav-about">About Us</a>
-    </div>
-    <div class="footer-col locations">
-      <div class="footer-col-title" data-i18n="fl">Locations</div>
-      <span class="footer-loc-name">Isemarkt</span>
-      <p>Di. 9.00&ndash;14.00</p>
-      <span class="footer-loc-name">Schanze | Schulterblatt 70</span>
-      <p>Mo.&ndash;Mi. 11.00&ndash;21.00</p>
-      <p>Do. 11.00&ndash;23.00</p>
-      <p>Fr.&ndash;Sa. 11.00&ndash;01.00</p>
-      <p>So. 11.00&ndash;21.00</p>
-    </div>
-    <div class="footer-col kontakt">
-      <div class="footer-col-title" data-i18n="fk">Kontakt</div>
-      <p>DANERS&rsquo;</p>
-      <p>Schinkelstra&szlig;e 25</p>
-      <p>22303 Hamburg</p>
-      <a href="mailto:Daners@beef-bread.de">Daners@beef-bread.de</a>
-    </div>
-    <div class="footer-logo">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAyCAYAAACqNX6+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMHSURBVHic7ZtLaBNBGMf/k02ySdqmDyveqXhQPKuIJ0E8CKIePHjxJgiKBy/eeBAVRFAQ8eDFgxdBQUEQEQ+CqIigICiIiIqIKD5AUdHiC63dtNlmZ8aD2TabZJPdZHeTkP3/YGE/Zuf7+M3szOzuAlmWZVmWZVmWZVmWZVmWZVmWZVlWIlTVAcBaXqm6OUfGBaC5OjvHGAF2hq1CXwECCEIIAFBVDGOMMcYYY4wxxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcYYY4wxxhgzxpiXqeqQkiqEkIZhpEoppeq1x3FcHMdJkiTFGGOMMcYYY4wxxhhjjDHGGGPMK6SqAACstW3bVkopVY8JAAAAQMQYc84JIYQQSimllHPOOecAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGD/AV+dJGAAAAABJRU5ErkJggg==" alt="DANERS'">
-    </div>
+<!-- ── LOGO CONTAINER ── -->
+<div class="end-logo-container">
+  <a href="index.html">
+    <img src="images/daners logo in black.png" alt="DANERS Logo">
+  </a>
+</div>
+
+<!-- ── FOOTER BAR ── -->
+<div class="footer-legal-bar">
+  <div class="footer-left-links">
+    <a href="imprint.html" data-i18n="f-imprint">Imprint</a>
+    <a href="privacy.html" data-i18n="f-privacy">Data Privacy</a>
   </div>
-  <div class="footer-bottom">
-    <div class="footer-legal">
-      <a href="imprint.html" data-i18n="f-imprint">Imprint</a>
-      <a href="privacy.html" data-i18n="f-privacy">Data Privacy</a>
-    </div>
-    <div class="footer-copy" data-i18n="fcopy">&copy; 2026 DANERS&rsquo; Beef &amp; Bread GmbH</div>
-  </div>
-</footer>
+  <div class="end-copyright" data-i18n="fcopy">&copy; 2026 DANERS&rsquo; Beef &amp; Bread GmbH</div>
+</div>
 
 <script>
 /* ── NAV HAMBURGER ── */
@@ -329,58 +366,155 @@ overlayMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () =>
   menuBtn.classList.remove('open');
   document.body.style.overflow = '';
 }));
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && overlayMenu.classList.contains('open')) {
-    overlayMenu.classList.remove('open');
-    menuBtn.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-});
+
 const navLocItem = document.getElementById('navLocItem');
 if (navLocItem) {
   navLocItem.querySelector('.nav-item-label').addEventListener('click', () => navLocItem.classList.toggle('open'));
 }
 
-/* ── TRANSLATIONS ── */
+/* ── TRANSLATIONS DOCK ── */
 const translations = {
   de: {
     "fhome":"Home","nav-menu":"Menü","nav-locations":"Locations","nav-jobs":"Jobs",
     "nav-contact":"Kontakt","nav-isemarkt":"Isemarkt","nav-susi":"SUSI","nav-about":"Über uns",
-    "fq":"Quick Links","fl":"Locations","fk":"Kontakt","fmenu":"Menü","fjobs":"Jobs",
-    "fcopy":"© 2026 DANERS' Beef & Bread GmbH","f-imprint":"Impressum","f-privacy":"Datenschutz",
+    "fcopy":"© 2026 DANERS' Beef & Bread GmbH",
+    "f-imprint":"Impressum","f-privacy":"Datenschutz",
     "about-eyebrow":"DANERS' Beef & Bread","about-title":"Über uns",
     "chat-label":"Frag uns alles","chat-intro":"Hast du eine Frage zu unserem Menü, unseren Zutaten, Öffnungszeiten oder sonst etwas über Daners? Unser Assistent hat die Antworten.",
-    "chat-welcome":"Willkommen bei Daners Beef & Bread! Frag mich alles über unser Menü, Zutaten, Öffnungszeiten oder Allergene.",
+    "chat-welcome":"Willkommen bei Daners Beef & Bread! Frag mich alles über unser Menü, unsere Philosophie, Öffnungszeiten oder Allergene.",
     "chat-ph":"Deine Frage hier eingeben…","ask-btn":"Fragen",
     "chat-sender-bot":"DANERS'","chat-sender-you":"Du",
     "private-reply":"Diese Information ist privat. Bitte wende dich direkt an unseren Manager — er hilft dir gerne weiter.",
-    "chip1":"Was gibt es auf der Speisekarte?","chip2":"Öffnungszeiten?",
-    "chip3":"Woher kommt euer Rindfleisch?","chip4":"Vegetarische Optionen?",
-    "chip5":"Allergen-Infos?","chip6":"Takeaway möglich?"
+    "chips-suggestions":"Vorschläge:",
+    "follow-up-text":"Möchtest du auch etwas hierüber wissen?",
+    "chip-who":"Wer seid ihr?",
+    "chip-what":"Was macht ihr?",
+    "chip-where":"Woher kommen wir?",
+    "chip-offer":"Was gibt es auf der Karte?",
+    "chip-produce":"Wie wird das Fleisch gemacht?",
+    "chip-source":"Woher kommt das Fleisch?",
+    "chip-allergies":"Allergen-Infos?",
+    "chip-hours":"Öffnungszeiten?",
+    "chip-menu":"Philosophie der Speisekarte?",
+    "chip-halal":"Ist das Fleisch Halal?",
+    "chip-recipe":"Rezept für die Rouille?"
   },
   en: {
     "fhome":"Home","nav-menu":"Menu","nav-locations":"Locations","nav-jobs":"Jobs",
     "nav-contact":"Contact","nav-isemarkt":"Isemarkt","nav-susi":"SUSI","nav-about":"About Us",
-    "fq":"Quick Links","fl":"Locations","fk":"Contact","fmenu":"Menu","fjobs":"Jobs",
-    "fcopy":"© 2026 DANERS' Beef & Bread GmbH","f-imprint":"Imprint","f-privacy":"Data Privacy",
+    "fcopy":"© 2026 DANERS' Beef & Bread GmbH",
+    "f-imprint":"Imprint","f-privacy":"Data Privacy",
     "about-eyebrow":"DANERS' Beef & Bread","about-title":"About Us",
     "chat-label":"Ask Us Anything","chat-intro":"Have a question about our menu, ingredients, opening hours, or anything else about Daners? Our assistant has the answers.",
-    "chat-welcome":"Welcome to Daners Beef & Bread! Ask me anything about our menu, ingredients, opening hours, or allergens.",
+    "chat-welcome":"Welcome to Daners Beef & Bread! Ask me anything about our menu, our story, opening hours, or allergens.",
     "chat-ph":"Type your question here…","ask-btn":"Ask",
     "chat-sender-bot":"DANERS'","chat-sender-you":"You",
     "private-reply":"That information is private. Please kindly reach out to our manager directly — they'll be happy to help you.",
-    "chip1":"What's on the menu?","chip2":"Opening hours?",
-    "chip3":"Where is your beef from?","chip4":"Vegetarian options?",
-    "chip5":"Allergen info?","chip6":"Takeaway available?"
+    "chips-suggestions":"Suggestions:",
+    "follow-up-text":"Would you also like to know about this?",
+    "chip-who":"Who are we?",
+    "chip-what":"What do we do?",
+    "chip-where":"Where are we from?",
+    "chip-offer":"What do we offer?",
+    "chip-produce":"How is the meat made?",
+    "chip-source":"Where does the meat come from?",
+    "chip-allergies":"Allergen info?",
+    "chip-hours":"Opening hours?",
+    "chip-menu":"Menu concept?",
+    "chip-halal":"Is the meat Halal?",
+    "chip-recipe":"Rouille sauce recipe?"
   }
 };
 
 let currentLang = localStorage.getItem('daners_lang') || 'de';
 
+/* ── MULTILINGUAL KNOWLEDGE BASE ── */
+const KB_DE = {
+  'welcome': `Willkommen bei Daners Beef & Bread! Frag mich alles über unser Menü, unsere Philosophie, Öffnungszeiten oder Allergene.`,
+  'private': `Diese Information ist privat. Bitte wende dich direkt an unseren Manager — er hilft dir gerne weiter.`,
+  'who': `Wir sind DANERS – Beef & Bread. Entstanden in Hamburg und gebaut um eine einfache Idee: verdammt gute Beef Sandwiches. Keine riesige Speisekarte, kein unnötiger Schnickschnack – einfach ein Produkt, das wir lieben und seit Jahren perfektionieren.`,
+  'what': `Wir legen Rinderhüfte einen Monat lang ein, schneiden sie hauchdünn auf, grillen sie frisch und packen sie in gutes Brot. Das ist DANERS.`,
+  'where': `Hamburg. Du findest uns in der Sternschanze und jeden Dienstag und Donnerstag auf dem Isemarkt.`,
+  'offer': `Unser Signature Sandwich besteht aus Rinderhüfte, die einen Monat lang in Salz und Gewürzen eingelegt wird. Anschließend wird sie hauchdünn aufgeschnitten, frisch gegrillt und mit Rucola sowie unserer hausgemachten Rouille serviert.\n\nJe nach Standort gibt es das Ganze im Brötchen, Toast, Sauerteigbrot oder – im Secret Menu – auch in Focaccia.\n\nFür alle, die es pflanzlich mögen, gibt es unsere Variante mit eingelegtem Portobello-Pilz und veganer Rouille.\n\nDazu passen unsere knusprigen Kartoffelecken – klassisch oder loaded mit Steakstreifen, Grana Padano und Rouille.`,
+  'produce': `Unser Fleisch basiert auf einer alten Konservierungsmethode aus der Eifel. Früher wurde Fleisch mit Salz, Gewürzen und Wacholder haltbar gemacht und über das Jahr hinweg in dünnen Scheiben verzehrt. Daraus ist unsere Hausspezialität entstanden: ein Monat Reifezeit, hauchdünn geschnitten und frisch gegrillt.`,
+  'source': `Unser Rindfleisch stammt von ausgewählten Lieferanten innerhalb der EU und wird nach unserer eigenen Rezeptur eingelegt und verarbeitet. Die Inspiration dafür kommt vom traditionellen „Eifeler Rand“ und einem Familienrezept, das über Generationen weitergegeben wurde.`,
+  'allergies': `Du hast Allergien oder Unverträglichkeiten? Sprich uns einfach vor deiner Bestellung an.\n\nHier ein Überblick über die wichtigsten Allergenen in unseren Produkten:\n\n• Eifeler Rand: Keine deklarationspflichtigen Hauptallergene\n• Rouille: Ei, Senf\n• Brot: Weizen (Gluten)\n• Grana Padano: Milch\n\nDa wir alle Speisen in derselben Küche zubereiten, können Spuren weiterer Allergene nicht vollständig ausgeschlossen werden.`,
+  'hours': `Unsere Öffnungszeiten:\n\n• Sternschanze (Susannenstraße 1, 20357 Hamburg):\n  Montag – Mittwoch: 11:00 – 21:00 Uhr\n  Donnerstag: 11:00 – 23:00 Uhr\n  Freitag – Samstag: 11:00 – 01:00 Uhr\n  Sonntag: 11:00 – 21:00 Uhr\n\n• Isemarkt:\n  Dienstag & Donnerstag: 09:00 – 14:00 Uhr`,
+  'menu': `Unsere Speisekarte ist bewusst klein. Wir konzentrieren uns auf wenige Produkte und versuchen, diese richtig gut zu machen: Beef & Bread, die vegane Portobello-Variante, knusprige Kartoffelecken und Loaded Wedges. Dazu kommen immer mal wieder saisonale Specials und Secret-Menu-Kreationen.`,
+  'halal': `Nein, unser Fleisch ist nicht halal-zertifiziert.`,
+  'recipe': `Pssst... Das Rezept für unsere legendäre Rouille ist ein streng behütetes Betriebsgeheimnis! 🤫 Schließlich macht die geheime Sauce unsere Sandwiches erst so richtig einzigartig. ✨`
+};
+
+const KB_EN = {
+  'welcome': `Welcome to Daners Beef & Bread! Ask me anything about our menu, our story, opening hours, or allergens.`,
+  'private': `That information is private. Please kindly reach out to our manager directly — they'll be happy to help you.`,
+  'who': `We're DANERS – Beef & Bread. Born in Hamburg and built around one thing: ridiculously good beef sandwiches. No giant menu, no unnecessary extras – just a product we love and have been perfecting for years.`,
+  'what': `We cure beef for a month, slice it paper-thin, grill it fresh and serve it in great bread. That's the heart of DANERS.`,
+  'where': `Hamburg. You'll find us in Sternschanze and at Isemarkt every Tuesday and Thursday.`,
+  'offer': `Our signature sandwich is made from beef rump that has been cured for one month in salt and spices, sliced paper-thin and grilled fresh to order. It's served with fresh rocket and our homemade rouille.\n\nDepending on where you visit us, you can choose between different bread options – from classic rolls and toast to sourdough bread.\n\nLooking for a plant-based option? We've got a marinated Portobello version with vegan rouille.\n\nAnd if you're hungry, add our crispy potato wedges – either classic or loaded with beef, Grana Padano and rouille.`,
+  'produce': `Our beef is inspired by an old preservation method from Germany's Eifel region. Back then, meat was cured with salt, spices and juniper berries to preserve it throughout the year. We've taken that idea and made it our own: one month of curing, paper-thin slices and fresh off the grill.`,
+  'source': `Our beef comes from carefully selected suppliers within the EU and is prepared according to our own recipe and curing process. The inspiration comes from the traditional "Eifeler Rand" and a family recipe that has been passed down through generations.`,
+  'allergies': `Got allergies or dietary restrictions? Just let us know before you order.\n\nHere's a quick overview of the main allergens in our products:\n\n• Eifeler Rand Beef: No declarable major allergens\n• Rouille: Egg, Mustard\n• Bread: Wheat (gluten)\n• Grana Padano: Milk\n\nAs all products are prepared in the same kitchen, traces of other allergens cannot be completely excluded.`,
+  'hours': `Our opening hours:\n\n• Sternschanze (Susannenstraße 1, 20357 Hamburg):\n  Monday – Wednesday: 11:00 AM – 9:00 PM\n  Thursday: 11:00 AM – 11:00 PM\n  Friday – Saturday: 11:00 AM – 1:00 AM\n  Sunday: 11:00 AM – 9:00 PM\n\n• Isemarkt:\n  Tuesday & Thursday: 9:00 AM – 2:00 PM`,
+  'menu': `Our menu is small on purpose. We focus on a few things and try to do them really well: Beef & Bread, the vegan Portobello version, crispy wedges and loaded wedges. From time to time you'll also find seasonal specials and Secret Menu items.`,
+  'halal': `No, our meat is not Halal-certified.`,
+  'recipe': `Shhh... The recipe for our legendary Rouille is a top secret! 🤫 It's our special house blend that gives the sandwiches their signature kick. ✨`
+};
+
+const KEYWORD_MAP = [
+  { id: 'who', keys: ['wer seid ihr','wer sind wir','geschichte','daners','über uns','wer','who are we','who are you','story','about us','history'] },
+  { id: 'what', keys: ['was macht ihr','was tut ihr','konzept','herz von daners','what do we do','what do you do','heart of daners'] },
+  { id: 'where', keys: ['woher kommen wir','woher kommt ihr','standorte','wo seid ihr','hamburg','schanze','sternschanze','isemarkt','where are we from','where are you from','locations','where are you'] },
+  { id: 'offer', keys: ['was bietet ihr an','was gibt es','speisekarte','angebot','essen','gericht','signature','sandwiches','portobello','kartoffelecken','wedges','what do we offer','what do you offer','menu','selection','food','dishes','potato'] },
+  { id: 'produce', keys: ['wie macht ihr euer fleisch','wie wird das fleisch gemacht','herstellung','zubereitung','konservierung','eifel','how do we produce our meat','how is the meat made','preparation','production','preservation'] },
+  { id: 'source', keys: ['woher kommt euer fleisch','woher kommt das fleisch','lieferant','herkunft fleisch','eifeler rand','rezeptur','where does our meat come from','where does the meat come from','supplier','meat origin','recipe'] },
+  { id: 'allergies', keys: ['allergene','allergie','unverträglichkeit','gluten','ei','senf','milch','weizen','allergies','allergy','restrictions','intolerance','egg','mustard','wheat'] },
+  { id: 'hours', keys: ['öffnungszeiten','uhrzeit','wann offen','zeiten','montag','dienstag','mittwoch','donnerstag','freitag','samstag','sonntag','opening hours','times','when are you open','schedule','monday','tuesday','wednesday','thursday','friday','saturday','sunday'] },
+  { id: 'menu', keys: ['bewusst klein','auswahl','saisonal','specials','secret menu','small on purpose','menu concept','focus'] },
+  { id: 'halal', keys: ['halal','zertifiziert','erlaubt','certified','permissible'] },
+  { id: 'recipe', keys: ['recipe','rezept','rouille','sauce','geheimnis','secret'] }
+];
+
+const ALL_CHIPS = [
+  { id: 'who', i18n: 'chip-who' },
+  { id: 'what', i18n: 'chip-what' },
+  { id: 'where', i18n: 'chip-where' },
+  { id: 'offer', i18n: 'chip-offer' },
+  { id: 'produce', i18n: 'chip-produce' },
+  { id: 'source', i18n: 'chip-source' },
+  { id: 'allergies', i18n: 'chip-allergies' },
+  { id: 'hours', i18n: 'chip-hours' },
+  { id: 'menu', i18n: 'chip-menu' },
+  { id: 'halal', i18n: 'chip-halal' },
+  { id: 'recipe', i18n: 'chip-recipe' }
+];
+
+let chatLogHistory = [];
+let isTypingActive = false; 
+
+function renderChips(excludeId = null) {
+  const t = translations[currentLang] || {};
+  const chipsRow = document.getElementById('chipsRow');
+  if(!chipsRow) return;
+  chipsRow.innerHTML = '';
+  
+  const filtered = ALL_CHIPS.filter(c => c.id !== excludeId);
+  const shuffled = filtered.sort(() => 0.5 - Math.random()).slice(0, 3);
+  
+  shuffled.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'chip';
+    btn.textContent = t[c.i18n];
+    btn.onclick = () => { if(!isTypingActive) sendChip(c.id, t[c.i18n]); };
+    chipsRow.appendChild(btn);
+  });
+}
+
 function applyLang(lang) {
   currentLang = lang;
   localStorage.setItem('daners_lang', lang);
   const t = translations[lang] || {};
+  
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.getAttribute('data-i18n');
     if (t[k] != null) el.textContent = t[k];
@@ -389,119 +523,59 @@ function applyLang(lang) {
     const k = el.getAttribute('data-i18n-ph');
     if (t[k] != null) el.placeholder = t[k];
   });
-  document.querySelectorAll('.chip').forEach(chip => {
-    const k = chip.getAttribute('data-i18n-chip');
-    if (t[k] != null) chip.textContent = t[k];
-  });
+  
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   document.documentElement.lang = lang;
-  /* update welcome message if not yet chatted */
-  const firstBubble = document.querySelector('#chatMessages .msg.bot .bubble');
-  if (firstBubble && t['chat-welcome']) firstBubble.textContent = t['chat-welcome'];
+  
+  if (!isTypingActive) {
+    rebuildChatDOM();
+    renderChips();
+  }
 }
 
 document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
-applyLang(currentLang);
 
-/* ── KNOWLEDGE BASE ── */
-const KB_DE = [
-  { keys:['menü','speisekarte','essen','gericht','brisket','burger','steak','meatball','chili','brot','angebot'],
-    answer:`Unser Menü bei Daners:\n\n• Beef Brisket Sandwich – Slow-roasted Brisket auf getoastetem Sauerteig mit hausgemachten Pickles und Smoky Aioli. Unser Bestseller.\n• Classic Beef Burger – Saftiger Patty auf frischem Brioche-Bun mit Salat, Tomate, Käse und unserem Special Sauce.\n• Prime Beef Steak Roll – Dünn geschnittenes Prime Beef, karamellisierte Zwiebeln und Meerrettich-Creme auf einem knusprigen Baguette.\n• Beef Meatball Sub – Hausgemachte Rindfleisch-Bällchen in reichhaltiger Tomatensoße mit Mozzarella auf einem weichen Hoagie-Brötchen.\n• Beef Chili Bowl – Herzhafter Slow-cooked Beef Chili mit Cornbread.\n• Bread Basket – Frisch gebackene Brotsorten mit Butter.\n• Roasted Veggie Sandwich – Gegrilltes Gemüse, Hummus und Feta auf Ciabatta.` },
-  { keys:['öffnungszeit','öffnung','uhrzeit','wann','montag','dienstag','samstag','sonntag','wochenende'],
-    answer:`Unsere Öffnungszeiten:\n\n• Isemarkt: Dienstag 9:00–14:00 Uhr\n• Schanze (Schulterblatt 70):\n  Mo–Mi 11:00–21:00 Uhr\n  Do 11:00–23:00 Uhr\n  Fr–Sa 11:00–01:00 Uhr\n  So 11:00–21:00 Uhr` },
-  { keys:['rindfleisch','fleisch','farm','herkunft','lokal','qualität','woher'],
-    answer:`Unser Rindfleisch stammt von vertrauenswürdigen lokalen Bauernhöfen — artgerecht gehalten, weidefed und vollständig rückverfolgbar. Wir braten unser Brisket über 12 Stunden und verwenden keine künstlichen Aromen oder Konservierungsstoffe.` },
-  { keys:['brot','backen','sauerteig','brioche','baguette','frisch'],
-    answer:`Unser gesamtes Brot wird täglich frisch im Haus gebacken. Wir verwenden einen Langzeit-Sauerteigstarter und formen jeden Laib von Hand. Altes Brot servieren wir nie.` },
-  { keys:['vegetarisch','vegan','pflanzlich','ohne fleisch'],
-    answer:`Ja! Wir haben ein Roasted Veggie Sandwich — gegrilltes Saisongemüse, Hummus und Feta auf Ciabatta. Unser Bread Basket ist ebenfalls vegetarisch.\n\nFür spezielle Ernährungsbedürfnisse sprich einfach unser Team an.` },
-  { keys:['allergen','allergie','gluten','nuss','milch','ei','unverträglichkeit','zöliak'],
-    answer:`Unsere Allergen-Informationen:\n\n• Alle Brotsorten enthalten Gluten und können Milch und Eier enthalten.\n• Fleischzubereitungen sind glutenfrei, aber einige Soßen enthalten Gluten.\n• Wir arbeiten in einer nussfreien Küche.\n\nBitte informiere unser Team immer über Allergien, bevor du bestellst.` },
-  { keys:['takeaway','zum mitnehmen','abholen','lieferung'],
-    answer:`Ja, wir bieten Takeaway und Dine-in an. Zurzeit liefern wir nicht — nur Abholung vor Ort.\n\nFür größere Bestellungen empfehlen wir, vorher anzurufen.` },
-  { keys:['reservier','tisch','gruppe','party'],
-    answer:`Reservierungen nehmen wir für Gruppen ab 6 Personen entgegen. Kleinere Gruppen sind als Walk-in willkommen.` },
-  { keys:['preis','kosten','teuer','günstig'],
-    answer:`Aktuelle Preise findest du direkt bei uns im Restaurant oder kontaktiere unser Team — unser Menü und die Preise werden regelmäßig aktualisiert.` },
-  { keys:['daners','über uns','wer','geschichte','gegründet'],
-    answer:`Daners Beef & Bread wurde mit der Überzeugung gegründet, dass gutes Essen mit ehrlichen Zutaten beginnt. Wir beziehen unser Fleisch von lokalen Bauernhöfen und backen jeden Laib frisch jeden Morgen. Keine Abkürzungen, keine Kompromisse.` },
-  { keys:['adresse','wo','standort','ort','hamburg'],
-    answer:`Wir sind an zwei Standorten in Hamburg zu finden:\n\n• Isemarkt (Dienstag 9:00–14:00 Uhr)\n• Schanze, Schulterblatt 70\n\nKomm vorbei oder schreib uns für mehr Details!` }
-];
-
-const KB_EN = [
-  { keys:['menu','food','dish','brisket','burger','steak','meatball','chili','bread','eat','offer'],
-    answer:`Here's what we serve at Daners:\n\n• Beef Brisket Sandwich – Slow-roasted brisket on toasted sourdough with house pickles and smoky aioli. Our #1 bestseller.\n• Classic Beef Burger – Juicy beef patty on a fresh brioche bun with lettuce, tomato, cheese, and our special sauce.\n• Prime Beef Steak Roll – Thinly sliced prime beef, caramelised onions, and horseradish cream on a crusty baguette.\n• Beef Meatball Sub – Homemade meatballs in rich tomato sauce with mozzarella on a soft hoagie roll.\n• Beef Chili Bowl – Hearty slow-cooked beef chili served with cornbread.\n• Bread Basket – Assorted freshly baked breads with compound butter.\n• Roasted Veggie Sandwich – Our vegetarian option: grilled vegetables, hummus, and feta on ciabatta.` },
-  { keys:['hour','open','close','time','when','day','monday','tuesday','weekend','saturday','sunday'],
-    answer:`Our opening hours:\n\n• Isemarkt: Tuesday 9:00 AM–2:00 PM\n• Schanze (Schulterblatt 70):\n  Mon–Wed 11:00 AM–9:00 PM\n  Thu 11:00 AM–11:00 PM\n  Fri–Sat 11:00 AM–1:00 AM\n  Sun 11:00 AM–9:00 PM` },
-  { keys:['beef','source','farm','meat','local','where','raised','origin','quality'],
-    answer:`Our beef is sourced from trusted local farms — ethically raised, pasture-fed, and fully traceable. We slow-cook our brisket for 12+ hours and never use artificial flavourings or preservatives.` },
-  { keys:['bread','bake','sourdough','fresh','brioche','baguette','loaf'],
-    answer:`All our bread is baked fresh in-house every single morning. We use a long-fermentation sourdough starter and hand-shape every loaf. We never serve day-old bread.` },
-  { keys:['vegetarian','vegan','veggie','plant','no meat'],
-    answer:`Yes! We have a Roasted Veggie Sandwich — grilled seasonal vegetables, hummus, and feta on ciabatta. Our Bread Basket is also fully vegetarian.\n\nJust let our staff know about any dietary needs when you order.` },
-  { keys:['allergen','allergy','gluten','nut','dairy','egg','intolerance','coeliac'],
-    answer:`Our allergen info:\n\n• All bread contains gluten and may contain dairy and eggs.\n• Beef preparations are gluten-free, but some sauces contain gluten.\n• We operate a nut-free kitchen.\n\nPlease always inform staff of any allergies before ordering.` },
-  { keys:['takeaway','take away','take-away','to go','delivery','collection'],
-    answer:`Yes, we offer takeaway and dine-in. We do not currently offer delivery — collection in-store only.\n\nFor large orders, we recommend calling ahead.` },
-  { keys:['reservation','book','reserve','table','group','party'],
-    answer:`We accept reservations for groups of 6 or more. Smaller groups are welcome as walk-ins.` },
-  { keys:['price','cost','expensive','cheap','affordable','how much'],
-    answer:`For current pricing, please visit us in-store or contact our team directly — our menu and prices are updated regularly.` },
-  { keys:['who','daners','about','story','founded','history','what is daners'],
-    answer:`Daners Beef & Bread was founded on a simple belief — great food starts with honest ingredients. We source our beef from trusted local farms and bake every loaf fresh each morning. No shortcuts, no compromises.` },
-  { keys:['location','address','where','directions','hamburg'],
-    answer:`We have two locations in Hamburg:\n\n• Isemarkt (Tuesday 9:00 AM–2:00 PM)\n• Schanze, Schulterblatt 70\n\nCome visit us or reach out for more details!` }
-];
-
-function findAnswer(query) {
-  const q = query.toLowerCase();
-  const KB = currentLang === 'de' ? KB_DE : KB_EN;
-  for (const entry of KB) {
-    if (entry.keys.some(k => q.includes(k))) return entry.answer;
+function findAnswerId(query) {
+  const q = query.toLowerCase().trim();
+  for (const entry of KEYWORD_MAP) {
+    if (entry.keys.some(k => q.includes(k))) {
+      return entry.id;
+    }
   }
-  return translations[currentLang]['private-reply'];
+  return 'private';
 }
 
-/* ── CHAT LOGIC ── */
+/* ── CHAT ENGINE ── */
 function sendMessage() {
+  if (isTypingActive) return;
   const input = document.getElementById('chatInput');
   const text = input.value.trim();
   if (!text) return;
   input.value = '';
-  addMsg('user', text);
-  respond(text);
+  
+  chatLogHistory.push({ role: 'user', type: 'text', value: text });
+  rebuildChatDOM();
+  
+  respond(text, null);
 }
 
-function sendChip(btn) {
-  document.getElementById('chipsRow').style.display = 'none';
-  addMsg('user', btn.textContent.trim());
-  respond(btn.textContent.trim());
+function sendChip(id, translatedLabel) {
+  if (isTypingActive) return;
+  chatLogHistory.push({ role: 'user', type: 'chip', id: id, labelDe: translations['de']['chip-'+id], labelEn: translations['en']['chip-'+id] });
+  rebuildChatDOM();
+  
+  respond(translatedLabel, id);
 }
 
-function addMsg(role, text) {
-  const c = document.getElementById('chatMessages');
-  const wrap = document.createElement('div');
-  wrap.className = `msg ${role}`;
-  const sender = document.createElement('div');
-  sender.className = 'msg-sender';
-  sender.textContent = role === 'bot'
-    ? (translations[currentLang]['chat-sender-bot'] || "DANERS'")
-    : (translations[currentLang]['chat-sender-you'] || 'You');
-  const bubble = document.createElement('div');
-  bubble.className = 'bubble';
-  bubble.style.whiteSpace = 'pre-line';
-  bubble.textContent = text;
-  wrap.appendChild(sender);
-  wrap.appendChild(bubble);
-  c.appendChild(wrap);
-  c.scrollTop = c.scrollHeight;
-}
-
-function respond(query) {
+function respond(query, clickedId) {
   const btn = document.getElementById('askBtn');
   const inp = document.getElementById('chatInput');
+  const chipsContainer = document.getElementById('chipsContainer');
+  
+  isTypingActive = true;
   btn.disabled = true; inp.disabled = true;
+  chipsContainer.style.opacity = '0.4';
+  chipsContainer.style.pointerEvents = 'none';
 
   const c = document.getElementById('chatMessages');
   const tw = document.createElement('div');
@@ -513,10 +587,122 @@ function respond(query) {
 
   setTimeout(() => {
     document.getElementById('typing')?.remove();
-    addMsg('bot', findAnswer(query));
-    btn.disabled = false; inp.disabled = false; inp.focus();
-  }, 700);
+    
+    const targetId = clickedId || findAnswerId(query);
+    const currentKB = currentLang === 'de' ? KB_DE : KB_EN;
+    
+    let fullBotAnswer = currentKB[targetId] || currentKB['private'];
+    if (targetId && targetId !== 'private') {
+       fullBotAnswer += `\n\n${translations[currentLang]['follow-up-text']}`;
+    }
+    
+    chatLogHistory.push({ role: 'bot', kbId: targetId });
+    typeBotResponse(fullBotAnswer, targetId);
+  }, 750);
 }
+
+/* ── CHATGPT STREAMING TYPE EFFECT ── */
+function typeBotResponse(fullText, targetId) {
+  const c = document.getElementById('chatMessages');
+  
+  const wrap = document.createElement('div');
+  wrap.className = 'msg bot';
+  
+  const sender = document.createElement('div');
+  sender.className = 'msg-sender';
+  sender.textContent = translations[currentLang]['chat-sender-bot'] || "DANERS'";
+  
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  bubble.style.whiteSpace = 'pre-line';
+  
+  wrap.appendChild(sender);
+  wrap.appendChild(bubble);
+  c.appendChild(wrap);
+  
+  let index = 0;
+  const speed = 15; // Speed setting (ms per character)
+  
+  const timer = setInterval(() => {
+    if (index < fullText.length) {
+      const char = fullText.codePointAt(index);
+      if (char > 0xffff) {
+        bubble.textContent += String.fromCodePoint(char);
+        index += 2;
+      } else {
+        bubble.textContent += fullText.charAt(index);
+        index++;
+      }
+      c.scrollTop = c.scrollHeight;
+    } else {
+      clearInterval(timer);
+      
+      isTypingActive = false;
+      const btn = document.getElementById('askBtn');
+      const inp = document.getElementById('chatInput');
+      const chipsContainer = document.getElementById('chipsContainer');
+      
+      btn.disabled = false; inp.disabled = false; 
+      chipsContainer.style.opacity = '1';
+      chipsContainer.style.pointerEvents = 'auto';
+      renderChips(targetId);
+      inp.focus();
+    }
+  }, speed);
+}
+
+function rebuildChatDOM() {
+  const c = document.getElementById('chatMessages');
+  c.innerHTML = `
+    <div class="msg bot" data-kb-id="welcome">
+      <div class="msg-sender">${translations[currentLang]['chat-sender-bot']}</div>
+      <div class="bubble">${currentLang === 'de' ? KB_DE['welcome'] : KB_EN['welcome']}</div>
+    </div>
+  `;
+  
+  const currentKB = currentLang === 'de' ? KB_DE : KB_EN;
+  
+  chatLogHistory.forEach((item, index) => {
+    if (item.role === 'bot' && index === chatLogHistory.length - 1 && isTypingActive) {
+      return;
+    }
+    
+    const wrap = document.createElement('div');
+    wrap.className = `msg ${item.role}`;
+    
+    const sender = document.createElement('div');
+    sender.className = 'msg-sender';
+    
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.style.whiteSpace = 'pre-line';
+    
+    if(item.role === 'user') {
+      sender.textContent = translations[currentLang]['chat-sender-you'] || 'You';
+      if(item.type === 'chip') {
+        bubble.textContent = currentLang === 'de' ? item.labelDe : item.labelEn;
+      } else {
+        bubble.textContent = item.value;
+      }
+    } else {
+      sender.textContent = translations[currentLang]['chat-sender-bot'] || "DANERS'";
+      let botAnswer = currentKB[item.kbId] || currentKB['private'];
+      if (item.kbId && item.kbId !== 'private') {
+         botAnswer += `\n\n${translations[currentLang]['follow-up-text']}`;
+      }
+      bubble.textContent = botAnswer;
+    }
+    
+    wrap.appendChild(sender);
+    wrap.appendChild(bubble);
+    c.appendChild(wrap);
+  });
+  
+  c.scrollTop = c.scrollHeight;
+}
+
+// Initial setup
+applyLang(currentLang);
 </script>
 </body>
 </html>
