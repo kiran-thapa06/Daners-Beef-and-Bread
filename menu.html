@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Men&uuml; &ndash; DANERS&rsquo;</title>
+  <title>Menü – DANERS’</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -51,8 +51,7 @@ nav {
   transition: background 0.3s;
 }
 nav.open {
-  background: #ffffff;
-  backdrop-filter: none;
+  background: transparent; /* Allows underlying overlay background to show naturally */
 }
 .nav-top-row {
   display: flex;
@@ -60,6 +59,8 @@ nav.open {
   justify-content: space-between;
   width: 100%;
 }
+
+/* FIXED: Lifted hamburger z-index to guarantee it stays on top of the overlay view */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -72,6 +73,8 @@ nav.open {
   width: 32px;
   height: 32px;
   flex-shrink: 0;
+  position: relative;
+  z-index: 2005; 
 }
 .hamburger span {
   display: block;
@@ -89,6 +92,8 @@ nav.open {
   display: flex;
   align-items: center;
   gap: 20px;
+  position: relative;
+  z-index: 2005; /* Keeps social/lang switch layout accessible above overlay */
 }
 .lang-switcher {
   display: flex;
@@ -136,7 +141,7 @@ nav.open {
 .brand-header-sticky {
   text-align: center;
   width: 100%;
-  margin-top: 5px;
+  margin-top: 75px; 
   background: #ffffff;
   transition: opacity 0.2s ease, visibility 0.2s;
 }
@@ -172,21 +177,26 @@ nav.open .brand-header-sticky {
   inset: 0;
   z-index: 2000;
   background: #ffffff;
+  /* FIXED: Uses flexible safe padding & vertical adjustment to avoid burying elements */
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 120px 24px 60px;
+  justify-content: center; 
+  padding: 40px 24px;
   overflow-y: auto;
 }
-.overlay-menu.open { display: flex; }
+.overlay-menu.open { 
+  display: flex; 
+}
 
 .overlay-inner-content {
   width: 100%;
   max-width: 600px;
+  margin: auto 0; /* Pure CSS vertical centering alignment trick */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(14px, 3vh, 28px);
+  gap: clamp(16px, 4.5vh, 32px);
+  padding-top: 60px; /* Safe gutter for top header row layout elements */
 }
 
 .overlay-menu a, .nav-item-label {
@@ -245,10 +255,10 @@ nav.open .brand-header-sticky {
 }
 .nav-dropdown a:hover { color: var(--black); background: rgba(0,0,0,.05); }
 
-/* ── LAYOUT & CONTAINER MECHANICS ── */
+/* ── LAYOUT & PERFECT ALIGNMENT MECHANICS ── */
 main {
   flex: 1;
-  padding-top: 140px;
+  padding-top: 220px; 
   position: relative;
   z-index: 1;
 } 
@@ -257,13 +267,21 @@ main {
   flex-direction: column;
   align-items: center;
   background: #ffffff;
+  width: 100%;
 }
-.menu-img-container {
+
+.menu-content-container {
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
   padding: 0 32px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-img-container {
+  width: 100%;
 }
 .menu-img-container img {
   width: 100%;
@@ -273,40 +291,49 @@ main {
   box-shadow: none;
 }
 
-/* Bounds text element context structurally to prevent it from going wider than the menu asset */
 .menu-note-container {
-  max-width: 900px;
   width: 100%;
-  padding: 0 32px;
-  margin: 40px auto 60px auto;
-  box-sizing: border-box;
+  max-width: 82%; 
+  margin: 44px auto 60px auto;
   text-align: center;
 }
 .menu-note-text {
-  font-size: clamp(12px, 2.2vw, 14px);
-  line-height: 1.6;
+  font-size: clamp(13px, 1.8vw, 15px);
+  line-height: 1.65;
   color: var(--black);
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   text-transform: uppercase; 
   background: #ffffff; 
-  border: none;
-  border-radius: 0;
-  padding: 10px 0;
+  word-spacing: 0.05em;
   display: block;
+  width: 100%;
 }
 
 /* ── RESPONSIVE MEDIA BREAKPOINTS ── */
 @media(max-width:900px) {
   nav { padding: 13px 20px 10px; }
-  main { padding-top: 140px; }
+  main { padding-top: 220px; }
 }
 @media (max-width: 600px) {
   nav { padding: 12px 16px 8px; }
-  main { padding-top: 115px; }
-  .overlay-menu { padding-top: 100px; }
-  .menu-img-container { padding: 0; }
-  .menu-note-container { padding: 0 16px; margin: 30px auto 40px auto; }
+  .brand-header-sticky { margin-top: 40px; } 
+  main { padding-top: 155px; }
+  
+  /* FIXED: Reset safe flexible parameters on mobile displays */
+  .overlay-menu { padding: 24px 16px; }
+  .overlay-inner-content { gap: 20px; padding-top: 50px; }
+  
+  .menu-content-container { padding: 0 24px; }
+  .menu-note-container { 
+    max-width: 88%; 
+    padding: 0; 
+    margin: 35px auto 40px auto; 
+  }
+  .menu-note-text {
+    font-size: 13px;
+    line-height: 1.6;
+  }
 }
 </style>
 </head>
@@ -329,7 +356,7 @@ main {
   </div>
 
   <div class="brand-header-sticky">
-    <h1 data-i18n="nav-menu">MENU</h1>
+    <h1 data-i18n="nav-menu">MENÜ</h1>
     <p>SLOW FOOD — SERVED FAST</p>
   </div>
 </nav>
@@ -337,7 +364,7 @@ main {
 <div class="overlay-menu" id="overlayMenu">
   <div class="overlay-inner-content">
     <a href="index.html" data-i18n="fhome">Home</a>
-    <a href="menu.html" data-i18n="nav-menu">Men&uuml;</a>
+    <a href="menu.html" data-i18n="nav-menu">Menü</a>
     <div class="nav-item" id="navLocItem">
       <div class="nav-item-label">
         <span data-i18n="nav-locations">Locations</span>
@@ -345,24 +372,26 @@ main {
       </div>
       <div class="nav-dropdown">
         <a href="isemarkt.html" data-i18n="nav-isemarkt">Isemarkt</a>
-        <a href="susi.html" data-i18n="nav-susi">SUSI</a>
+        <a href="susi.html" data-i18n="nav-susi">Sternschanze</a>
       </div>
     </div>
     <a href="jobs.html" data-i18n="nav-jobs">Jobs</a>
     <a href="contact.html" data-i18n="nav-contact">Kontakt</a>
-    <a href="about.html" data-i18n="nav-about">&Uuml;ber uns</a>
+    <a href="about.html" data-i18n="nav-about">Über uns</a>
   </div>
 </div>
 
 <main>
   <div class="menu-page-wrap">
-    <div class="menu-img-container">
-      <img src="images/menu_daners.jpg" alt="DANERS&rsquo; Men&uuml;">
-    </div>
+    <div class="menu-content-container">
+      <div class="menu-img-container">
+        <img src="images/menu_daners.jpg" alt="DANERS’ Menü">
+      </div>
 
-    <div class="menu-note-container">
-      <div class="menu-note-text" data-i18n="menu-extra-note">
-        An unserem Standort in der Sternschanze wartet noch das eine oder andere Extra auf euch. Schaut vorbei und entdeckt es selbst
+      <div class="menu-note-container">
+        <div class="menu-note-text" data-i18n="menu-extra-note">
+          An unserem Standort in der Sternschanze wartet noch das eine oder andere Extra auf euch. Schaut vorbei und entdeckt es selbst
+        </div>
       </div>
     </div>
   </div>
@@ -409,7 +438,7 @@ const translations={
     "nav-jobs": "Jobs", 
     "nav-contact": "Kontakt", 
     "nav-isemarkt": "Isemarkt", 
-    "nav-susi": "SUSI", 
+    "nav-susi": "Sternschanze", 
     "fhome": "Home", 
     "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", 
     "f-imprint": "Impressum", 
@@ -423,7 +452,7 @@ const translations={
     "nav-jobs": "Jobs", 
     "nav-contact": "Contact", 
     "nav-isemarkt": "Isemarkt", 
-    "nav-susi": "SUSI", 
+    "nav-susi": "Sternschanze", 
     "fhome": "Home", 
     "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", 
     "f-imprint": "Imprint", 
