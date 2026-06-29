@@ -56,7 +56,7 @@ main{flex:1;padding-top:60px;}
   backdrop-filter:blur(10px);
   text-align:center;
   padding:18px 48px 14px;
-  border-bottom:1px solid var(--border);
+  border-bottom:none; /* Changed from 1px solid var(--border) to none */
   width:100vw;
   margin-left:calc(-50vw + 50%);
 }
@@ -156,7 +156,7 @@ main{flex:1;padding-top:60px;}
     <div class="nav-item-label"><span data-i18n="nav-locations">Locations</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
     <div class="nav-dropdown">
       <a href="isemarkt.html" data-i18n="nav-isemarkt">Isemarkt</a>
-      <a href="susi.html" data-i18n="nav-susi">SUSI</a>
+      <a href="susi.html" data-i18n="nav-susi">Sternschanze</a>
     </div>
   </div>
   <a href="jobs.html" data-i18n="nav-jobs">Jobs</a>
@@ -167,8 +167,8 @@ main{flex:1;padding-top:60px;}
 <main>
   <!-- STICKY TITLE -->
   <div class="sticky-title-bar">
-    <h1 class="section-title" data-i18n="contact-title">Kontakt</h1>
-    <p class="section-label" data-i18n="contact-label">Schreib uns</p>
+    <h1 class="section-title" data-i18n="contact-title">KONTAKT</h1>
+    <p class="section-label" data-i18n="contact-label">GET IN TOUCH</p>
   </div>
 
   <div class="page-wrap" style="padding-top:32px;">
@@ -320,9 +320,9 @@ function sendForm(prefix,subject,fieldIds){
 
 const translations={
   "de":{
-    "nav-menu":"Menü","nav-locations":"Locations","nav-jobs":"Jobs","nav-contact":"Kontakt","nav-isemarkt":"Isemarkt","nav-susi":"SUSI","nav-about":"About Us",
+    "nav-menu":"Menü","nav-locations":"Locations","nav-jobs":"Jobs","nav-contact":"Kontakt","nav-isemarkt":"Isemarkt","nav-susi":"Sternschanze","nav-about":"Über uns",
     "fhome":"Home","fmenu":"Menü","fjobs":"Jobs","fcontact":"Kontakt","fcopy":"© 2026 DANERS' Beef & Bread GmbH","f-imprint":"Impressum","f-privacy":"Datenschutz",
-    "contact-label":"Schreib uns","contact-title":"Kontakt",
+    "contact-label":"GET IN TOUCH","contact-title":"KONTAKT",
     "tab-events":"Private Feier / Events","tab-enquiry":"Project Enquiry","tab-jobs":"Jobs","tab-press":"Press & Media",
     "f-name":"Name","f-email":"E-Mail","f-phone":"Telefon","f-date":"Datum des Events","f-guests":"Anzahl der Gäste","f-evtype":"Art der Veranstaltung","f-msg":"Nachricht",
     "f-company":"Unternehmen","f-reqtype":"Art der Anfrage","f-projdesc":"Projektbeschreibung",
@@ -338,9 +338,9 @@ const translations={
     "ph-social-link":"https://instagram.com/..."
   },
   "en":{
-    "nav-menu":"Menu","nav-locations":"Locations","nav-jobs":"Jobs","nav-contact":"Contact","nav-isemarkt":"Isemarkt","nav-susi":"SUSI","nav-about":"About Us",
+    "nav-menu":"Menu","nav-locations":"Locations","nav-jobs":"Jobs","nav-contact":"Contact","nav-isemarkt":"Isemarkt","nav-susi":"Sternschanze","nav-about":"About Us",
     "fhome":"Home","fmenu":"Menu","fjobs":"Jobs","fcontact":"Contact","fcopy":"© 2026 DANERS' Beef & Bread GmbH","f-imprint":"Imprint","f-privacy":"Data Privacy",
-    "contact-label":"Write to us","contact-title":"Contact",
+    "contact-label":"GET IN TOUCH","contact-title":"CONTACT",
     "tab-events":"Private Party / Events","tab-enquiry":"Project Enquiry","tab-jobs":"Jobs","tab-press":"Press & Media",
     "f-name":"Name","f-email":"Email","f-phone":"Phone","f-date":"Event Date","f-guests":"Number of Guests","f-evtype":"Type of Event","f-msg":"Message",
     "f-company":"Company","f-reqtype":"Type of Enquiry","f-projdesc":"Project Description",
