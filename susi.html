@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>SUSI &ndash; DANERS&rsquo;</title>
+  <title>SUSI – DANERS’</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -35,11 +35,39 @@ nav.open {
   justify-content: space-between;
   width: 100%;
 }
-.hamburger{display:flex;flex-direction:column;justify-content:center;gap:6px;cursor:pointer;background:none;border:none;padding:4px;width:32px;height:32px;flex-shrink:0;}
-.hamburger span{display:block;width:24px;height:1.5px;background:var(--black);transition:transform .3s,opacity .3s;transform-origin:center;}
-.hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+
+/* HAMBURGER TO 'X' TRANSITION */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--black);
+  transition: transform .3s, opacity .3s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
 
 .nav-right{display:flex;align-items:center;gap:20px;}
 .lang-switcher{display:flex;align-items:center;gap:2px;background:rgba(0,0,0,.05);border-radius:20px;padding:3px 4px;}
@@ -54,7 +82,7 @@ nav.open {
 .brand-header-sticky {
   text-align: center;
   width: 100%;
-  margin-top: 5px;
+  margin-top: 24px;
   background: #ffffff;
   transition: opacity 0.2s ease, visibility 0.2s;
 }
@@ -73,7 +101,7 @@ nav.open {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--gray);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 /* Hides title and slogan when navbar has the .open class */
@@ -83,7 +111,7 @@ nav.open .brand-header-sticky {
   pointer-events: none;
 }
 
-/* OVERLAY MENU */
+/* OVERLAY MENU - Adjusted top padding to prevent element cut-offs */
 .overlay-menu {
   display: none;
   position: fixed;
@@ -93,7 +121,7 @@ nav.open .brand-header-sticky {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 120px 24px 60px;
+  padding: 180px 24px 60px; /* Increased top padding so 'HOME' clears the nav header */
   overflow-y: auto;
 }
 .overlay-menu.open { display: flex; }
@@ -166,106 +194,36 @@ nav.open .brand-header-sticky {
 /* LAYOUT */
 main {
   flex: 1;
-  padding-top: 140px;
+  padding-top: 170px;
   position: relative;
   z-index: 1;
 } 
 .page-wrap{display:flex;flex-direction:column;align-items:center;padding:0 48px 64px;}
-.content-wide{width:100%;max-width:860px;margin-top:20px;}
+.content-wide{width:100%;max-width:860px;margin-top:20px;text-align:center;}
 
-/* LOCATION PAGES */
+/* LOCATION PAGES CENTERED DESIGN */
 .location-hero{width:100%;padding:20px 0 28px;text-align:center;}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;}
-.info-card{background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:28px;}
+.info-grid{display:flex;flex-direction:column;align-items:center;gap:40px;margin-top:28px;text-align:center;}
+.info-card{padding:10px 0;width:100%;max-width:400px;}
 .info-card h3{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px;color:var(--gray);}
 .info-card p{font-size:14px;line-height:1.9;color:#333;}
 .info-card strong{color:var(--black);}
-.location-coming{background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:44px 32px;text-align:center;margin-top:28px;}
+.location-coming{text-align:center;margin-top:56px;padding:20px 0;}
 .location-coming h3{font-size:18px;font-weight:700;margin-bottom:10px;}
 .location-coming p{font-size:14px;color:var(--gray);line-height:1.8;}
 
-/* FOOTER */
-footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px solid var(--border);margin-top:auto;}
-.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:40px;margin-bottom:32px;align-items:start;}
-.footer-col-title{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--black);margin-bottom:10px;}
-.footer-col p,.footer-col a{font-size:13px;font-weight:300;line-height:1.7;color:rgba(0,0,0,.65);text-decoration:none;display:block;transition:color .2s;}
-.footer-col a:hover{color:var(--black);}
-.footer-loc-name{font-weight:700;color:var(--black);font-size:13px;line-height:1.7;display:block;margin-top:5px;}
-.footer-loc-name:first-child{margin-top:0;}
-.footer-logo{display:flex;align-items:flex-start;justify-content:flex-end;}
-.footer-logo img{width:150px;height:auto;display:block;transition:opacity 0.2s;}
-.footer-logo a:hover img { opacity: 0.7; }
-
 @media(max-width:900px){
   nav{padding:13px 20px 10px;}
-  main { padding-top: 140px; }
+  main { padding-top: 160px; }
+  .overlay-menu { padding-top: 140px; } /* Ensures spacing inside mobile overlay views */
   .page-wrap{padding:0 24px 52px;}
-  footer{padding:40px 24px 24px;}
-  .info-grid{grid-template-columns:1fr;}
-}
-@media(max-width:768px){
-  footer{padding:32px 20px 20px;}
-  .footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px 18px;}
-  .footer-col.quicklinks{grid-column:1;grid-row:1;}
-  .footer-col.locations{grid-column:2;grid-row:1;text-align:right;}
-  .footer-col.locations .footer-loc-name{text-align:right;}
-  .footer-col.kontakt{grid-column:1/-1;grid-row:2;text-align:center;}
-  .footer-logo{grid-column:1/-1;grid-row:3;justify-content:center;margin-top:6px;}
-  .footer-logo img{width:220px;}
+  .info-grid{gap:32px;}
 }
 @media(max-width:600px){
   nav{padding:12px 16px 8px;}
-  main { padding-top: 115px; }
-  .overlay-menu { padding-top: 100px; }
+  main { padding-top: 145px; }
+  .overlay-menu { padding-top: 110px; }
   .page-wrap{padding:0 16px 44px;}
-}
-
-.footer-bottom{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
-  padding-top:18px;
-  border-top:1px solid var(--border);
-  font-size:12px;
-  color:rgba(0,0,0,.45);
-  letter-spacing:.02em;
-}
-.footer-legal{
-  display:flex;
-  align-items:center;
-  gap:18px;
-  flex-wrap:wrap;
-}
-.footer-legal a{
-  color:rgba(0,0,0,.55);
-  text-decoration:underline;
-  text-decoration-color:rgba(0,0,0,.25);
-  transition:color .2s;
-  white-space:nowrap;
-}
-.footer-legal a:hover{color:var(--black);}
-.footer-copy{
-  white-space:nowrap;
-  margin-left:auto;
-  text-align:right;
-}
-@media(max-width:600px){
-  .footer-bottom{
-    flex-direction:column;
-    align-items:center;
-    gap:8px;
-    text-align:center;
-  }
-  .footer-copy{
-    margin-left:0;
-    text-align:center;
-  }
-  .footer-legal{
-    justify-content:center;
-    gap:14px;
-  }
 }
 </style>
 </head>
@@ -288,7 +246,7 @@ footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px 
 
   <div class="brand-header-sticky">
     <h1 data-i18n="nav-susi">SUSI</h1>
-    <p data-i18n="loc-susi-sub">Schanze | Schulterblatt 70</p>
+    <p data-i18n="loc-susi-sub">Sternschanze | Susannenstr. 1</p>
   </div>
 </nav>
 
@@ -303,7 +261,7 @@ footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px 
       </div>
       <div class="nav-dropdown">
         <a href="isemarkt.html" data-i18n="nav-isemarkt">Isemarkt</a>
-        <a href="susi.html" data-i18n="nav-susi">SUSI</a>
+        <a href="susi.html" data-i18n="nav-susi">Sternschanze</a>
       </div>
     </div>
     <a href="jobs.html" data-i18n="nav-jobs">Jobs</a>
@@ -319,15 +277,15 @@ footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px 
         <div class="info-card">
           <h3 data-i18n="loc-hours">Öffnungszeiten</h3>
           <p>
-            <strong>Mo. &ndash; Mi.</strong>&ensp;11.00 &ndash; 21.00 Uhr<br>
-            <strong>Do.</strong>&ensp;11.00 &ndash; 23.00 Uhr<br>
-            <strong>Fr. &ndash; Sa.</strong>&ensp;11.00 &ndash; 01.00 Uhr<br>
-            <strong>So.</strong>&ensp;11.00 &ndash; 21.00 Uhr
+            <strong>Mo. – Mi.</strong> 11.00 – 21.00 Uhr<br>
+            <strong>Do.</strong> 11.00 – 23.00 Uhr<br>
+            <strong>Fr. – Sa.</strong> 11.00 – 01.00 Uhr<br>
+            <strong>So.</strong> 11.00 – 21.00 Uhr
           </p>
         </div>
         <div class="info-card">
           <h3 data-i18n="loc-address">Adresse</h3>
-          <p><strong>Schulterblatt 70</strong><br>20357 Hamburg<br>(Schanzenviertel)</p>
+          <p><strong>Susannenstr. 1</strong><br>20357 Hamburg<br>(Schanzenviertel)</p>
           <p style="margin-top:12px;font-size:13px;color:var(--gray);" data-i18n="loc-sbahn">S-Bahn: Sternschanze (S3/S31)</p>
         </div>
       </div>
@@ -338,47 +296,6 @@ footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px 
     </div>
   </div>
 </main>
-
-<footer>
-  <div class="footer-grid">
-    <div class="footer-col quicklinks">
-      <div class="footer-col-title" data-i18n="fq">Quick Links</div>
-      <a href="index.html" data-i18n="fhome">Home</a>
-      <a href="menu.html" data-i18n="fmenu">Men&uuml;</a>
-      <a href="isemarkt.html" data-i18n="nav-isemarkt">Isemarkt</a>
-      <a href="susi.html" data-i18n="nav-susi">SUSI</a>
-      <a href="jobs.html" data-i18n="fjobs">Jobs</a>
-      <a href="contact.html" data-i18n="fcontact">Kontakt</a>
-    </div>
-    <div class="footer-col locations">
-      <div class="footer-col-title" data-i18n="fl">Locations</div>
-      <span class="footer-loc-name">Isemarkt</span>
-      <p>Di. 9.00&ndash;14.00</p>
-      <span class="footer-loc-name">Schanze | Schulterblatt 70</span>
-      <p>Mo.&ndash;Mi. 11.00&ndash;21.00</p>
-      <p>Do. 11.00&ndash;23.00</p>
-      <p>Fr.&ndash;Sa. 11.00&ndash;01.00</p>
-      <p>So. 11.00&ndash;21.00</p>
-    </div>
-    <div class="footer-col kontakt">
-      <div class="footer-col-title" data-i18n="fk">Kontakt</div>
-      <p>DANERS</p>
-      <p>Schinkelstra&szlig;e 25</p>
-      <p>22303 Hamburg</p>
-      <a href="mailto:Daners@beef-bread.de">Daners@beef-bread.de</a>
-    </div>
-    <div class="footer-logo">
-      <a href="index.html"><img src="images/daners logo in black.png" alt="DANERS Logo"></a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-legal">
-      <a href="imprint.html" data-i18n="f-imprint">Imprint</a>
-      <a href="privacy.html" data-i18n="f-privacy">Data Privacy</a>
-    </div>
-    <div class="footer-copy" data-i18n="fcopy">&copy; 2026 DANERS&rsquo; Beef &amp; Bread GmbH</div>
-  </div>
-</footer>
 
 <script>
 const menuBtn=document.getElementById('menuBtn');
@@ -412,7 +329,7 @@ if(navLocItem){
   navLocItem.querySelector('.nav-item-label').addEventListener('click',()=>navLocItem.classList.toggle('open'));
 }
 
-const translations={"de": {"nav-about": "Über uns", "nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fq": "Quick Links", "fl": "Locations", "fk": "Kontakt", "fhome": "Home", "fmenu": "Menü", "fjobs": "Jobs", "fcontact": "Kontakt", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz", "contact-label": "Schreib uns", "contact-title": "Kontakt", "tab-events": "Private Feier / Events", "tab-enquiry": "Project Enquiry", "tab-jobs": "Employment", "tab-press": "Press & Media", "tab-social": "Social", "f-name": "Name", "f-email": "E-Mail", "f-phone": "Telefon", "f-date": "Datum des Events", "f-guests": "Anzahl der Gäste", "f-evtype": "Art der Veranstaltung", "f-msg": "Nachricht", "f-company": "Unternehmen", "f-reqtype": "Art der Anfrage", "f-projdesc": "Projektbeschreibung", "f-available": "Verfügbar ab", "f-worktype": "Art der Beschäftigung", "f-why": "Warum DANERS'?", "f-outlet": "Medium / Outlet", "f-topic": "Thema", "f-platform": "Platform", "f-followers": "Follower-Anzahl", "f-idea": "Eure Idee", "f-send": "Anfrage senden", "f-apply": "Bewerbung absenden", "f-consent": "Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzrichtlinie zu.", "f-ok": "✓ Deine E-Mail-App öffnet sich. Bitte sende die Nachricht ab!", "f-choose": "Bitte wählen", "wt-full": "Vollzeit", "wt-part": "Teilzeit", "wt-mini": "Minijob", "ph-name": "Max Mustermann", "ph-email": "max@beispiel.de", "ph-phone": "+49 ...", "ph-guests": "min. 25", "ph-msg-event": "Erzählt uns von eurem Event...", "ph-company": "Ihr Unternehmen", "ph-projdesc": "Beschreibt euer Projekt...", "ph-why": "Erzählt uns etwas über euch...", "ph-outlet": "z.B. Hamburg Journal", "ph-press-msg": "Was habt ihr geplant?", "ph-followers": "z.B. 10.000", "ph-idea": "Was stellt ihr euch vor?", "jobs-label": "Werde Teil des Teams", "jobs-title": "Jobs", "jobs-body": "Du liebst gutes Essen und arbeitest gerne mit Menschen? Dann freuen wir uns auf deine Bewerbung. Schreib uns einfach – wir melden uns!", "jobs-cta": "Jetzt bewerben", "loc-label": "Standort", "loc-hours": "Öffnungszeiten", "loc-address": "Adresse", "loc-isemarkt-sub": "Hamburgs bekanntester Wochenmarkt", "loc-susi-sub": "Schanze | Schulterblatt 70", "loc-coming-title": "Demnächst mehr Informationen", "loc-coming-text": "Diese Seite wird gerade eingerichtet. Schau bald wieder vorbei!", "loc-ubahn": "U-Bahn: Hoheluftbrücke (U3)", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"}, "en": {"nav-about": "About Us", "nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fq": "Quick Links", "fl": "Locations", "fk": "Contact", "fhome": "Home", "fmenu": "Menu", "fjobs": "Jobs", "fcontact": "Contact", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy", "contact-label": "Write to us", "contact-title": "Contact", "tab-events": "Private Party / Events", "tab-enquiry": "Project Enquiry", "tab-jobs": "Employment", "tab-press": "Press & Media", "tab-social": "Social", "f-name": "Name", "f-email": "Email", "f-phone": "Phone", "f-date": "Event Date", "f-guests": "Number of Guests", "f-evtype": "Type of Event", "f-msg": "Message", "f-company": "Company", "f-reqtype": "Type of Enquiry", "f-projdesc": "Project Description", "f-available": "Available from", "f-worktype": "Employment Type", "f-why": "Why DANERS'?", "f-outlet": "Media / Outlet", "f-topic": "Topic", "f-platform": "Platform", "f-followers": "Follower Count", "f-idea": "Your Idea", "f-send": "Send Enquiry", "f-apply": "Submit Application", "f-consent": "I agree to the processing of my data in accordance with the privacy policy.", "f-ok": "✓ Your email app will open. Please send the message!", "f-choose": "Please select", "wt-full": "Full-time", "wt-part": "Part-time", "wt-mini": "Mini job", "ph-name": "Your Name", "ph-email": "your@email.com", "ph-phone": "+49 ...", "ph-guests": "min. 25", "ph-msg-event": "Tell us about your event...", "ph-company": "Your Company", "ph-projdesc": "Describe your project...", "ph-why": "Tell us something about yourself...", "ph-outlet": "e.g. Hamburg Journal", "ph-press-msg": "What do you have planned?", "ph-followers": "e.g. 10,000", "ph-idea": "What do you have in mind?", "jobs-label": "Join the Team", "jobs-title": "Jobs", "jobs-body": "You love good food and enjoy working with people? We look forward to your application. Just write to us – we will get back to you!", "jobs-cta": "Apply now", "loc-label": "Location", "loc-hours": "Opening Hours", "loc-address": "Address", "loc-isemarkt-sub": "Hamburg's most famous weekly market", "loc-susi-sub": "Schanze | Schulterblatt 70", "loc-coming-title": "More Information Coming Soon", "loc-coming-text": "This page is being set up. Check back soon!", "loc-ubahn": "Subway: Hoheluftbrücke (U3)", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"}};
+const translations={"de": {"nav-about": "Über uns", "nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fq": "Quick Links", "fl": "Locations", "fk": "Kontakt", "fhome": "Home", "fmenu": "Menü", "fjobs": "Jobs", "fcontact": "Kontakt", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz", "contact-label": "Schreib uns", "contact-title": "Kontakt", "tab-events": "Private Feier / Events", "tab-enquiry": "Project Enquiry", "tab-jobs": "Employment", "tab-press": "Press & Media", "tab-social": "Social", "f-name": "Name", "f-email": "E-Mail", "f-phone": "Telefon", "f-date": "Datum des Events", "f-guests": "Anzahl der Gäste", "f-evtype": "Art der Veranstaltung", "f-msg": "Nachricht", "f-company": "Unternehmen", "f-reqtype": "Art der Anfrage", "f-projdesc": "Projektbeschreibung", "f-available": "Verfügbar ab", "f-worktype": "Art der Beschäftigung", "f-why": "Warum DANERS'?", "f-outlet": "Medium / Outlet", "f-topic": "Thema", "f-platform": "Platform", "f-followers": "Follower-Anzahl", "f-idea": "Eure Idee", "f-send": "Anfrage senden", "f-apply": "Bewerbung absenden", "f-consent": "Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzrichtlinie zu.", "f-ok": "✓ Deine E-Mail-App öffnet sich. Bitte sende die Nachricht ab!", "f-choose": "Bitte wählen", "wt-full": "Vollzeit", "wt-part": "Teilzeit", "wt-mini": "Minijob", "ph-name": "Max Mustermann", "ph-email": "max@beispiel.de", "ph-phone": "+49 ...", "ph-guests": "min. 25", "ph-msg-event": "Erzählt uns von eurem Event...", "ph-company": "Ihr Unternehmen", "ph-projdesc": "Beschreibt euer Projekt...", "ph-why": "Erzählt uns etwas über euch...", "ph-outlet": "z.B. Hamburg Journal", "ph-press-msg": "Was habt ihr geplant?", "ph-followers": "z.B. 10.000", "ph-idea": "Was stellt ihr euch vor?", "jobs-label": "Werde Teil des Teams", "jobs-title": "Jobs", "jobs-body": "Du liebst gutes Essen und arbeitest gerne mit Menschen? Dann freuen wir uns auf deine Bewerbung. Schreib uns einfach – wir melden uns!", "jobs-cta": "Jetzt bewerben", "loc-label": "Standort", "loc-hours": "Öffnungszeiten", "loc-address": "Adresse", "loc-isemarkt-sub": "Hamburgs bekanntester Wochenmarkt", "loc-susi-sub": "Sternschanze | Susannenstr. 1", "loc-coming-title": "Demnächst mehr Informationen", "loc-coming-text": "Diese Seite wird gerade eingerichtet. Schau bald wieder vorbei!", "loc-ubahn": "U-Bahn: Hoheluftbrücke (U3)", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"}, "en": {"nav-about": "About Us", "nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fq": "Quick Links", "fl": "Locations", "fk": "Contact", "fhome": "Menu", "fjobs": "Jobs", "fcontact": "Contact", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy", "contact-label": "Write to us", "contact-title": "Contact", "tab-events": "Private Party / Events", "tab-enquiry": "Project Enquiry", "tab-jobs": "Employment", "tab-press": "Press & Media", "tab-social": "Social", "f-name": "Name", "f-email": "Email", "f-phone": "Phone", "f-date": "Event Date", "f-guests": "Number of Guests", "f-evtype": "Type of Event", "f-msg": "Message", "f-company": "Company", "f-reqtype": "Type of Enquiry", "f-projdesc": "Project Description", "f-available": "Available from", "f-worktype": "Employment Type", "f-why": "Why DANERS'?", "f-outlet": "Media / Outlet", "f-topic": "Topic", "f-platform": "Platform", "f-followers": "Follower Count", "f-idea": "Your Idea", "f-send": "Send Enquiry", "f-apply": "Submit Application", "f-consent": "I agree to the processing of my data in accordance with the privacy policy.", "f-ok": "✓ Your email app will open. Please send the message!", "f-choose": "Please select", "wt-full": "Full-time", "wt-part": "Part-time", "wt-mini": "Mini job", "ph-name": "Your Name", "ph-email": "your@email.com", "ph-phone": "+49 ...", "ph-guests": "min. 25", "ph-msg-event": "Tell us about your event...", "ph-company": "Your Company", "ph-projdesc": "Describe your project...", "ph-why": "Tell us something about yourself...", "ph-outlet": "e.g. Hamburg Journal", "ph-press-msg": "What do you have planned?", "ph-followers": "e.g. 10,000", "ph-idea": "What do you have in mind?", "jobs-label": "Join the Team", "jobs-title": "Jobs", "jobs-body": "You love good food and enjoy working with people? We look forward to your application. Just write to us – we will get back to you!", "jobs-cta": "Apply now", "loc-label": "Location", "loc-hours": "Opening Hours", "loc-address": "Address", "loc-isemarkt-sub": "Hamburg's most famous weekly market", "loc-susi-sub": "Sternschanze | Susannenstr. 1", "loc-coming-title": "More Information Coming Soon", "loc-coming-text": "This page is being set up. Check back soon!", "loc-ubahn": "Subway: Hoheluftbrücke (U3)", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"}};
 let currentLang=localStorage.getItem('daners_lang')||'de';
 function applyLang(lang){
   currentLang=lang;
