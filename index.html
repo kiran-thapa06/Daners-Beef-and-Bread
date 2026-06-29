@@ -32,7 +32,7 @@ nav.open{background: #ffffff; backdrop-filter: none;}
 .nav-social a{color:var(--black);text-decoration:none;display:flex;align-items:center;transition:opacity .2s;}
 .nav-social a:hover{opacity:.4;}
 
-/* OVERLAY MENU - Absolute safe padding structure to eliminate hidden elements */
+/* OVERLAY MENU */
 .overlay-menu{
   display:none;
   position:fixed;
@@ -42,13 +42,11 @@ nav.open{background: #ffffff; backdrop-filter: none;}
   flex-direction:column;
   align-items:center;
   justify-content:flex-start;
-  /* Safe top clearance prevents overlapping with the header bar on any screen orientation */
   padding:120px 24px 60px;
   overflow-y:auto;
 }
 .overlay-menu.open{display:flex;}
 
-/* Content wrapper ensuring zero overflow truncation */
 .overlay-inner-content {
   width: 100%;
   max-width: 600px;
@@ -114,7 +112,7 @@ main{flex:1;padding-top:85px;}
 .image-container{width:100%;max-width:520px;display:flex;flex-direction:column;align-items:center;gap:0;}
 .cart-img{width:100%;height:auto;display:block;}
 
-/* UPDATED RESPONSIVE BLACK POPPINS BOLD SLOGAN STYLE */
+/* ADJUSTED: Shifted closer up to eliminate extra whitespace gap */
 .slogan-under-truck {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(13px, 2.8vw, 18px);
@@ -123,8 +121,10 @@ main{flex:1;padding-top:85px;}
   text-transform: uppercase;
   color: #000000;
   text-align: center;
-  margin-top: 12px;
+  margin-top: -55px; /* Shifted up further from -35px to pull it extremely tight */
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 /* MINIMAL FOOTER */
@@ -172,6 +172,7 @@ main{flex:1;padding-top:85px;}
   main{padding-top:75px;}
   .page-wrap{padding:0 16px 32px;}
   .overlay-menu { padding-top: 100px; }
+  .slogan-under-truck { margin-top: -30px; } /* Adjusted proportionately for mobile viewports */
   .footer-minimal{
     flex-direction:column;
     align-items:center;
@@ -217,7 +218,7 @@ main{flex:1;padding-top:85px;}
       <div class="nav-item-label"><span data-i18n="nav-locations">Locations</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></div>
       <div class="nav-dropdown">
         <a href="isemarkt.html" data-i18n="nav-isemarkt">Isemarkt</a>
-        <a href="susi.html" data-i18n="nav-susi">SUSI</a>
+        <a href="susi.html" data-i18n="nav-susi">Sternschanze</a>
       </div>
     </div>
     <a href="jobs.html" data-i18n="nav-jobs">Jobs</a>
@@ -275,7 +276,7 @@ if(navLocItem){
   navLocItem.querySelector('.nav-item-label').addEventListener('click',()=>navLocItem.classList.toggle('open'));
 }
 
-const translations={"de": {"nav-about": "Über uns", "nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fhome": "Home", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz"}, "en": {"nav-about": "About Us", "nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fhome": "Home", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy"}};
+const translations={"de": {"nav-about": "Über uns", "nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "Sternschanze", "fhome": "Home", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz"}, "en": {"nav-about": "About Us", "nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "Sternschanze", "fhome": "Home", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy"}};
 let currentLang=localStorage.getItem('daners_lang')||'de';
 function applyLang(lang){
   currentLang=lang;
