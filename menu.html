@@ -51,7 +51,7 @@ nav {
   transition: background 0.3s;
 }
 nav.open {
-  background: transparent; /* Allows underlying overlay background to show naturally */
+  background: #ffffff;
 }
 .nav-top-row {
   display: flex;
@@ -60,7 +60,6 @@ nav.open {
   width: 100%;
 }
 
-/* FIXED: Lifted hamburger z-index to guarantee it stays on top of the overlay view */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -93,7 +92,7 @@ nav.open {
   align-items: center;
   gap: 20px;
   position: relative;
-  z-index: 2005; /* Keeps social/lang switch layout accessible above overlay */
+  z-index: 2005;
 }
 .lang-switcher {
   display: flex;
@@ -163,25 +162,23 @@ nav.open {
   margin-top: 4px;
 }
 
-/* Hides title and slogan when navbar state is .open */
 nav.open .brand-header-sticky {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-/* ── OVERLAY MENU ── */
+/* ── OVERLAY MENU — CENTERING FIXES WITH SAFE AREA SPACING ── */
 .overlay-menu {
   display: none;
   position: fixed;
   inset: 0;
   z-index: 2000;
   background: #ffffff;
-  /* FIXED: Uses flexible safe padding & vertical adjustment to avoid burying elements */
   flex-direction: column;
   align-items: center;
   justify-content: center; 
-  padding: 40px 24px;
+  padding: 100px 24px 40px; 
   overflow-y: auto;
 }
 .overlay-menu.open { 
@@ -191,17 +188,15 @@ nav.open .brand-header-sticky {
 .overlay-inner-content {
   width: 100%;
   max-width: 600px;
-  margin: auto 0; /* Pure CSS vertical centering alignment trick */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(16px, 4.5vh, 32px);
-  padding-top: 60px; /* Safe gutter for top header row layout elements */
+  gap: clamp(20px, 4.5vh, 36px); /* Balanced responsive vertical text distribution */
 }
 
 .overlay-menu a, .nav-item-label {
-  font-size: clamp(26px, 4.5vw, 38px);
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 800;
   text-decoration: none;
   color: var(--black);
   text-transform: uppercase;
@@ -211,7 +206,7 @@ nav.open .brand-header-sticky {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
   user-select: none;
 }
 .overlay-menu > div.nav-item {
@@ -233,7 +228,7 @@ nav.open .brand-header-sticky {
 .nav-dropdown a::after { display: none; }
 
 .nav-item { cursor: pointer; text-align: center; width: 100%; }
-.nav-item-label svg { transition: transform .25s; flex-shrink: 0; width: 18px; height: 18px; }
+.nav-item-label svg { transition: transform .25s; flex-shrink: 0; width: 16px; height: 16px; }
 .nav-item.open .nav-item-label svg { transform: rotate(180deg); }
 
 .nav-dropdown {
@@ -245,7 +240,7 @@ nav.open .brand-header-sticky {
 }
 .nav-item.open .nav-dropdown { display: flex; }
 .nav-dropdown a {
-  font-size: clamp(18px, 2.5vw, 22px);
+  font-size: 18px;
   font-weight: 400;
   text-decoration: none;
   color: var(--gray);
@@ -255,7 +250,7 @@ nav.open .brand-header-sticky {
 }
 .nav-dropdown a:hover { color: var(--black); background: rgba(0,0,0,.05); }
 
-/* ── LAYOUT & PERFECT ALIGNMENT MECHANICS ── */
+/* ── LAYOUT & ALIGNMENT MECHANICS ── */
 main {
   flex: 1;
   padding-top: 220px; 
@@ -268,6 +263,7 @@ main {
   align-items: center;
   background: #ffffff;
   width: 100%;
+  padding: 0 0 64px; 
 }
 
 .menu-content-container {
@@ -294,7 +290,7 @@ main {
 .menu-note-container {
   width: 100%;
   max-width: 82%; 
-  margin: 44px auto 60px auto;
+  margin: 44px auto 0 auto;
   text-align: center;
 }
 .menu-note-text {
@@ -310,29 +306,80 @@ main {
   width: 100%;
 }
 
+/* ── MINIMAL FOOTER ── */
+.footer-minimal {
+  background: #fff;
+  color: rgba(0,0,0,.45);
+  padding: 24px 48px;
+  border-top: 1px solid var(--border);
+  margin-top: auto; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  letter-spacing: .02em;
+}
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.footer-legal a {
+  color: rgba(0,0,0,.55);
+  text-decoration: underline;
+  text-decoration-color: rgba(0,0,0,.25);
+  transition: color .2s;
+  white-space: nowrap;
+}
+.footer-legal a:hover { color: var(--black); }
+.footer-copy {
+  white-space: nowrap;
+  margin-left: auto;
+  text-align: right;
+}
+
 /* ── RESPONSIVE MEDIA BREAKPOINTS ── */
 @media(max-width:900px) {
   nav { padding: 13px 20px 10px; }
   main { padding-top: 220px; }
+  .menu-page-wrap { padding: 0 0 52px; }
+  .footer-minimal { padding: 24px 24px; }
 }
 @media (max-width: 600px) {
   nav { padding: 12px 16px 8px; }
   .brand-header-sticky { margin-top: 40px; } 
   main { padding-top: 155px; }
   
-  /* FIXED: Reset safe flexible parameters on mobile displays */
-  .overlay-menu { padding: 24px 16px; }
-  .overlay-inner-content { gap: 20px; padding-top: 50px; }
+  .overlay-menu { padding: 110px 16px 40px; } 
   
+  .menu-page-wrap { padding: 0 0 44px; }
   .menu-content-container { padding: 0 24px; }
   .menu-note-container { 
     max-width: 88%; 
     padding: 0; 
-    margin: 35px auto 40px auto; 
+    margin: 35px auto 0 auto; 
   }
   .menu-note-text {
     font-size: 13px;
     line-height: 1.6;
+  }
+  .footer-minimal {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    padding: 20px 16px;
+  }
+  .footer-copy {
+    margin-left: 0;
+    text-align: center;
+  }
+  .footer-legal {
+    justify-content: center;
+    gap: 14px;
   }
 }
 </style>
@@ -350,7 +397,7 @@ main {
       <div class="nav-social">
         <a href="https://www.instagram.com/danersbeefbread?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://www.tiktok.com/@daners_beefbread?_r=1&_t=ZS-96MZFXNPeF8" target="_blank" rel="noopener" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
-       <a href="https://open.spotify.com/user/31u5ibsrqur55jybbsljsm7suoyu?si=VGXnb-StS5Gnb2uL0RIUCg" target="_blank" rel="noopener" aria-label="Spotify"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 0 1-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 1 1-.277-1.215c3.809-.87 7.076-.496 9.712 1.115a.623.623 0 0 1 .207.857zm1.223-2.722a.78.78 0 0 1-1.072.257C14.1 12.266 10.539 11.88 7.24 12.854a.78.78 0 0 1-.453-1.49c3.757-1.142 7.708-.588 10.765 1.266a.78.78 0 0 1 .257 1.072zm.105-2.835C14.69 9.15 9.948 8.994 7.188 9.843a.936.936 0 1 1-.543-1.79c3.181-.967 8.47-.78 11.81 1.17a.936.936 0 0 1-.541 1.644z"/></svg></a>
+        <a href="https://open.spotify.com/user/31u5ibsrqur55jybbsljsm7suoyu?si=VGXnb-StS5Gnb2uL0RIUCg" target="_blank" rel="noopener" aria-label="Spotify"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 0 1-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 1 1-.277-1.215c3.809-.87 7.076-.496 9.712 1.115a.623.623 0 0 1 .207.857zm1.223-2.722a.78.78 0 0 1-1.072.257C14.1 12.266 10.539 11.88 7.24 12.854a.78.78 0 0 1-.453-1.49c3.757-1.142 7.708-.588 10.765 1.266a.78.78 0 0 1 .257 1.072zm.105-2.835C14.69 9.15 9.948 8.994 7.188 9.843a.936.936 0 1 1-.543-1.79c3.181-.967 8.47-.78 11.81 1.17a.936.936 0 0 1-.541 1.644z"/></svg></a>
       </div>
     </div>
   </div>
@@ -396,6 +443,14 @@ main {
     </div>
   </div>
 </main>
+
+<footer class="footer-minimal">
+  <div class="footer-legal">
+    <a href="imprint.html" data-i18n="f-imprint">Imprint</a>
+    <a href="privacy.html" data-i18n="f-privacy">Data Privacy</a>
+  </div>
+  <div class="footer-copy" data-i18n="fcopy">© 2026 DANERS’ Beef &amp; Bread GmbH</div>
+</footer>
 
 <script>
 /* Navigation Logic */
