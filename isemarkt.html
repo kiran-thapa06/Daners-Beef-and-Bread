@@ -228,8 +228,8 @@ main{padding-top:0;}
   gap: 60px;
 }
 
-/* FOOTER */
-footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px solid var(--border);margin-top:auto;}
+/* FOOTER — Top border removed to keep only one line total */
+footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:none;margin-top:auto;}
 .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:40px;margin-bottom:32px;align-items:start;}
 .footer-col-title{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--black);margin-bottom:10px;}
 .footer-col p,.footer-col a{font-size:13px;font-weight:300;line-height:1.7;color:rgba(0,0,0,.65);text-decoration:none;display:block;transition:color .2s;}
@@ -239,6 +239,7 @@ footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:1px 
 .footer-logo{display:flex;align-items:flex-start;justify-content:flex-end;}
 .footer-logo img{width:150px;height:auto;display:block;}
 
+/* FOOTER BOTTOM — This is your single divider line */
 .footer-bottom{
   display:flex;
   align-items:center;
@@ -375,9 +376,7 @@ body{display:block;}
   <div class="loc-content-panel">
     <div class="loc-content-inner">
       
-      <!-- CLASSY, CREATIVE MENU SECTION -->
-      <div class="menu-section">
-        <h2 class="menu-main-title" data-i18n="m-title">Men&uuml;</h2>
+      
         
         <!-- CATEGORY: EIFELER RAND -->
         <div class="menu-cat-title" data-i18n="cat-eifeler">Eifeler Rand</div>
@@ -499,37 +498,6 @@ body{display:block;}
   </div>
 
 <footer>
-  <div class="footer-grid">
-    <div class="footer-col quicklinks">
-      <div class="footer-col-title" data-i18n="fq">Quick Links</div>
-      <a href="index.html" data-i18n="fhome">Home</a>
-      <a href="menu.html" data-i18n="fmenu">Men&uuml;</a>
-      <a href="isemarkt.html" data-i18n="nav-isemarkt">Isemarkt</a>
-      <a href="susi.html" data-i18n="nav-susi">SUSI</a>
-      <a href="jobs.html" data-i18n="fjobs">Jobs</a>
-      <a href="contact.html" data-i18n="fcontact">Kontakt</a>
-    </div>
-    <div class="footer-col locations">
-      <div class="footer-col-title" data-i18n="fl">Locations</div>
-      <span class="footer-loc-name">Isemarkt</span>
-      <p>Di. 9.00&ndash;14.00</p>
-      <span class="footer-loc-name">Schanze | Schulterblatt 70</span>
-      <p>Mo.&ndash;Mi. 11.00&ndash;21.00</p>
-      <p>Do. 11.00&ndash;23.00</p>
-      <p>Fr.&ndash;Sa. 11.00&ndash;01.00</p>
-      <p>So. 11.00&ndash;21.00</p>
-    </div>
-    <div class="footer-col kontakt">
-      <div class="footer-col-title" data-i18n="fk">Kontakt</div>
-      <p>DANERS</p>
-      <p>Schinkelstra&szlig;e 25</p>
-      <p>22303 Hamburg</p>
-      <a href="mailto:Daners@beef-bread.de">Daners@beef-bread.de</a>
-    </div>
-    <div class="footer-logo">
-      <img src="images/daners logo in black.png" alt="DANERS Logo">
-    </div>
-  </div>
   <div class="footer-bottom">
     <div class="footer-legal">
       <a href="imprint.html" data-i18n="f-imprint">Imprint</a>
