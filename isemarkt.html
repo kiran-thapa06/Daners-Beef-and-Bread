@@ -103,10 +103,16 @@ main{padding-top:0;}
   padding-bottom:60px;
 }
 
-/* CLEAN INFO GRID — Pushed to left and right sides */
+/* 
+   IMAGE 2 ALIGNED INFO BLOCK 
+   Stacks vertically on the left side across ALL screen sizes 
+*/
 .info-grid-clean {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 28px;
   margin-top: 50px;
   padding-top: 50px;
   border-top: 1px solid #f0f0f0;
@@ -114,37 +120,16 @@ main{padding-top:0;}
 .info-col {
   flex: 0 1 auto;
 }
-.info-col.right-align {
-  text-align: right;
-}
-.info-col h3 {
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  margin-bottom:20px;
-  color:var(--black);
-  display:inline-block;
-}
-.info-col h3::after {
-  content:'';
-  display:block;
-  width:24px;
-  height:1.5px;
-  background:var(--black);
-  margin-top:8px;
-}
-.info-col.right-align h3::after {
-  margin-left: auto;
-}
 .info-col p {
-  font-size:15px;
-  line-height:1.8;
-  color:#444;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #111;
+  font-weight: 600;
 }
-.info-col strong {
-  color:var(--black);
-  font-weight:600;
+.info-col .sub-info {
+  font-weight: 300;
+  color: var(--gray);
+  margin-top: 2px;
 }
 
 /* CLASSY & CREATIVE MENU SECTION */
@@ -278,19 +263,6 @@ footer{background:#fff;color:var(--black);padding:48px 48px 28px;border-top:none
   .loc-hero{padding:0 24px;}
   .loc-content-panel{padding:40px 24px 0;}
   
-  .info-grid-clean{
-    flex-direction: column;
-    align-items: center;
-    gap: 45px;
-    text-align: center;
-  }
-  .info-col.right-align {
-    text-align: center;
-  }
-  .info-col h3::after {
-    margin: 8px auto 0 auto;
-  }
-  
   .menu-grid-two{grid-template-columns:1fr;gap:30px;}
   .combo-drinks-split{grid-template-columns:1fr; gap:45px;}
   footer{padding:40px 24px 24px;}
@@ -364,7 +336,7 @@ body{display:block;}
   <!-- Sticky title band -->
   <div class="loc-hero-title">
     <h1>ISEMARKT</h1>
-    <p data-i18n="loc-isemarkt-tagline">Frisch vom Markt, direkt zu dir.</p>
+    <p data-i18n="loc-isemarkt-tagline">DER ORT, AN DEM ALLES BEGANN</p>
   </div>
 
   <!-- Hero photo -->
@@ -481,16 +453,20 @@ body{display:block;}
         </div>
       </div>
 
-      <!-- PLAIN WHITE CLEAN INFO SECTION — Separated out to the margins -->
+      <!-- PLAIN WHITE CLEAN INFO SECTION — Re-styled to match the clean Dumbo Paris look -->
       <div class="info-grid-clean">
         <div class="info-col">
-          <h3 data-i18n="loc-hours">&Ouml;ffnungszeiten</h3>
-          <p><strong>Dienstag &amp; Freitag</strong><br>9.00 &ndash; 14.00 Uhr</p>
+          <p>Isemarkt</p>
+          <p class="sub-info">Isestra&szlig;e</p>
+          <p class="sub-info">20149 Hamburg</p>
         </div>
-        <div class="info-col right-align">
-          <h3 data-i18n="loc-address">Adresse</h3>
-          <p><strong>Isemarkt</strong><br>Isestra&szlig;e<br>20149 Hamburg</p>
-          <p style="margin-top:12px; font-size:14px; color:var(--gray);" data-i18n="loc-ubahn">U-Bahn: Hoheluftbr&uuml;cke (U3)</p>
+        <div class="info-col">
+          <p data-i18n="loc-hours">&Ouml;ffnungszeiten</p>
+          <p class="sub-info">Dienstag &amp; Freitag</p>
+          <p class="sub-info">9.00 &ndash; 14.00 Uhr</p>
+        </div>
+        <div class="info-col">
+          <p class="sub-info" data-i18n="loc-ubahn">U-Bahn: Hoheluftbr&uuml;cke (U3)</p>
         </div>
       </div>
 
@@ -532,9 +508,9 @@ document.addEventListener('keydown',e=>{
 const navLocItem=document.getElementById('navLocItem');
 if(navLocItem)navLocItem.querySelector('.nav-item-label').addEventListener('click',()=>navLocItem.classList.toggle('open'));
 
-const translations={"de": { "nav-about": "Über uns", "loc-isemarkt-tagline": "Frisch vom Markt, direkt zu dir.","nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "Sternschanze", "fq": "Quick Links", "fl": "Locations", "fk": "Kontakt", "fhome": "Home", "fmenu": "Menü", "fjobs": "Jobs", "fcontact": "Kontakt", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz", "loc-hours": "Öffnungszeiten", "loc-address": "Adresse", "loc-ubahn": "U-Bahn: Hoheluftbrücke (U3)", "m-title": "Menü", "cat-eifeler": "Eifeler Rand", "cat-sides": "Sides", "cat-kombo": "Kombo", "cat-drinks": "Drinks", "m1-name": "Beef & Brötchen",
+const translations={"de": { "nav-about": "Über uns", "loc-isemarkt-tagline": "DER ORT, AN DEM ALLES BEGANN","nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "Sternschanze", "fq": "Quick Links", "fl": "Locations", "fk": "Kontakt", "fhome": "Home", "fmenu": "Menü", "fjobs": "Jobs", "fcontact": "Kontakt", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz", "loc-hours": "Öffnungszeiten", "loc-address": "Adresse", "loc-ubahn": "U-Bahn: Hoheluftbrücke (U3)", "m-title": "Menü", "cat-eifeler": "Eifeler Rand", "cat-sides": "Sides", "cat-kombo": "Kombo", "cat-drinks": "Drinks", "m1-name": "Beef & Brötchen",
  "m1-desc": "Hauchdünne, gegrillte Rinderhüfte mit Rouille + Rucola auf frischgebackenen Brotwaren.", "m2-name": "Beef & Toast", "m3-name": "Beef & Bread", "m3-desc": "Mit extra Beef auf frischem Sylter Brot (Backgeschwister).", "m5-name": "Add-Ons", "s1-name": "Kartoffelecken + Rouille", "s1-desc": "Knusprig frittiert – Zu gut zum Teilen.", "s2-name": "Kartoffelsalat", "s2-desc": "Kartoffel-Gurkensalat, Essig + Öl.", "s3-name": "Salat", "s3-desc": "Kopfsalat | Tomaten | Honey Mustard", 
- "m-vegan": "Vegan mit Portobello-Pilz und veganer Rouille verfügbar."}, "en": { "nav-about": "About Us", "loc-isemarkt-tagline": "Fresh from the market to you.","nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "Sternschanze", "fq": "Quick Links", "fl": "Locations", "fk": "Contact", "fhome": "Home", "fmenu": "Menu", "fjobs": "Jobs", "fcontact": "Contact", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy", "loc-hours": "Opening Hours", "loc-address": "Address", "loc-ubahn": "Subway: Hoheluftbrücke (U3)", "m-title": "Menu", "cat-eifeler": "Eifeler Rand", "cat-sides": "Sides", "cat-kombo": "Combos", "cat-drinks": "Drinks", "m1-name": "Beef & Bun", "m1-desc": "Wafer-thin, grilled beef hip with rouille + wild rocket on freshly baked bread.", "m2-name": "Beef & Toast", "m3-name": "Beef & Bread", "m3-desc": "With extra beef on fresh Sylt bread.", "m5-name": "Add-Ons", "s1-name": "Potato Wedges + Rouille", "s1-desc": "Fried & Crispy – Too good to share.", "s2-name": "Potato Salad", "s2-desc": "Potato and cucumber salad, oil & vinegar.", "s3-name": "Salat", "s3-desc": "Lettuce | Tomatoes | Honey Mustard", "m-vegan": "Vegan option with Portobello mushroom and vegan Rouille available."}};
+ "m-vegan": "Vegan mit Portobello-Pilz und veganer Rouille verfügbar."}, "en": { "nav-about": "About Us", "loc-isemarkt-tagline": "THE PLACE WHERE IT ALL BEGAN","nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "Sternschanze", "fq": "Quick Links", "fl": "Locations", "fk": "Contact", "fhome": "Home", "fmenu": "Menu", "fjobs": "Jobs", "fcontact": "Contact", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy", "loc-hours": "Opening Hours", "loc-address": "Address", "loc-ubahn": "Subway: Hoheluftbrücke (U3)", "m-title": "Menu", "cat-eifeler": "Eifeler Rand", "cat-sides": "Sides", "cat-kombo": "Combos", "cat-drinks": "Drinks", "m1-name": "Beef & Bun", "m1-desc": "Wafer-thin, grilled beef hip with rouille + wild rocket on freshly baked bread.", "m2-name": "Beef & Toast", "m3-name": "Beef & Bread", "m3-desc": "With extra beef on fresh Sylt bread.", "m5-name": "Add-Ons", "s1-name": "Potato Wedges + Rouille", "s1-desc": "Fried & Crispy – Too good to share.", "s2-name": "Potato Salad", "s2-desc": "Potato and cucumber salad, oil & vinegar.", "s3-name": "Salat", "s3-desc": "Lettuce | Tomatoes | Honey Mustard", "m-vegan": "Vegan option with Portobello mushroom and vegan Rouille available."}};
 
 let currentLang=localStorage.getItem('daners_lang')||'de';
 function applyLang(lang){
