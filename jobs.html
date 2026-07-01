@@ -59,8 +59,9 @@ nav.open {
   transition: opacity 0.2s ease, visibility 0.2s;
 }
 .brand-header-sticky h1 {
+  font-family: 'Poppins', sans-serif;
   font-size: clamp(32px, 6vw, 48px);
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -1.5px;
   line-height: 1;
   margin: 0;
@@ -68,8 +69,9 @@ nav.open {
   color: var(--black);
 }
 .brand-header-sticky p {
+  font-family: 'Poppins', sans-serif;
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.05em;
   color: var(--gray);
   margin-top: 8px;
@@ -78,6 +80,7 @@ nav.open {
 
 /* Hides header elements when overlay menu is active */
 nav.open .brand-header-sticky {
+  display: none; /* FIX: Prevents layout height preservation when header is invisible */
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -92,8 +95,8 @@ nav.open .brand-header-sticky {
   background: #ffffff;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 40px 24px;
+  justify-content: flex-start; /* FIX: Prevents items from pulling upwards under the sticky container boundary */
+  padding: 130px 24px 40px;   /* FIX: Safe area buffer below active close button */
   overflow-y: auto;
 }
 .overlay-menu.open { display: flex; }
@@ -101,15 +104,14 @@ nav.open .brand-header-sticky {
 .overlay-inner-content {
   width: 100%;
   max-width: 600px;
-  margin: auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: clamp(16px, 4.5vh, 32px);
-  padding-top: 60px;
 }
 
 .overlay-menu a, .nav-item-label {
+  font-family: 'Poppins', sans-serif;
   font-size: clamp(26px, 4.5vw, 38px);
   font-weight: 700;
   text-decoration: none;
@@ -155,8 +157,9 @@ nav.open .brand-header-sticky {
 }
 .nav-item.open .nav-dropdown { display: flex; }
 .nav-dropdown a {
+  font-family: 'Poppins', sans-serif;
   font-size: clamp(18px, 2.5vw, 22px);
-  font-weight: 400;
+  font-weight: 300;
   text-decoration: none;
   color: var(--gray);
   padding: 6px 28px;
@@ -187,8 +190,9 @@ main {
 
 /* MAIN SECTION TITLE */
 .section-title-bold {
+  font-family: 'Poppins', sans-serif;
   font-size: clamp(24px, 4vw, 32px);
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: -1px;
   line-height: 1.2;
   text-transform: uppercase;
@@ -205,7 +209,9 @@ main {
 
 /* JOB CONTENT BODY */
 .jobs-description-wrap {
+  font-family: 'Poppins', sans-serif;
   font-size: 15px;
+  font-weight: 300;
   line-height: 1.85;
   color: #444;
   margin-bottom: 40px;
@@ -217,12 +223,16 @@ main {
 .jobs-description-wrap p:last-child {
   margin-bottom: 0;
 }
+.jobs-description-wrap strong {
+  font-weight: 700;
+  color: var(--black);
+}
 .jobs-cta-container {
   text-align: left;
 }
 
 /* BUTTONS */
-.btn{display:inline-block;padding:13px 32px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;transition:all .2s;}
+.btn{display:inline-block;padding:13px 32px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:none;transition:all .2s;}
 .btn-primary{background:var(--black);color:#fff;}
 .btn-primary:hover{background:#333;}
 
@@ -240,7 +250,9 @@ footer {
   justify-content:space-between;
   gap:20px;
   flex-wrap:wrap;
+  font-family:'Poppins',sans-serif;
   font-size:12px;
+  font-weight:300;
   color:rgba(0,0,0,.45);
   letter-spacing:.02em;
 }
@@ -251,6 +263,8 @@ footer {
   flex-wrap:wrap;
 }
 .footer-legal a{
+  font-family:'Poppins',sans-serif;
+  font-weight:300;
   color:rgba(0,0,0,.55);
   text-decoration:underline;
   text-decoration-color:rgba(0,0,0,.25);
@@ -259,6 +273,8 @@ footer {
 }
 .footer-legal a:hover{color:var(--black);}
 .footer-copy{
+  font-family:'Poppins',sans-serif;
+  font-weight:300;
   white-space:nowrap;
   margin-left:auto;
   text-align:right;
@@ -275,8 +291,8 @@ footer {
   nav{padding:12px 16px 8px;}
   .brand-header-sticky { margin-top: 45px; } /* Distinct gap adjustment on mobile */
   main { padding-top: 165px; }
-  .overlay-menu { padding: 24px 16px; }
-  .overlay-inner-content { gap: 20px; padding-top: 50px; }
+  .overlay-menu { padding: 110px 16px 40px; } /* FIX: Unified top-offset layout for mobile overlays */
+  .overlay-inner-content { gap: 20px; padding-top: 0; }
   .page-wrap{padding:0 16px 44px; align-items: center;}
   .jobs-description-wrap { text-align: center; }
   .section-title-bold { text-align: center; }
@@ -311,7 +327,8 @@ footer {
       </div>
       <div class="nav-social">
         <a href="https://www.instagram.com/danersbeefbread?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Instagram"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-       <a href="https://www.tiktok.com/@daners_beefbread?_r=1&_t=ZS-96MZFXNPeF8" target="_blank" rel="noopener" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
+        <a href="https://www.tiktok.com/@daners_beefbread?_r=1&_t=ZS-96MZFXNPeF8" target="_blank" rel="noopener" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg></a>
+       
         <a href="https://open.spotify.com/user/31u5ibsrqur55jybbsljsm7suoyu?si=VGXnb-StS5Gnb2uL0RIUCg" target="_blank" rel="noopener" aria-label="Spotify"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424a.623.623 0 0 1-.857.207c-2.348-1.435-5.304-1.76-8.785-.964a.623.623 0 1 1-.277-1.215c3.809-.87 7.076-.496 9.712 1.115a.623.623 0 0 1 .207.857zm1.223-2.722a.78.78 0 0 1-1.072.257C14.1 12.266 10.539 11.88 7.24 12.854a.78.78 0 0 1-.453-1.49c3.757-1.142 7.708-.588 10.765 1.266a.78.78 0 0 1 .257 1.072zm.105-2.835C14.69 9.15 9.948 8.994 7.188 9.843a.936.936 0 1 1-.543-1.79c3.181-.967 8.47-.78 11.81 1.17a.936.936 0 0 1-.541 1.644z"/></svg></a>
       </div>
     </div>
@@ -350,7 +367,7 @@ footer {
       <div class="divider"></div>
       
       <div class="jobs-description-wrap" id="jobsBodyContent">
-        </div>
+      </div>
       
       <div class="jobs-cta-container">
         <a href="contact.html?tab=jobs" class="btn btn-primary" data-i18n="jobs-cta">Jetzt bewerben</a>
