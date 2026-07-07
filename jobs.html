@@ -12,17 +12,20 @@
 html{scroll-behavior:smooth;}
 body{font-family:'Poppins',sans-serif;font-weight:300;background:#fff;color:var(--black);overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;}
 
-/* FIXED TOP NAVIGATION BAR */
+/* FIXED TOP NAVIGATION BAR (matches index.html / menu.html) */
 nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 2001;
-  background: #ffffff;
   display: flex;
-  flex-direction: column;
-  padding: 15px 40px 10px 40px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
   transition: background 0.3s;
 }
 nav.open {
@@ -50,15 +53,15 @@ nav.open {
 .nav-social a{color:var(--black);text-decoration:none;display:flex;align-items:center;transition:opacity .2s;}
 .nav-social a:hover{opacity:.4;}
 
-/* STICKY BRAND HEADER */
-.brand-header-sticky {
+/* PAGE TITLE HEADER (page content now, sits below nav like other pages) */
+.jobs-title-header {
   text-align: center;
   width: 100%;
-  margin-top: 25px; /* Comfortable layout spacing */
   background: #ffffff;
-  transition: opacity 0.2s ease, visibility 0.2s;
+  padding: 1.5vh 24px 0.5vh;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.brand-header-sticky h1 {
+.jobs-title-header h1 {
   font-family: 'Poppins', sans-serif;
   font-size: clamp(32px, 6vw, 48px);
   font-weight: 800;
@@ -68,7 +71,7 @@ nav.open {
   text-transform: uppercase;
   color: var(--black);
 }
-.brand-header-sticky p {
+.jobs-title-header p {
   font-family: 'Poppins', sans-serif;
   font-size: 11px;
   font-weight: 300;
@@ -78,28 +81,26 @@ nav.open {
   padding: 0 10px;
 }
 
-/* Hides header elements when overlay menu is active */
-nav.open .brand-header-sticky {
-  display: none; /* FIX: Prevents layout height preservation when header is invisible */
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* OVERLAY MENU */
+/* OVERLAY MENU (matches index.html / menu.html) */
 .overlay-menu {
-  display: none;
+  display: flex;
   position: fixed;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
   z-index: 2000;
   background: #ffffff;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* FIX: Prevents items from pulling upwards under the sticky container boundary */
-  padding: 130px 24px 40px;   /* FIX: Safe area buffer below active close button */
+  justify-content: flex-start;
+  padding: 110px 24px 60px;
   overflow-y: auto;
+  border-right: 1px solid var(--border);
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.overlay-menu.open { display: flex; }
+.overlay-menu.open { transform: translateX(0); }
 
 .overlay-inner-content {
   width: 100%;
@@ -107,13 +108,13 @@ nav.open .brand-header-sticky {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(16px, 4.5vh, 32px);
+  gap: clamp(18px, 4vh, 32px);
 }
 
 .overlay-menu a, .nav-item-label {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(26px, 4.5vw, 38px);
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 800;
   text-decoration: none;
   color: var(--black);
   text-transform: uppercase;
@@ -123,7 +124,7 @@ nav.open .brand-header-sticky {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
   user-select: none;
 }
 .overlay-menu > div.nav-item {
@@ -145,7 +146,7 @@ nav.open .brand-header-sticky {
 .nav-dropdown a::after { display: none; }
 
 .nav-item { cursor: pointer; text-align: center; width: 100%; }
-.nav-item-label svg { transition: transform .25s; flex-shrink: 0; width: 18px; height: 18px; }
+.nav-item-label svg { transition: transform .25s; flex-shrink: 0; width: 16px; height: 16px; }
 .nav-item.open .nav-item-label svg { transform: rotate(180deg); }
 
 .nav-dropdown {
@@ -158,8 +159,8 @@ nav.open .brand-header-sticky {
 .nav-item.open .nav-dropdown { display: flex; }
 .nav-dropdown a {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(18px, 2.5vw, 22px);
-  font-weight: 300;
+  font-size: 18px;
+  font-weight: 400;
   text-decoration: none;
   color: var(--gray);
   padding: 6px 28px;
@@ -171,9 +172,11 @@ nav.open .brand-header-sticky {
 /* LAYOUT */
 main {
   flex: 1;
-  padding-top: 180px;
+  padding-top: 90px;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
 }
 .page-wrap {
   display: flex;
@@ -197,14 +200,8 @@ main {
   line-height: 1.2;
   text-transform: uppercase;
   color: var(--black);
-  margin-bottom: 16px;
+  margin-bottom: 32px;
   text-align: left;
-}
-.divider {
-  width: 36px;
-  height: 1.5px;
-  background: var(--black);
-  margin: 0 0 32px 0;
 }
 
 /* JOB CONTENT BODY */
@@ -222,10 +219,6 @@ main {
 }
 .jobs-description-wrap p:last-child {
   margin-bottom: 0;
-}
-.jobs-description-wrap strong {
-  font-weight: 700;
-  color: var(--black);
 }
 .jobs-cta-container {
   text-align: left;
@@ -282,21 +275,20 @@ footer {
 
 /* RESPONSIVE MEDIA BREAKPOINTS */
 @media(max-width:900px){
-  nav{padding:13px 20px 10px;}
-  main { padding-top: 180px; }
+  nav{padding:18px 20px;}
+  main { padding-top: 85px; }
   .page-wrap{padding:0 24px 52px;}
   footer{padding:24px 24px;}
+  .overlay-menu { padding-top: 100px; }
 }
 @media(max-width:600px){
-  nav{padding:12px 16px 8px;}
-  .brand-header-sticky { margin-top: 45px; } /* Distinct gap adjustment on mobile */
-  main { padding-top: 165px; }
-  .overlay-menu { padding: 110px 16px 40px; } /* FIX: Unified top-offset layout for mobile overlays */
+  nav{padding:16px 16px;}
+  main { padding-top: 70px; }
+  .overlay-menu { padding: 90px 16px 40px; }
   .overlay-inner-content { gap: 20px; padding-top: 0; }
   .page-wrap{padding:0 16px 44px; align-items: center;}
   .jobs-description-wrap { text-align: center; }
   .section-title-bold { text-align: center; }
-  .divider { margin: 0 auto 32px auto; }
   .jobs-cta-container { text-align: center; }
   
   .footer-bottom{
@@ -333,11 +325,6 @@ footer {
       </div>
     </div>
   </div>
-
-  <div class="brand-header-sticky">
-    <h1 data-i18n="jobs-title">Jobs</h1>
-    <p data-i18n="jobs-slogan">Komm, wie du bist. Lerne und wachse mit uns.</p>
-  </div>
 </nav>
 
 <div class="overlay-menu" id="overlayMenu">
@@ -361,10 +348,14 @@ footer {
 </div>
 
 <main>
+  <div class="jobs-title-header">
+    <h1 data-i18n="jobs-title">Jobs</h1>
+    <p data-i18n="jobs-slogan">Komm, wie du bist. Lerne und wachse mit uns.</p>
+  </div>
+
   <div class="page-wrap">
     <div class="content-mid">
       <h2 class="section-title-bold" data-i18n="jobs-label">Werde Teil des Teams</h2>
-      <div class="divider"></div>
       
       <div class="jobs-description-wrap" id="jobsBodyContent">
       </div>
@@ -382,7 +373,7 @@ footer {
       <a href="imprint.html" data-i18n="f-imprint">Imprint</a>
       <a href="privacy.html" data-i18n="f-privacy">Data Privacy</a>
     </div>
-    <div class="footer-copy" data-i18n="fcopy">© 2026 DANERS’ Beef & Bread GmbH</div>
+    <div class="footer-copy" data-i18n="fcopy">© 2026 DANERS – Beef & Bread GmbH</div>
   </div>
 </footer>
 
@@ -428,13 +419,13 @@ const translations={
     "nav-isemarkt": "Isemarkt", 
     "nav-susi": "Sternschanze", 
     "fhome": "Home", 
-    "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", 
+    "fcopy": "© 2026 DANERS – Beef & Bread GmbH", 
     "f-imprint": "Impressum", 
     "f-privacy": "Datenschutz",
     "jobs-label": "Werde Teil des Teams", 
     "jobs-title": "Jobs", 
     "jobs-slogan": "Komm, wie du bist. Lerne und wachse mit uns.",
-    "jobs-body-html": "<p>Menschen machen den Unterschied.</p><p>Deshalb suchen wir bei DANERS engagierte Persönlichkeiten, die Verantwortung übernehmen und gemeinsam mit uns wachsen möchten.</p><p>Für uns zählen nicht nur Qualifikationen, sondern vor allem Motivation, Charakter und Potenzial.</p><p>Wir freuen uns darauf, dich kennenzulernen.</p><p><strong>Starte jetzt deine Karriere bei DANERS</strong></p>",
+    "jobs-body-html": "<p>Menschen machen den Unterschied.</p><p>Deshalb suchen wir bei DANERS engagierte Persönlichkeiten, die Verantwortung übernehmen und gemeinsam mit uns wachsen möchten.</p><p>Für uns zählen nicht nur Qualifikationen, sondern vor allem Motivation, Charakter und Potenzial.</p><p>Wir freuen uns darauf, dich kennenzulernen.</p><p>Starte jetzt deine Karriere bei DANERS</p>",
     "jobs-cta": "Jetzt bewerben"
   }, 
   "en": {
@@ -446,13 +437,13 @@ const translations={
     "nav-isemarkt": "Isemarkt", 
     "nav-susi": "Sternschanze", 
     "fhome": "Home", 
-    "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", 
+    "fcopy": "© 2026 DANERS – Beef & Bread GmbH", 
     "f-imprint": "Imprint", 
     "f-privacy": "Data Privacy",
     "jobs-label": "Join the Team", 
     "jobs-title": "Jobs", 
     "jobs-slogan": "Come as you are, learn & grow with us.",
-    "jobs-body-html": "<p>People make the difference.</p><p>That’s why at DANERS, we’re looking for motivated individuals who are ready to take responsibility and grow with us.</p><p>For us, it’s not just about qualifications – we value motivation, character, and potential above all.</p><p>We look forward to getting to know you.</p><p><strong>Start your career at DANERS today.</strong></p>",
+    "jobs-body-html": "<p>People make the difference.</p><p>That’s why at DANERS, we’re looking for motivated individuals who are ready to take responsibility and grow with us.</p><p>For us, it’s not just about qualifications – we value motivation, character, and potential above all.</p><p>We look forward to getting to know you.</p><p>Start your career at DANERS today.</p>",
     "jobs-cta": "Apply now"
   }
 };
