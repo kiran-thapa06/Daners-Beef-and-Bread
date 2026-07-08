@@ -37,7 +37,7 @@ body {
   flex-direction: column;
 }
 
-/* ── NAV BAR — EXACT CLONE FROM MENU PAGE ── */
+/* ── NAV (matches index.html / menu.html / jobs.html / about.html) ── */
 nav {
   position: fixed;
   top: 0;
@@ -45,12 +45,12 @@ nav {
   right: 0;
   z-index: 2001;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  padding: 20px 40px;
+  justify-content: space-between;
+  padding: 15px 40px;
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(10px);
-  border-bottom: none;
   transition: background 0.3s;
 }
 nav.open {
@@ -78,7 +78,7 @@ nav.open {
   height: 32px;
   flex-shrink: 0;
   position: relative;
-  z-index: 2002; 
+  z-index: 2005; 
 }
 .hamburger span {
   display: block;
@@ -96,6 +96,8 @@ nav.open {
   display: flex;
   align-items: center;
   gap: 20px;
+  position: relative;
+  z-index: 2005;
 }
 .lang-switcher {
   display: flex;
@@ -139,7 +141,7 @@ nav.open {
 }
 .nav-social a:hover { opacity: .4; }
 
-/* ── OVERLAY DRAWER MENU ── */
+/* ── OVERLAY DRAWER MENU (matches other pages exactly) ── */
 .overlay-menu {
   display: flex;
   position: fixed;
@@ -152,7 +154,7 @@ nav.open {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start; 
-  padding: 230px 24px 60px; 
+  padding: 110px 24px 60px; 
   overflow-y: auto;
   border-right: 1px solid var(--border);
   transform: translateX(-100%);
@@ -228,7 +230,7 @@ nav.open {
 /* ── LAYOUT MAIN CONTAINER ── */
 main {
   flex: 1;
-  padding-top: 105px; 
+  padding-top: 90px; 
   position: relative;
   z-index: 1;
   transition: margin-left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
@@ -238,12 +240,12 @@ body.menu-open main {
   width: 50%;
 }
 
-/* ── STICKY BRAND HEADER TITLE ── */
+/* ── LOCATION TITLE (same typography as every other page's title) ── */
 .loc-hero-title {
   text-align: center;
   width: 100%;
   background: #ffffff;
-  padding: 40px 24px 32px;
+  padding: 1.5vh 24px 0.5vh;
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .loc-hero-title h1 {
@@ -371,13 +373,13 @@ body.menu-open .footer-minimal {
 /* ── RESPONSIVE MEDIA BREAKPOINTS ── */
 @media(max-width:900px) {
   nav { padding: 18px 20px; }
-  main { padding-top: 95px; }
+  main { padding-top: 85px; }
   .footer-minimal { padding: 24px 24px; }
-  .overlay-menu { padding-top: 210px; }
+  .overlay-menu { padding-top: 100px; }
 }
 @media (max-width: 600px) {
   nav { padding: 16px 16px; }
-  main { padding-top: 75px; }
+  main { padding-top: 70px; }
   
   body.menu-open main {
     margin-left: 0;
@@ -398,7 +400,7 @@ body.menu-open .footer-minimal {
 
   .overlay-menu { 
     width: 100%; 
-    padding: 110px 16px 40px; 
+    padding: 90px 16px 40px; 
     border-right: none;
   } 
   
@@ -497,7 +499,7 @@ body.menu-open .footer-minimal {
       <a href="imprint.html" data-i18n="f-imprint">Imprint</a>
       <a href="privacy.html" data-i18n="f-privacy">Data Privacy</a>
     </div>
-    <div class="footer-copy" data-i18n="fcopy">© 2026 DANERS’ Beef & Bread GmbH</div>
+    <div class="footer-copy" data-i18n="fcopy">© 2026 DANERS – Beef & Bread GmbH</div>
   </footer>
 </main>
 
@@ -519,6 +521,8 @@ menuBtn.addEventListener('click',()=>{
   menuBtn.classList.toggle('open',o);
   mainNavbar.classList.toggle('open',o);
   document.body.classList.toggle('menu-open',o);
+  const isMobile = window.matchMedia('(max-width:600px)').matches;
+  document.body.style.overflow = (o && isMobile) ? 'hidden' : '';
 });
 
 overlayMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
@@ -543,7 +547,7 @@ const translations={
     "nav-isemarkt": "Isemarkt", 
     "nav-susi": "Sternschanze", 
     "fhome": "Home", 
-    "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", 
+    "fcopy": "© 2026 DANERS – Beef & Bread GmbH", 
     "f-imprint": "Impressum", 
     "f-privacy": "Datenschutz", 
     "loc-hours": "Öffnungszeiten", 
@@ -559,7 +563,7 @@ const translations={
     "nav-isemarkt": "Isemarkt", 
     "nav-susi": "Sternschanze", 
     "fhome": "Home", 
-    "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", 
+    "fcopy": "© 2026 DANERS – Beef & Bread GmbH", 
     "f-imprint": "Imprint", 
     "f-privacy": "Data Privacy", 
     "loc-hours": "Opening Hours", 
