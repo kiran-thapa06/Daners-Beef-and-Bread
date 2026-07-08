@@ -177,6 +177,11 @@ main {
   z-index: 1;
   display: flex;
   flex-direction: column;
+  transition: margin-left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body.menu-open main {
+  margin-left: 50%;
+  width: 50%;
 }
 .page-wrap {
   display: flex;
@@ -236,6 +241,11 @@ footer {
   padding: 24px 48px;
   border-top: 1px solid var(--border);
   margin-top: auto;
+  transition: margin-left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body.menu-open footer {
+  margin-left: 50%;
+  width: 50%;
 }
 .footer-bottom{
   display:flex;
@@ -284,7 +294,26 @@ footer {
 @media(max-width:600px){
   nav{padding:16px 16px;}
   main { padding-top: 70px; }
-  .overlay-menu { padding: 90px 16px 40px; }
+
+  body.menu-open main {
+    margin-left: 0;
+    width: 100%;
+  }
+  body.menu-open footer {
+    margin-left: 0;
+    width: 100%;
+  }
+  body.menu-open .jobs-title-header {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+
+  .overlay-menu {
+    width: 100%;
+    padding: 90px 16px 40px;
+    border-right: none;
+  }
   .overlay-inner-content { gap: 20px; padding-top: 0; }
   .page-wrap{padding:0 16px 44px; align-items: center;}
   .jobs-description-wrap { text-align: center; }
@@ -386,6 +415,7 @@ function closeMenu() {
   overlayMenu.classList.remove('open');
   menuBtn.classList.remove('open');
   mainNavbar.classList.remove('open');
+  document.body.classList.remove('menu-open');
   document.body.style.overflow='';
 }
 
@@ -393,7 +423,9 @@ menuBtn.addEventListener('click',()=>{
   const o=overlayMenu.classList.toggle('open');
   menuBtn.classList.toggle('open',o);
   mainNavbar.classList.toggle('open',o);
-  document.body.style.overflow=o?'hidden':'';
+  document.body.classList.toggle('menu-open',o);
+  const isMobile = window.matchMedia('(max-width:600px)').matches;
+  document.body.style.overflow = (o && isMobile) ? 'hidden' : '';
 });
 
 overlayMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
