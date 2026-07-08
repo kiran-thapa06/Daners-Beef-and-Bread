@@ -12,7 +12,7 @@
 html{scroll-behavior:smooth;}
 body{font-family:'Poppins',sans-serif;font-weight:300;background:#fff;color:var(--black);overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;}
 
-/* NAV — Fixed top bar */
+/* ── NAV (matches index.html / menu.html / jobs.html / about.html / isemarkt.html) ── */
 nav {
   position: fixed;
   top: 0;
@@ -20,10 +20,11 @@ nav {
   right: 0;
   z-index: 2001;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  padding: 15px 40px 10px 40px;
-  background: rgba(255,255,255,.97);
+  justify-content: space-between;
+  padding: 15px 40px;
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(10px);
   transition: background 0.3s;
 }
@@ -31,15 +32,14 @@ nav.open {
   background: #ffffff;
   backdrop-filter: none;
 }
-
 .nav-top-row {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
-/* HAMBURGER BUTTON (From Reference) */
+/* HAMBURGER BUTTON */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -88,15 +88,15 @@ nav.open {
 .nav-social a{color:var(--black);text-decoration:none;display:flex;align-items:center;transition:opacity .2s;}
 .nav-social a:hover{opacity:.4;}
 
-/* STICKY BRAND HEADER */
-.brand-header-sticky {
+/* ── SUSI TITLE (now page content, sits below nav like every other page's title) ── */
+.loc-hero-title {
   text-align: center;
   width: 100%;
-  margin-top: 24px;
-  background: transparent;
-  transition: opacity 0.2s ease, visibility 0.2s;
+  background: #ffffff;
+  padding: 1.5vh 24px 0.5vh;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.brand-header-sticky h1 {
+.loc-hero-title h1 {
   font-size: clamp(32px, 6vw, 48px);
   font-weight: 900;
   letter-spacing: -1.5px;
@@ -105,7 +105,7 @@ nav.open {
   text-transform: uppercase;
   color: var(--black);
 }
-.brand-header-sticky p {
+.loc-hero-title p {
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.15em;
@@ -114,28 +114,27 @@ nav.open {
   margin-top: 6px;
 }
 
-nav.open .brand-header-sticky {
-  display: none; /* FIX: Collapses the physical element height when menu is active */
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* OVERLAY MENU — Fixed top padding to prevent item cutoff */
+/* ── OVERLAY MENU (left-side drawer on desktop; shifts page content right, matches other pages) ── */
 .overlay-menu {
-  display: none;
+  display: flex;
   position: fixed;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
   z-index: 2000;
   background: #ffffff;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start; 
-  padding: 130px 24px 40px 24px;
+  padding: 110px 24px 60px;
   overflow-y: auto;
+  border-right: 1px solid var(--border);
+  transform: translateX(-100%);
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .overlay-menu.open { 
-  display: flex; 
+  transform: translateX(0);
 }
 
 .overlay-inner-content {
@@ -144,7 +143,7 @@ nav.open .brand-header-sticky {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: clamp(18px, 4vh, 32px);
 }
 
 .overlay-menu a, .nav-item-label {
@@ -206,10 +205,18 @@ nav.open .brand-header-sticky {
 /* MAIN LAYOUT */
 main {
   flex: 1;
-  padding-top: 180px;
+  padding-top: 90px;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 } 
+body.menu-open main {
+  margin-left: 50%;
+  width: 50%;
+}
+
 .page-wrap{display:flex;flex-direction:column;align-items:center;padding:0 48px 64px;}
 .content-wide{width:100%;max-width:860px;margin-top:20px;text-align:center;display:flex;flex-direction:column;align-items:center;}
 
@@ -251,6 +258,12 @@ main {
   flex-wrap: wrap;
   font-size: 12px;
   letter-spacing: .02em;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+body.menu-open .footer-minimal {
+  width: 100%;
+  padding-left: 32px;
+  padding-right: 32px;
 }
 .footer-legal {
   display: flex;
@@ -273,16 +286,38 @@ main {
 }
 
 @media(max-width:900px){
-  nav{padding:13px 20px;}
-  main { padding-top: 160px; }
+  nav{padding:18px 20px;}
+  main { padding-top: 85px; }
   .page-wrap{padding:0 24px 52px;}
   .info-grid{gap:32px;}
   .footer-minimal { padding: 24px 24px; }
+  .overlay-menu { padding-top: 100px; }
 }
 @media(max-width:600px){
-  nav{padding:12px 16px;}
-  main { padding-top: 145px; }
-  .overlay-menu { padding-top: 110px; } 
+  nav{padding:16px 16px;}
+  main { padding-top: 70px; }
+
+  body.menu-open main {
+    margin-left: 0;
+    width: 100%;
+  }
+  body.menu-open .footer-minimal {
+    margin-left: 0;
+    width: 100%;
+    padding: 20px 16px;
+  }
+  body.menu-open .loc-hero-title {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+  }
+
+  .overlay-menu {
+    width: 100%;
+    padding: 90px 16px 40px;
+    border-right: none;
+  }
+
   .page-wrap{padding:0 16px 44px;}
   .image-container { max-width: 520px; }
   
@@ -320,11 +355,6 @@ main {
       </div>
     </div>
   </div>
-
-  <div class="brand-header-sticky">
-    <h1 data-i18n="nav-susi">SUSI</h1>
-    <p data-i18n="loc-susi-sub">Sternschanze | Susannenstr. 1</p>
-  </div>
 </nav>
 
 <div class="overlay-menu" id="overlayMenu">
@@ -348,6 +378,11 @@ main {
 </div>
 
 <main>
+  <div class="loc-hero-title">
+    <h1 data-i18n="nav-susi">SUSI</h1>
+    <p data-i18n="loc-susi-sub">Sternschanze | Susannenstr. 1</p>
+  </div>
+
   <div class="page-wrap">
     <div class="content-wide">
       <div class="image-container">
@@ -383,7 +418,7 @@ main {
     <a href="imprint.html" data-i18n="f-imprint">Imprint</a>
     <a href="privacy.html" data-i18n="f-privacy">Data Privacy</a>
   </div>
-  <div class="footer-copy" data-i18n="fcopy">© 2026 DANERS’ Beef & Bread GmbH</div>
+  <div class="footer-copy" data-i18n="fcopy">© 2026 DANERS – Beef & Bread GmbH</div>
 </footer>
 
 <script>
@@ -395,6 +430,7 @@ function closeMenu() {
   overlayMenu.classList.remove('open');
   menuBtn.classList.remove('open');
   mainNavbar.classList.remove('open');
+  document.body.classList.remove('menu-open');
   document.body.style.overflow='';
 }
 
@@ -402,7 +438,9 @@ menuBtn.addEventListener('click',()=>{
   const o=overlayMenu.classList.toggle('open');
   menuBtn.classList.toggle('open',o);
   mainNavbar.classList.toggle('open',o);
-  document.body.style.overflow=o?'hidden':'';
+  document.body.classList.toggle('menu-open',o);
+  const isMobile = window.matchMedia('(max-width:600px)').matches;
+  document.body.style.overflow = (o && isMobile) ? 'hidden' : '';
 });
 
 overlayMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
@@ -420,10 +458,10 @@ if(navLocItem){
 
 const translations={
   "de": {
-    "nav-home": "Home", "nav-about": "Über uns", "nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz", "loc-hours": "Öffnungszeiten", "loc-address": "Adresse", "loc-susi-sub": "Sternschanze | Susannenstr. 1", "loc-coming-title": "Demnächst mehr Informationen", "loc-coming-text": "Diese Seite wird gerade eingerichtet. Schau bald wieder vorbei!", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"
+    "nav-home": "Home", "nav-about": "Über uns", "nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fcopy": "© 2026 DANERS – Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz", "loc-hours": "Öffnungszeiten", "loc-address": "Adresse", "loc-susi-sub": "Sternschanze | Susannenstr. 1", "loc-coming-title": "Demnächst mehr Informationen", "loc-coming-text": "Diese Seite wird gerade eingerichtet. Schau bald wieder vorbei!", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"
   }, 
   "en": {
-    "nav-home": "Home", "nav-about": "About Us", "nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy", "loc-hours": "Opening Hours", "loc-address": "Address", "loc-susi-sub": "Sternschanze | Susannenstr. 1", "loc-coming-title": "More Information Coming Soon", "loc-coming-text": "This page is being set up. Check back soon!", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"
+    "nav-home": "Home", "nav-about": "About Us", "nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fcopy": "© 2026 DANERS – Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy", "loc-hours": "Opening Hours", "loc-address": "Address", "loc-susi-sub": "Sternschanze | Susannenstr. 1", "loc-coming-title": "More Information Coming Soon", "loc-coming-text": "This page is being set up. Check back soon!", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"
   }
 };
 
