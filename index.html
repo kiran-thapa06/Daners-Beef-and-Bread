@@ -240,22 +240,30 @@ body.menu-open main {
   width: 50%;
 }
 
-/* ── SLOGAN TITEL (MEDIUM SIZE) ── */
+/* ── PAGE TITLE (same typography as every other page's title) ── */
 .slogan-under-truck {
   text-align: center;
   width: 100%;
   background: #ffffff;
-  padding: 1.5vh 24px 0.5vh; 
+  padding: 1vh 24px 0.3vh; 
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-  font-size: clamp(15px, 1.6vw, 20px); 
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  line-height: 1.2;
+  font-size: clamp(18px, 2.8vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.1;
   text-transform: uppercase;
   color: var(--black);
 }
 
-/* ── IMAGE CONTAINER (30% GRÖSSER / MAXIMALE SKALIERUNG) ── */
+/* ── HERO VIEWPORT (title + image fill the screen below the nav; footer sits just after) ── */
+.hero-viewport {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 90px);
+  overflow: hidden;
+}
+
+/* ── IMAGE CONTAINER (fills whatever space is left after the title, image scales to fit) ── */
 .page-wrap {
   display: flex;
   flex-direction: column;
@@ -263,6 +271,7 @@ body.menu-open main {
   justify-content: center;
   width: 100%;
   flex: 1; 
+  min-height: 0;
 }
 .image-container {
   position: relative;
@@ -274,13 +283,14 @@ body.menu-open main {
   padding: 0 4px;
   box-sizing: border-box;
   flex: 1;
+  min-height: 0;
 }
 .cart-img {
   display: block;
-  width: 100%;
-  max-width: 1750px;
+  width: auto;
   height: auto;
-  max-height: calc(100vh - 180px);
+  max-width: 100%;
+  max-height: calc(100vh - 120px);
   object-fit: contain;
 }
 
@@ -331,7 +341,8 @@ body.menu-open .footer-minimal {
   main { padding-top: 85px; }
   .footer-minimal { padding: 12px 24px; }
   .overlay-menu { padding-top: 100px; } /* was 210px */
-  .cart-img { max-height: calc(100vh - 170px); }
+  .hero-viewport { height: calc(100vh - 85px); }
+  .cart-img { max-height: calc(100vh - 115px); }
 }
 @media (max-width: 600px) {
   nav { padding: 16px 16px; }
@@ -362,10 +373,12 @@ body.menu-open .footer-minimal {
   
   .image-container { padding: 0 2px; }
   .slogan-under-truck {
-    padding: 12px 16px 4px;
-    font-size: 14px;
+    padding: 8px 16px 3px;
+    font-size: clamp(15px, 5vw, 19px);
+    letter-spacing: -0.1px;
   }
-  .cart-img { max-height: calc(100vh - 140px); }
+  .hero-viewport { height: calc(100vh - 70px); }
+  .cart-img { max-height: calc(100vh - 95px); }
 
   .footer-minimal {
     flex-direction: column;
@@ -425,11 +438,13 @@ body.menu-open .footer-minimal {
 </div>
 
 <main>
-  <div class="slogan-under-truck">Quality Sandwich Joint For All</div>
+  <div class="hero-viewport">
+    <div class="slogan-under-truck">Quality Sandwich Joint For All</div>
 
-  <div class="page-wrap">
-    <div class="image-container">
-      <img class="cart-img" src="images/daners logo in illustration form.jpg" alt="Daners Food Truck">  
+    <div class="page-wrap">
+      <div class="image-container">
+        <img class="cart-img" src="images/daners logo in illustration form.jpg" alt="Daners Food Truck">  
+      </div>
     </div>
   </div>
 
@@ -438,7 +453,7 @@ body.menu-open .footer-minimal {
       <a href="imprint.html" data-i18n="f-imprint">Imprint</a>
       <a href="privacy.html" data-i18n="f-privacy">Data Privacy</a>
     </div>
-    <div class="footer-copy" data-i18n="fcopy">© 2026 DANERS’ Beef & Bread GmbH</div>
+    <div class="footer-copy" data-i18n="fcopy">© 2026 DANERS – Beef & Bread GmbH</div>
   </footer>
 </main>
 
@@ -460,6 +475,8 @@ menuBtn.addEventListener('click',()=>{
   menuBtn.classList.toggle('open',o);
   mainNavbar.classList.toggle('open',o);
   document.body.classList.toggle('menu-open',o);
+  const isMobile = window.matchMedia('(max-width:600px)').matches;
+  document.body.style.overflow = (o && isMobile) ? 'hidden' : '';
 });
 
 overlayMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
@@ -485,7 +502,7 @@ const translations={
     "nav-isemarkt": "Isemarkt", 
     "nav-susi": "Sternschanze", 
     "fhome": "Home", 
-    "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", 
+    "fcopy": "© 2026 DANERS – Beef & Bread GmbH", 
     "f-imprint": "Impressum", 
     "f-privacy": "Datenschutz"
   }, 
@@ -498,7 +515,7 @@ const translations={
     "nav-isemarkt": "Isemarkt", 
     "nav-susi": "Sternschanze", 
     "fhome": "Home", 
-    "fcopy": "© 2026 DANERS’ Beef & Bread GmbH", 
+    "fcopy": "© 2026 DANERS – Beef & Bread GmbH", 
     "f-imprint": "Imprint", 
     "f-privacy": "Data Privacy"
   }
