@@ -93,25 +93,25 @@ nav.open {
   text-align: center;
   width: 100%;
   background: #ffffff;
-  padding: 1.5vh 24px 0.5vh;
+  padding: 40px 24px 32px;
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .loc-hero-title h1 {
-  font-size: clamp(32px, 6vw, 48px);
+  font-size: clamp(24px, 4.5vw, 42px);
   font-weight: 900;
-  letter-spacing: -1.5px;
-  line-height: 1;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
   margin: 0;
   text-transform: uppercase;
   color: var(--black);
 }
 .loc-hero-title p {
   font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.15em;
+  font-weight: 300;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gray);
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 /* ── OVERLAY MENU (left-side drawer on desktop; shifts page content right, matches other pages) ── */
@@ -235,14 +235,11 @@ body.menu-open main {
   border-radius: 4px;
 }
 
-.info-grid{display:flex;flex-direction:column;align-items:center;gap:40px;margin-top:28px;text-align:center;width:100%;}
-.info-card{padding:10px 0;width:100%;max-width:400px;}
-.info-card h3{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px;color:var(--gray);}
-.info-card p{font-size:14px;line-height:1.9;color:#333;}
+.info-grid{display:flex;flex-direction:column;align-items:flex-start;gap:40px;margin-top:28px;text-align:left;width:100%;max-width:520px;}
+.info-card{padding:10px 0;width:100%;max-width:400px;text-align:left;}
+.info-card h3{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px;color: black;}
+.info-card p{font-size:14px;line-height:1.9;font-weight:300;letter-spacing:0.02em;text-transform:uppercase;color:black;}
 .info-card strong{color:var(--black);}
-.location-coming{text-align:center;margin-top:56px;padding:20px 0;}
-.location-coming h3{font-size:18px;font-weight:700;margin-bottom:10px;}
-.location-coming p{font-size:14px;color:var(--gray);line-height:1.8;}
 
 /* MINIMAL FOOTER */
 .footer-minimal {
@@ -288,6 +285,7 @@ body.menu-open .footer-minimal {
 @media(max-width:900px){
   nav{padding:18px 20px;}
   main { padding-top: 85px; }
+  .loc-hero-title { padding: 30px 24px 24px; }
   .page-wrap{padding:0 24px 52px;}
   .info-grid{gap:32px;}
   .footer-minimal { padding: 24px 24px; }
@@ -296,6 +294,7 @@ body.menu-open .footer-minimal {
 @media(max-width:600px){
   nav{padding:16px 16px;}
   main { padding-top: 70px; }
+  .loc-hero-title { padding: 24px 16px 16px; }
 
   body.menu-open main {
     margin-left: 0;
@@ -402,12 +401,8 @@ body.menu-open .footer-minimal {
         <div class="info-card">
           <h3 data-i18n="loc-address">Adresse</h3>
           <p><strong>Susannenstr. 1</strong><br>20357 Hamburg<br>(Schanzenviertel)</p>
-          <p style="margin-top:12px;font-size:13px;color:var(--gray);" data-i18n="loc-sbahn">S-Bahn: Sternschanze (S3/S31)</p>
+          <p style="margin-top:12px;" data-i18n="loc-sbahn">S-Bahn: Sternschanze (S3/S31)</p>
         </div>
-      </div>
-      <div class="location-coming">
-        <h3 data-i18n="loc-coming-title">Demnächst mehr Informationen</h3>
-        <p style="margin-top:8px;" data-i18n="loc-coming-text">Diese Seite wird gerade eingerichtet. Schau bald wieder vorbei!</p>
       </div>
     </div>
   </div>
