@@ -61,7 +61,7 @@ nav.open {
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(10px);
   text-align: center;
-  padding: 40px 48px 20px;
+  padding: 40px 48px 32px;
   width: 100vw;
   margin-left: calc(-50vw + 50%);
 }
@@ -76,7 +76,7 @@ nav.open {
 }
 .brand-header-sticky p {
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gray);
@@ -242,13 +242,13 @@ body.menu-open footer {
 @media(max-width:900px){
   nav{padding:18px 20px;}
   .page-wrap{padding:0 24px 52px;}
-  .brand-header-sticky{padding:30px 24px 16px;}
+  .brand-header-sticky{padding:30px 24px 24px;}
   footer{padding:24px 24px;}
   .overlay-menu { padding-top: 100px; }
 }
 @media(max-width:600px){
   nav{padding:16px 16px;}
-  .brand-header-sticky { padding:24px 16px 12px; top: 57px; } 
+  .brand-header-sticky { padding:24px 16px 16px; top: 57px; } 
   main { padding-top: 57px; }
   .page-wrap{padding:0 16px 44px; align-items: center;}
 
@@ -415,8 +415,7 @@ if(navLocItem){
   navLocItem.querySelector('.nav-item-label').addEventListener('click',()=>navLocItem.classList.toggle('open'));
 }
 
-const translations={"de": {"nav-about": "Über uns", "nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fq": "Quick Links", "fl": "Locations", "fk": "Kontakt", "fhome": "Home", "fmenu": "Menü", "fjobs": "Jobs", "fcontact": "Kontakt", "fcopy": "© 2026 DANERS – Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz", "imprint-label": "Rechtliches", "imprint-title": "Impressum", "imp-h1": "DANERS – Beef & Bread GmbH", "imp-h2": "Handelsregister", "imp-hrb": "HRB 200025", "imp-court": "Registergericht: Amtsgericht Hamburg", "imp-h3": "Vertreten durch", "imp-gf1": "Geschäftsführer: Nick Lehmann", "imp-gf2": "Geschäftsführer: Fabian Peter Hilbert", "imp-h4": "Kontakt", "imp-phone-label": "Telefon:", "imp-h5": "Umsatzsteuer-ID", "imp-vat-text": "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:", "imp-h6": "Redaktionell verantwortlich", "imp-h7": "EU-Streitschlichtung", "imp-eu-text": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:", "imp-eu-text2": "Unsere E-Mail-Adresse finden Sie oben im Impressum.", "imp-h8": "Verbraucherstreitbeilegung", "imp-vsb-text": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."}, 
-"en": {"nav-about": "About Us", "nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fq": "Quick Links", "fl": "Locations", "fk": "Contact", "fhome": "Home", "fmenu": "Menu", "fjobs": "Jobs", "fcontact": "Contact", "fcopy": "© 2026 DANERS – Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy", "imprint-label": "Legal", "imprint-title": "Site Notice", "imp-h1": "DANERS – Beef & Bread GmbH", "imp-h2": "Commercial Register", "imp-hrb": "HRB 200025", "imp-court": "Registration court: Amtsgericht Hamburg", "imp-h3": "Represented by", "imp-gf1": "Managing Director: Nick Lehmann", "imp-gf2": "Managing Director: Fabian Peter Hilbert", "imp-h4": "Contact", "imp-phone-label": "Phone:", "imp-h5": "VAT ID", "imp-vat-text": "Sales tax identification number according to Sect. 27a of the Sales Tax Law:", "imp-h6": "Person responsible for editorial content", "imp-h7": "EU dispute resolution", "imp-eu-text": "The European Commission provides a platform for online dispute resolution (ODR):", "imp-eu-text2": "Our e-mail address can be found above in the site notice.", "imp-h8": "Consumer dispute resolution", "imp-vsb-text": "We are not willing or obliged to participate in dispute resolution proceedings in front of a consumer arbitration board."}};
+const translations={"de": {"nav-about": "Über uns", "nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fq": "Quick Links", "fl": "Locations", "fk": "Kontakt", "fhome": "Home", "fmenu": "Menü", "fjobs": "Jobs", "fcontact": "Kontakt", "fcopy": "© 2026 DANERS – Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz", "imprint-label": "Rechtliches", "imprint-title": "Impressum", "imp-h1": "DANERS – Beef & Bread GmbH", "imp-h2": "Handelsregister", "imp-hrb": "HRB 200025", "imp-court": "Registergericht: Amtsgericht Hamburg", "imp-h3": "Vertreten durch", "imp-gf1": "Geschäftsführer: Nick Lehman", "imp-gf2": "Geschäftsführer: Fabian Peter Hilbert", "imp-h4": "Kontakt", "imp-phone-label": "Telefon:", "imp-h5": "Umsatzsteuer-ID", "imp-vat-text": "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:", "imp-h6": "Redaktionell verantwortlich", "imp-h7": "EU-Streitschlichtung", "imp-eu-text": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:", "imp-eu-text2": "Unsere E-Mail-Adresse finden Sie oben im Impressum.", "imp-h8": "Verbraucherstreitbeilegung", "imp-vsb-text": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."}, "en": {"nav-about": "About Us", "nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fq": "Quick Links", "fl": "Locations", "fk": "Contact", "fhome": "Home", "fmenu": "Menu", "fjobs": "Jobs", "fcontact": "Contact", "fcopy": "© 2026 DANERS – Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy", "imprint-label": "Legal", "imprint-title": "Site Notice", "imp-h1": "DANERS\u2019 \u2013 Beef & Bread", "imp-h2": "Commercial Register", "imp-hrb": "HRB 200025", "imp-court": "Registration court: Amtsgericht Hamburg", "imp-h3": "Represented by", "imp-gf1": "Managing Director: Nick Lehman", "imp-gf2": "Managing Director: Fabian Peter Hilbert", "imp-h4": "Contact", "imp-phone-label": "Phone:", "imp-h5": "VAT ID", "imp-vat-text": "Sales tax identification number according to Sect. 27a of the Sales Tax Law:", "imp-h6": "Person responsible for editorial content", "imp-h7": "EU dispute resolution", "imp-eu-text": "The European Commission provides a platform for online dispute resolution (ODR):", "imp-eu-text2": "Our e-mail address can be found above in the site notice.", "imp-h8": "Consumer dispute resolution", "imp-vsb-text": "We are not willing or obliged to participate in dispute resolution proceedings in front of a consumer arbitration board."}};
 
 let currentLang=localStorage.getItem('daners_lang')||'de';
 function applyLang(lang){
