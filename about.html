@@ -146,13 +146,14 @@ nav.open {
   text-align: center;
   width: 100%;
   background: #fff;
-  padding: 1.5vh 24px 0.5vh;
+  padding: 40px 24px 32px;
 }
 .about-title-header h1 {
-  font-size: clamp(32px, 6vw, 64px);
+  font-size: clamp(24px, 4.5vw, 42px);
   font-weight: 900;
-  letter-spacing: -1px;
+  letter-spacing: 0.05em;
   line-height: 1.1;
+  margin: 0;
   color: var(--black);
   text-transform: uppercase;
 }
@@ -174,7 +175,7 @@ body.menu-open main {
 .page-wrap{max-width:760px;margin:0 auto;padding:24px 24px 60px;width:100%;}
 
 /* ── CHAT SECTION ── */
-.chat-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;text-align: center;}
+.chat-label{font-size:11px;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-top:8px;text-align:center;}
 .chat-intro{font-size:.95rem;font-weight:300;color:#555;margin-bottom:32px;line-height:1.7;text-align: left;}
 
 .chat-widget{border:1px solid #000; background:#fff;}
@@ -340,12 +341,14 @@ body.menu-open .footer-legal-bar {
 @media(max-width:900px){
   nav{padding:18px 20px;}
   main{padding-top: 85px;}
+  .about-title-header { padding: 30px 24px 24px; }
   .overlay-menu { padding-top: 100px; }
   .footer-legal-bar { padding: 24px 24px; }
 }
 @media(max-width:600px){
   nav{padding:16px 16px;}
   main{padding-top: 70px;}
+  .about-title-header { padding: 24px 16px 16px; }
 
   body.menu-open main {
     margin-left: 0;
@@ -436,17 +439,17 @@ body.menu-open .footer-legal-bar {
 <main>
   <div class="about-title-header">
     <h1 data-i18n="about-title">About Us</h1>
+    <p class="chat-label" data-i18n="chat-label">FRAG UNS (FAST) ALLES</p>
   </div>
 
   <div class="page-wrap">
-    <div class="chat-label" data-i18n="chat-label">FRAG UNS (FAST) ALLES</div>
-    <p class="chat-intro" data-i18n="chat-intro">Have a question about our menu, ingredients, opening hours, or anything else about DANERS? Our assistant has the answers.</p>
+    <p class="chat-intro" data-i18n="chat-intro">Our AI has the answers. If not, contact us directly on Instagram.</p>
 
     <div class="chat-widget">
       <div class="chat-messages" id="chatMessages">
         <div class="msg bot" data-kb-id="welcome">
           <div class="msg-sender" data-i18n="chat-sender-bot">@danersbeefbread</div>
-          <div class="bubble" id="welcomeBubble" data-i18n="chat-welcome">Unsere KI hat die Antworten. Falls nicht, kontaktiere uns direkt auf Instagram.</div>
+          <div class="bubble" id="welcomeBubble" data-i18n="chat-welcome">Hey hey, willkommen bei DANERS Beef & Bread! Frag mich alles über unser Menü, unsere Geschichte, Öffnungszeiten oder Allergene.</div>
         </div>
       </div>
 
@@ -517,8 +520,8 @@ const translations = {
     "fcopy":"© 2026 DANERS – Beef & Bread GmbH",
     "f-imprint":"Impressum","f-privacy":"Datenschutz",
     "about-title":"Über uns",
-    "chat-label":"FRAG UNS (FAST) ALLES","chat-intro":"Hast du eine Frage zu unserem Menü, unseren Zutaten, Öffnungszeiten oder sonst etwas über DANERS? Unser Assistent hat die Antworten.",
-    "chat-welcome":"Unsere KI hat die Antworten. Falls nicht, kontaktiere uns direkt auf Instagram.",
+    "chat-label":"FRAG UNS (FAST) ALLES","chat-intro":"Unsere KI hat die Antworten. Falls nicht, kontaktiere uns direkt auf Instagram.",
+    "chat-welcome":"Hey hey, willkommen bei DANERS Beef & Bread! Frag mich alles über unser Menü, unsere Geschichte, Öffnungszeiten oder Allergene.",
     "chat-ph":"Deine Frage hier eingeben…","ask-btn":"Fragen",
     "chat-sender-bot":"@danersbeefbread","chat-sender-you":"Du",
     "private-reply":"Diese Information ist privat. Bitte wende dich direkt an unseren Manager — er hilft dir gerne weiter.",
@@ -542,8 +545,8 @@ const translations = {
     "fcopy":"© 2026 DANERS – Beef & Bread GmbH",
     "f-imprint":"Imprint","f-privacy":"Data Privacy",
     "about-title":"About Us",
-    "chat-label":"Ask Us (Almost) Anything","chat-intro":"Have a question about our menu, ingredients, opening hours, or anything else about DANERS? Our assistant has the answers.",
-    "chat-welcome":"Our AI has the answers. If not, contact us directly on Instagram.",
+    "chat-label":"Ask Us (Almost) Anything","chat-intro":"Our AI has the answers. If not, contact us directly on Instagram.",
+    "chat-welcome":"Hey hey! Welcome to DANERS Beef & Bread! Ask me anything about our menu, our story, opening hours, or allergens.",
     "chat-ph":"Type your question here…","ask-btn":"Ask",
     "chat-sender-bot":"@danersbeefbread","chat-sender-you":"You",
     "private-reply":"That information is private. Please kindly reach out to our manager directly — they'll be happy to help you.",
@@ -567,7 +570,7 @@ let currentLang = localStorage.getItem('daners_lang') || 'de';
 
 /* ── MULTILINGUAL KNOWLEDGE BASE ── */
 const KB_DE = {
-  'welcome': `Unsere KI hat die Antworten. Falls nicht, kontaktiere uns direkt auf Instagram.`,
+  'welcome': `Hey hey, willkommen bei DANERS Beef & Bread! Frag mich alles über unser Menü, unsere Geschichte, Öffnungszeiten oder Allergene.`,
   'private': `Diese Information ist privat. Bitte wende dich direkt an unseren Manager — er hilft dir gerne weiter.`,
   'who': `Wir sind DANERS – Beef & Bread. Entstanden in Hamburg und gebaut um eine einfache Idee: verdammt gute Beef Sandwiches. Keine riesige Speisekarte, kein unnötiger Schnickschnack – einfach ein Produkt, das wir lieben und seit Jahren perfektionieren.`,
   'what': `Wir legen Rinderhüfte einen Monat lang ein, schneiden sie hauchdünn auf, grillen sie frisch und packen sie in gutes Brot. Das ist DANERS.`,
@@ -583,7 +586,7 @@ const KB_DE = {
 };
 
 const KB_EN = {
-  'welcome': `Our AI has the answers. If not, contact us directly on Instagram.`,
+  'welcome': `Hey hey! Welcome to DANERS Beef & Bread! Ask me anything about our menu, our story, opening hours, or allergens.`,
   'private': `That information is private. Please kindly reach out to our manager directly — they'll be happy to help you.`,
   'who': `We're DANERS – Beef & Bread. Born in Hamburg and built around one thing: ridiculously good beef sandwiches. No giant menu, no unnecessary extras – just a product we love and have been perfecting for years.`,
   'what': `We cure beef for a month, slice it paper-thin, grill it fresh and serve it in great bread. That's the heart of DANERS.`,
