@@ -245,25 +245,25 @@ body.menu-open main {
   text-align: center;
   width: 100%;
   background: #ffffff;
-  padding: 1.5vh 24px 0.5vh;
+  padding: 40px 24px 32px;
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .loc-hero-title h1 {
-  font-size: clamp(32px, 6vw, 48px);
+  font-size: clamp(24px, 4.5vw, 42px);
   font-weight: 900;
-  letter-spacing: -1.5px;
-  line-height: 1;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
   margin: 0;
   text-transform: uppercase;
   color: var(--black);
 }
 .loc-hero-title p {
   font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.15em;
+  font-weight: 300;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gray);
-  margin-top: 6px;
+  margin-top: 8px;
 }
 
 /* ZENTRIERUNG BEI OFFENEM MENÜ */
@@ -315,15 +315,22 @@ body.menu-open .loc-hero-title {
   flex: 0 1 auto;
 }
 .info-col p {
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--black);
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: black;
+  margin-bottom: 14px;
 }
 .info-col .sub-info {
+  font-size: 14px;
+  line-height: 1.9;
   font-weight: 300;
-  color: var(--gray);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #333;
   margin-top: 2px;
+  margin-bottom: 0;
 }
 
 /* ── MINIMAL FOOTER ── */
@@ -374,12 +381,14 @@ body.menu-open .footer-minimal {
 @media(max-width:900px) {
   nav { padding: 18px 20px; }
   main { padding-top: 85px; }
+  .loc-hero-title { padding: 30px 24px 24px; }
   .footer-minimal { padding: 24px 24px; }
   .overlay-menu { padding-top: 100px; }
 }
 @media (max-width: 600px) {
   nav { padding: 16px 16px; }
   main { padding-top: 70px; }
+  .loc-hero-title { padding: 24px 16px 16px; }
   
   body.menu-open main {
     margin-left: 0;
