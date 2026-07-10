@@ -93,7 +93,7 @@ nav.open {
   text-align: center;
   width: 100%;
   background: #ffffff;
-  padding: 40px 24px 32px;
+  padding: 40px 24px 20px;
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .loc-hero-title h1 {
@@ -192,6 +192,7 @@ nav.open {
 }
 .nav-item.open .nav-dropdown { display: flex; }
 .nav-dropdown a {
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   font-weight: 400;
   text-decoration: none;
@@ -217,7 +218,7 @@ body.menu-open main {
   width: 50%;
 }
 
-.page-wrap{display:flex;flex-direction:column;align-items:center;padding:0 48px 64px;}
+.page-wrap{display:flex;flex-direction:column;align-items:center;padding:32px 48px 64px;}
 .content-wide{width:100%;max-width:860px;margin-top:20px;text-align:center;display:flex;flex-direction:column;align-items:center;}
 
 .image-container {
@@ -234,11 +235,57 @@ body.menu-open main {
   display: block;
   border-radius: 4px;
 }
+.hours-table {
+  width: 100%;       /* Ensures it takes up the full width of its parent */
+  max-width: 300px;  /* Keeps it from getting too wide */
+  border-collapse: collapse;
+}
 
+.hours-table td {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;        /* Consistent bold weight */
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #111;
+  padding: 4px 0;
+}
+
+/* Forces the first column (Days) to the left */
+.hours-table td:nth-child(1) {
+  text-align: left;
+}
+
+/* Forces the second column (Times) to the right */
+.hours-table td:nth-child(2) {
+  text-align: left;      /* Change from right to left */
+  padding-left: 21px;    /* This creates the consistent gap you see in your design */
+  width: auto;           /* Let it flow naturally */
+}
+.do-row td:nth-child(2) {
+  padding-left: 20px; /* Adjust this value to get exactly the space you want */
+}
 .info-grid{display:flex;flex-direction:column;align-items:flex-start;gap:40px;margin-top:28px;text-align:left;width:100%;max-width:520px;}
 .info-card{padding:10px 0;width:100%;max-width:400px;text-align:left;}
-.info-card h3{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px;color: black;}
-.info-card p{font-size:14px;line-height:1.9;font-weight:300;letter-spacing:0.02em;text-transform:uppercase;color:black;}
+.info-card h3{
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: black;
+  margin-bottom: 14px;
+}
+.info-card p{
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important; /* Forces bold everywhere */
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #111 !important;
+  margin: 0 0 4px 0; /* Keeps lines uniform */
+  line-height: 1.6;/* Changed from #333 to black */
+}
 .info-card strong{color:var(--black);}
 
 /* MINIMAL FOOTER */
@@ -285,8 +332,8 @@ body.menu-open .footer-minimal {
 @media(max-width:900px){
   nav{padding:18px 20px;}
   main { padding-top: 85px; }
-  .loc-hero-title { padding: 30px 24px 24px; }
-  .page-wrap{padding:0 24px 52px;}
+  .loc-hero-title { padding: 30px 24px 16px; }
+  .page-wrap{padding:32px 24px 52px;}
   .info-grid{gap:32px;}
   .footer-minimal { padding: 24px 24px; }
   .overlay-menu { padding-top: 100px; }
@@ -294,7 +341,7 @@ body.menu-open .footer-minimal {
 @media(max-width:600px){
   nav{padding:16px 16px;}
   main { padding-top: 70px; }
-  .loc-hero-title { padding: 24px 16px 16px; }
+  .loc-hero-title { padding: 24px 16px 12px; }
 
   body.menu-open main {
     margin-left: 0;
@@ -317,7 +364,7 @@ body.menu-open .footer-minimal {
     border-right: none;
   }
 
-  .page-wrap{padding:0 16px 44px;}
+  .page-wrap{padding:32px 16px 44px;}
   .image-container { max-width: 520px; }
   
   .footer-minimal {
@@ -390,18 +437,18 @@ body.menu-open .footer-minimal {
 
       <div class="info-grid">
         <div class="info-card">
-          <h3 data-i18n="loc-hours">Öffnungszeiten</h3>
-          <p>
-            <strong>Mo. – Mi.</strong> 11.00 – 21.00 Uhr<br>
-            <strong>Do.</strong> 11.00 – 23.00 Uhr<br>
-            <strong>Fr. – Sa.</strong> 11.00 – 01.00 Uhr<br>
-            <strong>So.</strong> 11.00 – 21.00 Uhr
-          </p>
-        </div>
+  
+  <table class="hours-table">
+    <tr><td>MO. – MI.</td><td>11.00–21.00</td></tr>
+    <tr class="do-row"><td>DO.</td><td>11.00–23.00</td></tr>
+    <tr><td>FR. – SA.</td><td>11.00–01.00</td></tr>
+    <tr><td>SO.</td><td>11.00–21.00</td></tr>
+  </table>
+</div>
         <div class="info-card">
-          <h3 data-i18n="loc-address">Adresse</h3>
-          <p><strong>Susannenstr. 1</strong><br>20357 Hamburg<br>(Schanzenviertel)</p>
-          <p style="margin-top:12px;" data-i18n="loc-sbahn">S-Bahn: Sternschanze (S3/S31)</p>
+          
+          <p>Susannenstr. 1<br>20357 Hamburg<br></p>
+          
         </div>
       </div>
     </div>
