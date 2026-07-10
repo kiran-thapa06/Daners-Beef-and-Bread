@@ -58,7 +58,7 @@ nav.open {
   text-align: center;
   width: 100%;
   background: #ffffff;
-  padding: 40px 24px 32px;
+  padding: 40px 24px 20px;
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .jobs-title-header h1 {
@@ -184,7 +184,15 @@ body.menu-open main {
   margin-left: 50%;
   width: 50%;
 }
-
+.rocket-img {
+  width: 20px !important;    /* Forces the specific size */
+  height: 20px !important;   /* Keeps it square and consistent */
+  display: inline-block !important; /* Forces it to stay in the text flow */
+  vertical-align: middle;    /* Aligns it perfectly with the letters */
+  margin-left: 6px;          /* Adds the space you want */
+  margin-right: 0;
+  float: none;               /* Ensures no floating behavior is interfering */
+}
 /* ── PAGE WRAP: editorial two-column layout — text left, photo right ── */
 .page-wrap {
   display: flex;
@@ -192,7 +200,7 @@ body.menu-open main {
   align-items: flex-start;
   justify-content: center;
   gap: 64px;
-  padding: 16px 48px 64px;
+  padding: 32px 48px 64px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -221,14 +229,13 @@ body.menu-open main {
 /* MAIN SECTION TITLE */
 .section-title-bold {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(24px, 4vw, 32px);
-  font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1.2;
+  font-size: clamp(24px, 4.5vw, 42px); /* Use the larger size from JOBS */
+  font-weight: 900;                    /* Use the bolder weight from JOBS */
+  letter-spacing: 0.01em;              /* Matches JOBS */
+  line-height: 1.1;                    /* Matches JOBS */
   text-transform: uppercase;
   color: var(--black);
-  margin-bottom: 32px;
-  text-align: left;
+  margin: 0;
 }
 
 /* JOB CONTENT BODY */
@@ -313,14 +320,14 @@ body.menu-open footer {
 @media(max-width:900px){
   nav{padding:18px 20px;}
   main { padding-top: 85px; }
-  .jobs-title-header { padding: 30px 24px 24px; }
+  .jobs-title-header { padding: 30px 24px 16px; }
   .page-wrap{
     flex-direction: column-reverse;
     align-items: center;
-    padding: 8px 24px 52px;
+    padding: 32px 24px 52px;
     gap: 32px;
   }
-  .content-mid { max-width: 560px; margin-top: 4px; }
+  .content-mid { max-width: 560px; margin-top: 0; }
   .jobs-photo { max-width: 420px; width: 100%; align-self: center; }
   .jobs-photo img { aspect-ratio: 16 / 10; }
   footer{padding:24px 24px;}
@@ -329,7 +336,7 @@ body.menu-open footer {
 @media(max-width:600px){
   nav{padding:16px 16px;}
   main { padding-top: 70px; }
-  .jobs-title-header { padding: 24px 16px 16px; }
+  .jobs-title-header { padding: 24px 16px 12px; }
 
   body.menu-open main {
     margin-left: 0;
@@ -351,7 +358,7 @@ body.menu-open footer {
     border-right: none;
   }
   .overlay-inner-content { gap: 20px; padding-top: 0; }
-  .page-wrap{padding:0 16px 44px; align-items: center;}
+  .page-wrap{padding:32px 16px 44px; align-items: center;}
   .jobs-photo img { aspect-ratio: 4 / 3; }
   .jobs-description-wrap { text-align: center; }
   .section-title-bold { text-align: center; }
@@ -498,7 +505,9 @@ const translations={
     "jobs-label": "Werde Teil des Teams", 
     "jobs-title": "Jobs", 
     "jobs-slogan": "Komm, wie du bist. Lerne und wachse mit uns.",
-    "jobs-body-html": "<p>Menschen machen den Unterschied.</p><p>Deshalb suchen wir bei DANERS engagierte Persönlichkeiten, die Verantwortung übernehmen und gemeinsam mit uns wachsen möchten.</p><p>Für uns zählen nicht nur Qualifikationen, sondern vor allem Motivation, Charakter und Potenzial.</p><p>Wir freuen uns darauf, dich kennenzulernen.</p><p>Starte jetzt deine Karriere bei DANERS</p>",
+    // Inside your translations object:
+
+"jobs-body-html": "<p>Menschen machen den Unterschied.</p><p>Deshalb suchen wir bei DANERS engagierte Persönlichkeiten, die Verantwortung übernehmen und gemeinsam mit uns wachsen möchten.</p><p>Für uns zählen nicht nur Qualifikationen, sondern vor allem Motivation, Charakter und Potenzial.</p><p>Wir freuen uns darauf, dich kennenzulernen.</p><p>Starte jetzt deine Karriere bei DANERS <img src='images/rocket.png' class='rocket-img'></p>",
     "jobs-cta": "Jetzt bewerben"
   }, 
   "en": {
@@ -516,8 +525,9 @@ const translations={
     "jobs-label": "Join the Team", 
     "jobs-title": "Jobs", 
     "jobs-slogan": "Come as you are, learn & grow with us.",
-    "jobs-body-html": "<p>People make the difference.</p><p>That’s why at DANERS, we’re looking for motivated individuals who are ready to take responsibility and grow with us.</p><p>For us, it’s not just about qualifications – we value motivation, character, and potential above all.</p><p>We look forward to getting to know you.</p><p>Start your career at DANERS today.</p>",
-    "jobs-cta": "Apply now"
+    // Repeat for the English version
+"jobs-body-html": "<p>People make the difference.</p><p>That’s why at DANERS, we’re looking for motivated individuals who are ready to take responsibility and grow with us.</p><p>For us, it’s not just about qualifications – we value motivation, character, and potential above all.</p><p>We look forward to getting to know you.</p><p>Start your career at DANERS today. <img src='images/rocket.png' class='rocket-img'></p>",
+"jobs-cta": "Apply now"
   }
 };
 
