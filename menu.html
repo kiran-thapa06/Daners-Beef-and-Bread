@@ -145,7 +145,7 @@ nav.open {
   text-align: center;
   width: 100%;
   background: #ffffff;
-  padding: 40px 24px 32px;
+  padding: 40px 24px 20px;
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .menu-title-header h1 {
@@ -244,11 +244,14 @@ nav.open {
 }
 .nav-item.open .nav-dropdown { display: flex; }
 .nav-dropdown a {
-  font-size: 18px;
-  font-weight: 400;
+ font-family: 'Poppins', sans-serif; /* Ensures consistent font */
+  font-size: 14px;                   /* Matches the smaller info section size */
+  font-weight: 500;                  /* Matches the bold weight */
+  text-transform: uppercase;         /* Matches the uppercase look */
+  letter-spacing: 0.15em;            /* Matches the spacing in your image */
   text-decoration: none;
   color: var(--gray);
-  padding: 6px 28px;
+  padding: 8px 28px;
   border-radius: 4px;
   transition: color .2s, background .2s;
 }
@@ -276,7 +279,7 @@ body.menu-open main {
   align-items: center;
   background: #ffffff;
   width: 100%;
-  padding: 0 0 64px; 
+  padding: 8px 0 64px; 
 }
 
 .menu-content-container {
@@ -291,11 +294,16 @@ body.menu-open main {
 
 .menu-img-container {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .menu-img-container img {
-  width: 100%;
-  height: auto;
   display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100vh - 210px);
+  object-fit: contain;
 }
 
 .menu-note-container {
@@ -307,8 +315,8 @@ body.menu-open main {
 .menu-note-text {
   font-size: 14px;
   line-height: 1.9;
-  color: black;
-  font-weight: 600;
+  color: #333;
+  font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase; 
   background: #ffffff; 
@@ -363,15 +371,17 @@ body.menu-open .footer-minimal {
 @media(max-width:900px) {
   nav { padding: 18px 20px; }
   main { padding-top: 85px; }
-  .menu-title-header { padding: 30px 24px 24px; }
-  .menu-page-wrap { padding: 0 0 52px; }
+  .menu-title-header { padding: 30px 24px 16px; }
+  .menu-page-wrap { padding: 8px 0 52px; }
+  .menu-img-container img { max-height: calc(100vh - 190px); }
   .footer-minimal { padding: 24px 24px; }
   .overlay-menu { padding-top: 100px; }
 }
 @media (max-width: 600px) {
   nav { padding: 16px 16px; }
   main { padding-top: 70px; }
-  .menu-title-header { padding: 24px 16px 16px; }
+  .menu-title-header { padding: 24px 16px 12px; }
+  .menu-img-container img { max-height: calc(100vh - 145px); }
   
   body.menu-open main {
     margin-left: 0;
@@ -395,7 +405,7 @@ body.menu-open .footer-minimal {
     border-right: none;
   } 
   
-  .menu-page-wrap { padding: 0 0 44px; }
+  .menu-page-wrap { padding: 8px 0 44px; }
   .menu-content-container { padding: 0 24px; }
   .menu-note-container { 
     max-width: 88%; 
