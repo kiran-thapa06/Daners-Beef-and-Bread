@@ -374,6 +374,15 @@ body.menu-open .footer-minimal {
   .page-wrap{padding:32px 16px 44px;}
   .image-container { max-width: 520px; }
 
+  /* Anchor the address/hours block to the left with a scaling offset, instead of true centering — avoids looking "too centered" at various small widths */
+  .info-grid{
+    width: auto;
+    max-width: 260px;
+    align-self: flex-start;
+    margin: 28px 0 0 clamp(24px, 12vw, 72px);
+    gap: 28px;
+  }
+
   .footer-minimal {
     flex-direction: column;
     align-items: center;
