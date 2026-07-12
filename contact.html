@@ -129,19 +129,22 @@ nav.open {
   padding: 8px 0 4px;
 }
 .nav-item.open .nav-dropdown { display: flex; }
-.nav-dropdown a {
-  font-family: 'Poppins', sans-serif; /* Ensures consistent font */
-  font-size: 14px;                   /* Matches the smaller info section size */
-  font-weight: 500;                  /* Matches the bold weight */
-  text-transform: uppercase;         /* Matches the uppercase look */
-  letter-spacing: 0.15em;            /* Matches the spacing in your image */
+
+/* ID-scoped selector so this always wins over any conflicting rules,
+   regardless of source order or screen size. */
+#overlayMenu .nav-dropdown a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
   text-decoration: none;
   color: var(--gray);
   padding: 8px 28px;
   border-radius: 4px;
   transition: color .2s, background .2s;
 }
-.nav-dropdown a:hover { color: var(--black); background: rgba(0,0,0,.05); }
+#overlayMenu .nav-dropdown a:hover { color: var(--black); background: rgba(0,0,0,.05); }
 
 /* LAYOUT */
 main{
@@ -222,12 +225,39 @@ body.menu-open main {
 .form-submit:hover{background:#333;}
 .form-success{display:none;padding:14px 18px;background:#f0faf0;border-left:3px solid #4caf50;font-size:13px;color:#1b5e20;margin-top:14px;line-height:1.6;}
 
+/* ── FOOTER (matches .footer-minimal / .footer-legal / .footer-copy on index.html, isemarkt.html, susi.html) ── */
 .site-footer {
   transition: margin-left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  font-size: 12px;
+  letter-spacing: .02em;
 }
 body.menu-open .site-footer {
   margin-left: 50%;
   width: 50%;
+}
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.footer-legal a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  letter-spacing: .02em;
+  color: rgba(0,0,0,.55);
+  text-decoration: underline;
+  text-decoration-color: rgba(0,0,0,.25);
+  transition: color .2s;
+  white-space: nowrap;
+}
+.footer-legal a:hover { color: var(--black); }
+.footer-copy {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  letter-spacing: .02em;
+  color: rgba(0,0,0,.45);
+  white-space: nowrap;
 }
 
 @media(max-width:900px){
@@ -266,6 +296,8 @@ body.menu-open .site-footer {
 @media(max-width:600px){
   .site-footer{flex-direction:column;align-items:center;text-align:center;padding:20px 16px;}
   .site-footer div{justify-content:center;}
+  .footer-copy{margin-left:0;text-align:center;}
+  .footer-legal{justify-content:center;gap:14px;}
 }
 </style>
 </head>
@@ -391,12 +423,12 @@ body.menu-open .site-footer {
   </div>
 </main>
 
-<footer style="border-top:1px solid var(--border);padding:20px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;" class="site-footer">
-  <div style="display:flex;gap:18px;flex-wrap:wrap;">
-    <a href="imprint.html" data-i18n="f-imprint" style="font-size:12px;color:rgba(0,0,0,.55);text-decoration:underline;text-decoration-color:rgba(0,0,0,.25);font-family:'Poppins',sans-serif;transition:color .2s;">Impressum</a>
-    <a href="privacy.html" data-i18n="f-privacy" style="font-size:12px;color:rgba(0,0,0,.55);text-decoration:underline;text-decoration-color:rgba(0,0,0,.25);font-family:'Poppins',sans-serif;transition:color .2s;">Datenschutz</a>
+<footer class="site-footer" style="border-top:1px solid var(--border);padding:20px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+  <div class="footer-legal">
+    <a href="imprint.html" data-i18n="f-imprint">Impressum</a>
+    <a href="privacy.html" data-i18n="f-privacy">Datenschutz</a>
   </div>
-  <span data-i18n="fcopy" style="font-size:12px;color:rgba(0,0,0,.45);font-family:'Poppins',sans-serif;">&copy; 2026 DANERS &ndash; Beef &amp; Bread GmbH</span>
+  <span class="footer-copy" data-i18n="fcopy">&copy; 2026 DANERS &ndash; Beef &amp; Bread GmbH</span>
 </footer>
 
 <script>
