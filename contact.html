@@ -397,25 +397,40 @@ body.menu-open .site-footer {
       <div class="tab-panel" id="ctab-jobs">
         <iframe name="jobsHiddenFrame" id="jobsHiddenFrame" style="display:none"></iframe>
         <form id="jobsForm" action="https://script.google.com/macros/s/AKfycbxVYXfV3KXNgrhH0R0LuSr2iQyW4cnyM9KirdMi9FwgUqtT8R2sULPpHD80_hRn41mzDQ/exec" method="POST" enctype="multipart/form-data" target="jobsHiddenFrame">
+        <!-- Honeypot field: invisible to real users, often auto-filled by bots.
+             If "website" arrives with a value, the server silently drops the submission. -->
+        <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+          <label for="jb-website">Website</label>
+          <input type="text" name="website" id="jb-website" tabindex="-1" autocomplete="off">
+        </div>
         <div class="form-grid">
           <div class="form-group"><label class="form-label" data-i18n="f-name">Name</label><input type="text" name="name" id="jb-name" class="form-input" required data-i18n-ph="ph-name" placeholder="Ihr Name"></div>
           <div class="form-group"><label class="form-label" data-i18n="f-email">E-Mail</label><input type="email" name="email" id="jb-email" class="form-input" required data-i18n-ph="ph-email" placeholder="ihre@mail.de"></div>
-          <div class="form-group"><label class="form-label" data-i18n="f-phone">Telefon</label><input type="tel" name="phone" id="jb-phone" class="form-input" data-i18n-ph="ph-phone" placeholder="+49 ..."></div>
-          <div class="form-group"><label class="form-label" data-i18n="f-available">Verfügbar ab</label><input type="date" name="date" id="jb-date" class="form-input"></div>
-          <div class="form-group"><label class="form-label" data-i18n="f-worktype">Art der Beschäftigung</label>
-            <select name="worktype" id="jb-worktype" class="form-select"><option value="" data-i18n="f-choose">Bitte wählen</option><option value="Vollzeit" data-i18n="wt-full">Vollzeit</option><option value="Teilzeit" data-i18n="wt-part">Teilzeit</option><option value="Minijob" data-i18n="wt-mini">Minijob</option></select></div>
+          <div class="form-group"><label class="form-label" data-i18n="f-phone">Telefon *</label><input type="tel" name="phone" id="jb-phone" class="form-input" required data-i18n-ph="ph-phone" placeholder="+49 ..."></div>
+          <div class="form-group"><label class="form-label" data-i18n="f-available">Verfügbar ab *</label><input type="date" name="date" id="jb-date" class="form-input" required></div>
+          <div class="form-group"><label class="form-label" data-i18n="f-worktype">Art der Beschäftigung *</label>
+            <select name="worktype" id="jb-worktype" class="form-select" required><option value="" data-i18n="f-choose">Bitte wählen</option><option value="Vollzeit" data-i18n="wt-full">Vollzeit</option><option value="Teilzeit" data-i18n="wt-part">Teilzeit</option><option value="Minijob" data-i18n="wt-mini">Minijob</option></select></div>
           <div class="form-group"><label class="form-label" data-i18n="f-social-link">Social Media Link</label><input type="url" name="social" id="jb-social" class="form-input" data-i18n-ph="ph-social-link" placeholder="https://instagram.com/..."></div>
           <div class="form-group span2">
-            <label class="form-label" data-i18n="f-photo">Foto / Lebenslauf hochladen *</label>
+            <label class="form-label" data-i18n="f-photo">Foto hochladen *</label>
             <div class="form-file-wrap">
               <button type="button" class="form-file-btn" onclick="document.getElementById('jb-photo').click()" data-i18n="f-photo-btn">Datei wählen</button>
               <img id="jb-photo-preview" src="" alt="" style="display:none;width:44px;height:44px;object-fit:cover;border:1px solid var(--border);flex-shrink:0;">
               <span class="form-file-name" id="jb-photo-name" data-i18n="f-photo-none">Keine Datei ausgewählt</span>
-              <input type="file" name="attachment" id="jb-photo" accept="image/*,.pdf,application/pdf" style="display:none" onchange="updateFileName('jb-photo','jb-photo-name')">
+              <input type="file" name="attachment" id="jb-photo" accept="image/*" style="display:none" onchange="updateFileName('jb-photo','jb-photo-name')">
             </div>
-            <p class="form-hint" data-i18n="f-photo-hint">Optional. Bild oder PDF, max. 10&nbsp;MB. Wird direkt mit deiner Bewerbung verschickt.</p>
+            <p class="form-hint" data-i18n="f-photo-hint">Erforderlich. Ein echtes Foto von dir (kein PDF), max. 10&nbsp;MB. Wird direkt mit deiner Bewerbung verschickt.</p>
           </div>
-          <div class="form-group span2"><label class="form-label" data-i18n="f-why">Warum DANERS'?</label><textarea name="message" id="jb-msg" class="form-textarea" data-i18n-ph="ph-why" placeholder="Erzählt uns etwas über euch..."></textarea></div>
+          <div class="form-group span2">
+            <label class="form-label" data-i18n="f-resume">Lebenslauf / CV hochladen *</label>
+            <div class="form-file-wrap">
+              <button type="button" class="form-file-btn" onclick="document.getElementById('jb-resume').click()" data-i18n="f-resume-btn">Datei wählen</button>
+              <span class="form-file-name" id="jb-resume-name" data-i18n="f-resume-none">Keine Datei ausgewählt</span>
+              <input type="file" name="resume" id="jb-resume" accept="image/*,.pdf,application/pdf" style="display:none" onchange="updateFileName('jb-resume','jb-resume-name')">
+            </div>
+            <p class="form-hint" data-i18n="f-resume-hint">Erforderlich. Bild oder PDF, max. 10&nbsp;MB.</p>
+          </div>
+          <div class="form-group span2"><label class="form-label" data-i18n="f-why">Warum DANERS'? *</label><textarea name="message" id="jb-msg" class="form-textarea" required data-i18n-ph="ph-why" placeholder="Erzählt uns etwas über euch..."></textarea></div>
         </div>
         <div class="form-consent"><input type="checkbox" id="jb-consent"><label for="jb-consent" data-i18n="f-consent">Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzrichtlinie zu.</label></div>
         <button type="button" class="form-submit" id="jb-submit-btn" onclick="submitJobsForm()" data-i18n="f-apply">Bewerbung absenden</button>
@@ -641,6 +656,34 @@ async function submitJobsForm(){
     return;
   }
 
+  // Phone, date, worktype, and message are all mandatory now too -
+  // only the Social Media Link field stays optional.
+  const phoneEl = document.getElementById('jb-phone');
+  const dateEl = document.getElementById('jb-date');
+  const worktypeEl = document.getElementById('jb-worktype');
+  const msgEl = document.getElementById('jb-msg');
+
+  if(!phoneEl.value.trim()){
+    alert(isEn ? 'Please enter your phone number.' : 'Bitte gib deine Telefonnummer ein.');
+    phoneEl.focus();
+    return;
+  }
+  if(!dateEl.value.trim()){
+    alert(isEn ? 'Please select your availability date.' : 'Bitte wähle dein Verfügbarkeitsdatum aus.');
+    dateEl.focus();
+    return;
+  }
+  if(!worktypeEl.value.trim()){
+    alert(isEn ? 'Please select an employment type.' : 'Bitte wähle eine Art der Beschäftigung aus.');
+    worktypeEl.focus();
+    return;
+  }
+  if(!msgEl.value.trim()){
+    alert(isEn ? 'Please tell us something about yourself.' : 'Bitte erzähl uns etwas über dich.');
+    msgEl.focus();
+    return;
+  }
+
   const photoInput = document.getElementById('jb-photo');
   const photoFile = (photoInput && photoInput.files && photoInput.files[0]) ? photoInput.files[0] : null;
   if(!photoFile){
@@ -649,7 +692,31 @@ async function submitJobsForm(){
     if(photoInput) photoInput.focus();
     return;
   }
+  // The whole point of this field is a real photo of the applicant - a PDF
+  // resume must not be accepted in its place. accept="image/*" on the input
+  // already steers users the right way, but this catches anyone (or any
+  // script) that bypasses that.
+  if(!photoFile.type || !photoFile.type.startsWith('image/')){
+    errEl.textContent = t['f-photo-must-be-image'];
+    errEl.style.display='block';
+    if(photoInput) photoInput.focus();
+    return;
+  }
   if(photoFile.size > 10 * 1024 * 1024){
+    errEl.textContent = t['f-photo-toobig'];
+    errEl.style.display='block';
+    return;
+  }
+
+  const resumeInput = document.getElementById('jb-resume');
+  const resumeFile = (resumeInput && resumeInput.files && resumeInput.files[0]) ? resumeInput.files[0] : null;
+  if(!resumeFile){
+    errEl.textContent = t['f-resume-required'];
+    errEl.style.display='block';
+    if(resumeInput) resumeInput.focus();
+    return;
+  }
+  if(resumeFile.size > 10 * 1024 * 1024){
     errEl.textContent = t['f-photo-toobig'];
     errEl.style.display='block';
     return;
@@ -663,6 +730,9 @@ async function submitJobsForm(){
   fd.append('worktype', document.getElementById('jb-worktype').value.trim());
   fd.append('social', document.getElementById('jb-social').value.trim());
   fd.append('message', document.getElementById('jb-msg').value.trim());
+  // Honeypot value - should always be empty for real users. If a bot fills
+  // it in, the server-side script silently discards the submission.
+  fd.append('website', document.getElementById('jb-website').value.trim());
 
   if(photoFile){
     // Convert the file to Base64 text - far more reliable for Apps Script
@@ -676,6 +746,18 @@ async function submitJobsForm(){
     fd.append('fileData', base64);
     fd.append('fileName', photoFile.name);
     fd.append('fileMime', photoFile.type || 'application/octet-stream');
+  }
+
+  if(resumeFile){
+    const resumeBase64 = await new Promise((resolve, reject)=>{
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(resumeFile);
+    });
+    fd.append('resumeData', resumeBase64);
+    fd.append('resumeName', resumeFile.name);
+    fd.append('resumeMime', resumeFile.type || 'application/octet-stream');
   }
 
   const btn = document.getElementById('jb-submit-btn');
@@ -700,6 +782,8 @@ async function submitJobsForm(){
     document.getElementById('jb-consent').checked=false;
     if(photoInput) photoInput.value='';
     updateFileName('jb-photo','jb-photo-name');
+    if(resumeInput) resumeInput.value='';
+    updateFileName('jb-resume','jb-resume-name');
     setTimeout(()=>{okEl.style.display='none';}, 9000);
   } catch(e){
     errEl.textContent = t['f-jb-err'];
@@ -720,10 +804,13 @@ const translations={
     "f-company":"Unternehmen","f-reqtype":"Art der Anfrage","f-projdesc":"Projektbeschreibung",
     "f-available":"Verfügbar ab","f-worktype":"Art der Beschäftigung","f-why":"Warum DANERS'?","f-social-link":"Social Media Link",
     "f-outlet":"Medium / Outlet","f-topic":"Thema",
-    "f-photo":"Foto / Lebenslauf hochladen *","f-photo-btn":"Datei wählen","f-photo-none":"Keine Datei ausgewählt",
-    "f-photo-hint":"Bild oder PDF, max. 10 MB. Erforderlich – wird direkt mit deiner Bewerbung verschickt.",
+    "f-photo":"Foto hochladen *","f-photo-btn":"Datei wählen","f-photo-none":"Keine Datei ausgewählt",
+    "f-photo-hint":"Erforderlich. Ein echtes Foto von dir (kein PDF), max. 10 MB. Wird direkt mit deiner Bewerbung verschickt.",
+    "f-resume":"Lebenslauf / CV hochladen *","f-resume-btn":"Datei wählen","f-resume-none":"Keine Datei ausgewählt",
+    "f-resume-hint":"Erforderlich. Bild oder PDF, max. 10 MB.","f-resume-required":"Bitte lade deinen Lebenslauf/CV hoch, bevor du die Bewerbung absendest.",
     "f-sending":"Wird gesendet...","f-photo-toobig":"Die Datei ist zu groß (max. 10 MB). Bitte wähle eine kleinere Datei.",
-    "f-photo-required":"Bitte lade ein Foto oder deinen Lebenslauf hoch, bevor du die Bewerbung absendest.",
+    "f-photo-required":"Bitte lade ein Foto hoch, bevor du die Bewerbung absendest.",
+    "f-photo-must-be-image":"Bitte lade ein echtes Foto (Bilddatei) hoch, kein PDF. Der Lebenslauf kann separat als PDF hochgeladen werden.",
     "f-jb-ok":"✓ Danke! Deine Bewerbung wurde erfolgreich gesendet.","f-jb-err":"Etwas ist schiefgelaufen. Bitte versuche es erneut oder schreib uns direkt an info@beef-bread.de.",
     "f-send":"Anfrage senden","f-apply":"Bewerbung absenden",
     "f-consent":"Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzrichtlinie zu.",
@@ -743,10 +830,13 @@ const translations={
     "f-company":"Company","f-reqtype":"Type of Enquiry","f-projdesc":"Project Description",
     "f-available":"Available from","f-worktype":"Employment Type","f-why":"Why DANERS'?","f-social-link":"Social Media Link",
     "f-outlet":"Media / Outlet","f-topic":"Topic",
-    "f-photo":"Upload Photo / Resume *","f-photo-btn":"Choose File","f-photo-none":"No file selected",
-    "f-photo-hint":"Image or PDF, max 10 MB. Required – sent directly with your application.",
+    "f-photo":"Upload Photo *","f-photo-btn":"Choose File","f-photo-none":"No file selected",
+    "f-photo-hint":"Required. A real photo of you (not a PDF), max 10 MB. Sent directly with your application.",
+    "f-resume":"Upload Resume / CV *","f-resume-btn":"Choose File","f-resume-none":"No file selected",
+    "f-resume-hint":"Required. Image or PDF, max 10 MB.","f-resume-required":"Please upload your resume/CV before submitting your application.",
     "f-sending":"Sending...","f-photo-toobig":"That file is too large (max 10 MB). Please choose a smaller file.",
-    "f-photo-required":"Please upload a photo or your resume before submitting your application.",
+    "f-photo-required":"Please upload a photo before submitting your application.",
+    "f-photo-must-be-image":"Please upload an actual photo (image file), not a PDF. You can upload your resume separately as a PDF.",
     "f-jb-ok":"✓ Thanks! Your application was sent successfully.","f-jb-err":"Something went wrong. Please try again or email us directly at info@beef-bread.de.",
     "f-send":"Send Enquiry","f-apply":"Submit Application",
     "f-consent":"I agree to the processing of my data in accordance with the privacy policy.",
