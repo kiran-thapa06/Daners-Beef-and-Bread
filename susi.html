@@ -447,7 +447,19 @@ body.menu-open .footer-minimal {
 <div class="overlay-menu" id="overlayMenu">
   <div class="overlay-inner-content">
     <a href="index.html" data-i18n="nav-home">Home</a>
-    <a href="menu.html" data-i18n="nav-menu">Menü</a>
+
+    <!-- MENÜ DROPDOWN -->
+    <div class="nav-item" id="navMenuItem">
+      <div class="nav-item-label">
+        <span data-i18n="nav-menu">Menü</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="nav-dropdown">
+        <a href="menu.html#isemarkt" data-i18n="nav-menu-ise">Isemarkt Menü</a>
+        <a href="menu.html#sternschanze" data-i18n="nav-menu-susi">Sternschanze Menü</a>
+      </div>
+    </div>
+
     <div class="nav-item" id="navLocItem">
       <div class="nav-item-label">
         <span data-i18n="nav-locations">Locations</span>
@@ -474,16 +486,16 @@ body.menu-open .footer-minimal {
   <div class="page-wrap">
     <div class="content-wide">
       <div class="image-container">
-        <img class="coming-soon-img" src="images/comingsoon.jpg" alt="Coming Soon Sternschanze">
+        <img class="coming-soon-img" src="images/daners_sternschanze_sketch.png" alt="Coming Soon Sternschanze">
       </div>
-<!-- ... existing code above ... -->
+
       <div class="info-grid">
-        <!-- Moved address card to the top -->
+        <!-- Address card -->
         <div class="info-card">
           <p>Susannenstr. 1<br>20357 Hamburg<br></p>
         </div>
         
-        <!-- Moved hours table below the address -->
+        <!-- Hours table -->
         <div class="info-card">
           <table class="hours-table">
             <tr><td>MO. – MI.</td><td>11.00–21.00</td></tr>
@@ -493,7 +505,8 @@ body.menu-open .footer-minimal {
           </table>
         </div>
       </div>
-<!-- ... existing code below ... -->
+    </div>
+  </div>
 </main>
 
 <footer class="footer-minimal">
@@ -534,17 +547,17 @@ document.addEventListener('keydown',e=>{
   }
 });
 
-const navLocItem=document.getElementById('navLocItem');
-if(navLocItem){
-  navLocItem.querySelector('.nav-item-label').addEventListener('click',()=>navLocItem.classList.toggle('open'));
-}
+/* dropdowns (Menü + Locations) */
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.querySelector('.nav-item-label').addEventListener('click',()=>item.classList.toggle('open'));
+});
 
 const translations={
   "de": {
-    "nav-home": "Home","nav-findus":"Findet uns", "nav-susi-link": "Sternschanze", "nav-about": "Über uns", "nav-menu": "Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fcopy": "© 2026 DANERS – Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz", "loc-hours": "Öffnungszeiten", "loc-address": "Adresse", "loc-susi-sub": "Sternschanze | Susannenstr. 1", "loc-coming-title": "Demnächst mehr Informationen", "loc-coming-text": "Diese Seite wird gerade eingerichtet. Schau bald wieder vorbei!", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"
+    "nav-home": "Home","nav-findus":"Findet uns", "nav-susi-link": "Sternschanze", "nav-about": "Über uns", "nav-menu": "Menü", "nav-menu-ise": "Isemarkt Menü", "nav-menu-susi": "Sternschanze Menü", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Kontakt", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fcopy": "© 2026 DANERS – Beef & Bread GmbH", "f-imprint": "Impressum", "f-privacy": "Datenschutz", "loc-hours": "Öffnungszeiten", "loc-address": "Adresse", "loc-susi-sub": "Sternschanze | Susannenstr. 1", "loc-coming-title": "Demnächst mehr Informationen", "loc-coming-text": "Diese Seite wird gerade eingerichtet. Schau bald wieder vorbei!", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"
   }, 
   "en": {
-    "nav-home": "Home", "nav-findus":"Find us","nav-about": "About Us","nav-susi-link": "Sternschanze", "nav-menu": "Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fcopy": "© 2026 DANERS – Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy", "loc-hours": "Opening Hours", "loc-address": "Address", "loc-susi-sub": "Sternschanze | Susannenstr. 1", "loc-coming-title": "More Information Coming Soon", "loc-coming-text": "This page is being set up. Check back soon!", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"
+    "nav-home": "Home", "nav-findus":"Find us","nav-about": "About Us","nav-susi-link": "Sternschanze", "nav-menu": "Menu", "nav-menu-ise": "Isemarkt Menu", "nav-menu-susi": "Sternschanze Menu", "nav-locations": "Locations", "nav-jobs": "Jobs", "nav-contact": "Contact", "nav-isemarkt": "Isemarkt", "nav-susi": "SUSI", "fcopy": "© 2026 DANERS – Beef & Bread GmbH", "f-imprint": "Imprint", "f-privacy": "Data Privacy", "loc-hours": "Opening Hours", "loc-address": "Address", "loc-susi-sub": "Sternschanze | Susannenstr. 1", "loc-coming-title": "More Information Coming Soon", "loc-coming-text": "This page is being set up. Check back soon!", "loc-sbahn": "S-Bahn: Sternschanze (S3/S31)"
   }
 };
 
