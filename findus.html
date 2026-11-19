@@ -171,7 +171,19 @@ body.menu-open .site-footer{margin-left:50%;width:50%;}
 <div class="overlay-menu" id="overlayMenu">
   <div class="overlay-inner-content">
     <a href="index.html" data-i18n="fhome">Home</a>
-    <a href="menu.html" data-i18n="nav-menu">Menü</a>
+
+    <!-- MENÜ DROPDOWN -->
+    <div class="nav-item" id="navMenuItem">
+      <div class="nav-item-label">
+        <span data-i18n="nav-menu">Menü</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="nav-dropdown">
+        <a href="menu.html#isemarkt" data-i18n="nav-menu-ise">Isemarkt Menü</a>
+        <a href="menu.html#sternschanze" data-i18n="nav-menu-susi">Sternschanze Menü</a>
+      </div>
+    </div>
+
     <div class="nav-item" id="navLocItem">
       <div class="nav-item-label">
         <span data-i18n="nav-locations">Locations</span>
@@ -249,8 +261,11 @@ menuBtn.addEventListener('click',()=>{
 });
 overlayMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlayMenu.classList.contains('open'))closeMenu();});
-const navLocItem=document.getElementById('navLocItem');
-if(navLocItem)navLocItem.querySelector('.nav-item-label').addEventListener('click',()=>navLocItem.classList.toggle('open'));
+
+/* dropdowns (Menü + Locations) */
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.querySelector('.nav-item-label').addEventListener('click',()=>item.classList.toggle('open'));
+});
 
 /* ══════════════════ DATE HELPERS ══════════════════ */
 function pad(n){return String(n).padStart(2,'0');}
@@ -585,14 +600,14 @@ renderAll();
 /* ══════════════════ TRANSLATIONS (nav / chrome) ══════════════════ */
 const translations={
   "de":{
-    "nav-menu":"Menü","nav-locations":"Locations","nav-findus":"Findet uns","nav-jobs":"Jobs","nav-contact":"Kontakt","nav-isemarkt":"Isemarkt","nav-susi":"Sternschanze","nav-about":"Über uns",
+    "nav-menu":"Menü","nav-menu-ise":"Isemarkt Menü","nav-menu-susi":"Sternschanze Menü","nav-locations":"Locations","nav-findus":"Findet uns","nav-jobs":"Jobs","nav-contact":"Kontakt","nav-isemarkt":"Isemarkt","nav-susi":"Sternschanze","nav-about":"Über uns",
     "fhome":"Home","fcopy":"© 2026 DANERS – Beef & Bread GmbH","f-imprint":"Impressum","f-privacy":"Datenschutz",
     "cal-title":"FINDET UNS","cal-label":"WO WIR 2026 UNTERWEGS SIND",
     "cal-upcoming":"NÄCHSTE TERMINE","cal-today":"HEUTE",
     "cal-legend-market":"Isemarkt","cal-legend-festival":"Event / Festival","cal-legend-pride":"CSD","cal-legend-christmas":"Weihnachtsmarkt"
   },
   "en":{
-    "nav-menu":"Menu","nav-locations":"Locations","nav-findus":"Find Us","nav-jobs":"Jobs","nav-contact":"Contact","nav-isemarkt":"Isemarkt","nav-susi":"Sternschanze","nav-about":"About Us",
+    "nav-menu":"Menu","nav-menu-ise":"Isemarkt Menu","nav-menu-susi":"Sternschanze Menu","nav-locations":"Locations","nav-findus":"Find Us","nav-jobs":"Jobs","nav-contact":"Contact","nav-isemarkt":"Isemarkt","nav-susi":"Sternschanze","nav-about":"About Us",
     "fhome":"Home","fcopy":"© 2026 DANERS – Beef & Bread GmbH","f-imprint":"Imprint","f-privacy":"Data Privacy",
     "cal-title":"FIND US","cal-label":"WHERE WE ARE IN 2026",
     "cal-upcoming":"UPCOMING DATES","cal-today":"TODAY",
