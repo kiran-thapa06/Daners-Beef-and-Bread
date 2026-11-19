@@ -17,15 +17,8 @@
   --gray: #888;
   --border: #e0e0e0;
 }
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-  background: #ffffff !important;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; background: #ffffff !important; }
 body {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
@@ -37,12 +30,10 @@ body {
   flex-direction: column;
 }
 
-/* ── FIXED TOP NAVIGATION BAR (matches index.html) ── */
+/* ── FIXED TOP NAVIGATION BAR ── */
 nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 2001;
   display: flex;
   flex-direction: row;
@@ -53,180 +44,86 @@ nav {
   backdrop-filter: blur(10px);
   transition: background 0.3s;
 }
-nav.open {
-  background: #ffffff;
-  backdrop-filter: none;
-}
-.nav-top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
+nav.open { background: #ffffff; backdrop-filter: none; }
+.nav-top-row { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 
 .hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 4px;
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 2005; 
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+  cursor: pointer; background: none; border: none; padding: 4px;
+  width: 32px; height: 32px; flex-shrink: 0; position: relative; z-index: 2005;
 }
 .hamburger span {
-  display: block;
-  width: 24px;
-  height: 1.5px;
-  background: var(--black);
-  transition: transform .3s, opacity .3s;
-  transform-origin: center;
+  display: block; width: 24px; height: 1.5px; background: var(--black);
+  transition: transform .3s, opacity .3s; transform-origin: center;
 }
 .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  position: relative;
-  z-index: 2005;
-}
+.nav-right { display: flex; align-items: center; gap: 20px; position: relative; z-index: 2005; }
 .lang-switcher {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  background: rgba(0,0,0,.05);
-  border-radius: 20px;
-  padding: 3px 4px;
+  display: flex; align-items: center; gap: 2px;
+  background: rgba(0,0,0,.05); border-radius: 20px; padding: 3px 4px;
 }
 .lang-btn {
-  font-family: 'Poppins', sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .06em;
-  padding: 4px 10px;
-  border: none;
-  cursor: pointer;
-  border-radius: 16px;
-  background: transparent;
-  color: var(--gray);
-  transition: all .2s;
+  font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .06em;
+  padding: 4px 10px; border: none; cursor: pointer; border-radius: 16px;
+  background: transparent; color: var(--gray); transition: all .2s;
 }
-.lang-btn.active {
-  background: var(--black);
-  color: #fff;
-}
+.lang-btn.active { background: var(--black); color: #fff; }
 .lang-btn:hover:not(.active) { color: var(--black); }
 
-.nav-social {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-.nav-social a {
-  color: var(--black);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity .2s;
-}
+.nav-social { display: flex; gap: 16px; align-items: center; }
+.nav-social a { color: var(--black); text-decoration: none; display: flex; align-items: center; justify-content: center; transition: opacity .2s; }
 .nav-social a:hover { opacity: .4; }
 
-/* ── PAGE TITLE HEADER (now page content, sits below the nav like index.html's slogan) ── */
+/* ── PAGE TITLE ── */
 .menu-title-header {
-  text-align: center;
-  width: 100%;
-  background: #ffffff;
-  padding: 40px 24px 20px;
+  text-align: center; width: 100%; background: #ffffff;
+  padding: 8px 24px 10px;
   transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .menu-title-header h1 {
-  font-size: clamp(24px, 4.5vw, 42px);
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  line-height: 1.1;
-  margin: 0;
-  text-transform: uppercase;
-  color: var(--black);
+  font-size: clamp(24px, 4.5vw, 42px); font-weight: 900; letter-spacing: 0.05em;
+  line-height: 1.1; margin: 0; text-transform: uppercase; color: var(--black);
 }
 .menu-title-header p {
-  font-size: 11px;
-  font-weight: 300;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-top: 8px;
+  font-size: 11px; font-weight: 300; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gray); margin-top: 8px;
+}
+.menu-location {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--black);
+  padding-bottom: 3px; border-bottom: 1.5px solid var(--black);
 }
 
-/* ── SIDE DRAWER OVERLAY MENU (Restored Previous Style) ── */
+/* ── SIDE DRAWER OVERLAY MENU ── */
 .overlay-menu {
-  display: flex;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 50%; 
-  z-index: 2000;
-  background: #ffffff;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; 
-  padding: 110px 24px 60px;  /* matches index.html — nav is now the same single-row height */
-  overflow-y: auto;
+  display: flex; position: fixed; top: 0; bottom: 0; left: 0; width: 50%;
+  z-index: 2000; background: #ffffff; flex-direction: column;
+  align-items: center; justify-content: flex-start;
+  padding: 110px 24px 60px; overflow-y: auto;
   border-right: 1px solid var(--border);
   transform: translateX(-100%);
   transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.overlay-menu.open { 
-  transform: translateX(0);
-}
+.overlay-menu.open { transform: translateX(0); }
 
 .overlay-inner-content {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(18px, 4vh, 32px);
+  width: 100%; max-width: 600px; display: flex; flex-direction: column;
+  align-items: center; gap: clamp(18px, 4vh, 32px);
 }
-
 .overlay-menu a, .nav-item-label {
-  font-size: 26px;
-  font-weight: 800;
-  text-decoration: none;
-  color: var(--black);
-  text-transform: uppercase;
-  letter-spacing: -.5px;
-  padding: 2px 0;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  user-select: none;
+  font-size: 26px; font-weight: 800; text-decoration: none; color: var(--black);
+  text-transform: uppercase; letter-spacing: -.5px; padding: 2px 0; position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; user-select: none;
 }
-.overlay-menu > div.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+.overlay-menu > div.nav-item, .overlay-inner-content > div.nav-item { display: flex; flex-direction: column; align-items: center; }
 .overlay-menu a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  right: 50%;
-  height: 2.5px;
-  background: var(--black);
-  transition: left .25s, right .25s;
+  content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+  height: 2.5px; background: var(--black); transition: left .25s, right .25s;
 }
 .overlay-menu a:hover::after { left: 0; right: 0; }
 .nav-dropdown a::after { display: none; }
@@ -235,202 +132,154 @@ nav.open {
 .nav-item-label svg { transition: transform .25s; flex-shrink: 0; width: 16px; height: 16px; }
 .nav-item.open .nav-item-label svg { transform: rotate(180deg); }
 
-.nav-dropdown {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 0 4px;
-}
+.nav-dropdown { display: none; flex-direction: column; align-items: center; gap: 4px; padding: 8px 0 4px; }
 .nav-item.open .nav-dropdown { display: flex; }
 .nav-dropdown a {
- font-family: 'Poppins', sans-serif; /* Ensures consistent font */
-  font-size: 14px;                   /* Matches the smaller info section size */
-  font-weight: 500;                  /* Matches the bold weight */
-  text-transform: uppercase;         /* Matches the uppercase look */
-  letter-spacing: 0.15em;            /* Matches the spacing in your image */
-  text-decoration: none;
-  color: var(--gray);
-  padding: 8px 28px;
-  border-radius: 4px;
+  font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.15em; text-decoration: none;
+  color: var(--gray); padding: 8px 28px; border-radius: 4px;
   transition: color .2s, background .2s;
 }
 .nav-dropdown a:hover { color: var(--black); background: rgba(0,0,0,.05); }
 
-/* ── LAYOUT MECHANICS WITH VISIBLE SHIFTING CONTENT ── */
+/* ── LAYOUT ── */
 main {
-  flex: 1;
-  padding-top: 90px; 
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
+  flex: 1; padding-top: 68px; position: relative; z-index: 1;
+  display: flex; flex-direction: column;
   transition: margin-left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
-body.menu-open main {
-  margin-left: 50%;
-  width: 50%;
-}
+body.menu-open main { margin-left: 50%; width: 50%; }
 
 .menu-page-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #ffffff;
-  width: 100%;
-  padding: 8px 0 64px; 
+  display: flex; flex-direction: column; align-items: center;
+  background: #ffffff; width: 100%; padding: 4px 0 32px;
 }
-
 .menu-content-container {
-  width: 100%;
-  max-width: 900px;
-  padding: 0 32px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%; max-width: 900px; padding: 0 32px; box-sizing: border-box;
+  display: flex; flex-direction: column; align-items: center;
 }
 
-.menu-img-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
+.menu-view { width: 100%; display: none; flex-direction: column; align-items: center; }
+.menu-view.active { display: flex; }
+
+.menu-img-container { width: 100%; display: flex; justify-content: center; }
 .menu-img-container img {
-  display: block;
-  width: auto;
-  height: auto;
+  display: block; width: auto; height: auto; max-width: 100%;
+  max-height: calc(100vh - 265px); max-height: calc(100dvh - 265px); object-fit: contain;
+}
+
+/* Both menu images have white space around the clipboard → crop identically so they display at the same size */
+.menu-img-crop {
+  position: relative;
+  width: min(100%, max(320px, calc((100vh - 265px) * 1.392)));
+  width: min(100%, max(320px, calc((100dvh - 265px) * 1.392)));
   max-width: 100%;
-  max-height: calc(100vh - 210px);
-  object-fit: contain;
+  aspect-ratio: 1.392; overflow: hidden;
 }
+.menu-img-crop img {
+  position: absolute; width: 145.06%; max-width: none; max-height: none; height: auto;
+}
+.menu-img-crop img.crop-ss  { left: -23.36%; top: -102.22%; }
+.menu-img-crop img.crop-ise { left: -23.37%; top: -16.77%; }
 
-.menu-note-container {
-  width: 100%;
-  max-width: 82%; 
-  margin: 44px auto 0 auto;
-  text-align: center;
+/* ── ALLERGEN DROPDOWN ── */
+.allergen-box {
+  width: 100%; max-width: 560px; margin: 14px auto 0; text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
-.menu-note-text {
-  font-size: 14px;
-  line-height: 1.9;
-  color: #333;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase; 
-  background: #ffffff; 
-  word-spacing: 0.05em;
-  display: block;
-  width: 100%;
+.allergen-box summary {
+  list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--black); padding: 8px 18px; user-select: none; transition: background .2s;
+  border: 1px solid var(--border); border-radius: 20px;
 }
+.allergen-box summary::-webkit-details-marker { display: none; }
+.allergen-box summary:hover { background: rgba(0,0,0,.05); }
+.allergen-box summary svg { width: 10px; height: 10px; transition: transform .25s; }
+.allergen-box[open] summary svg { transform: rotate(180deg); }
 
-/* ── MINIMAL FOOTER ── */
+.allergen-content {
+  margin-top: 10px; text-align: left;
+  font-size: 11px; line-height: 1.7; font-weight: 300; color: #444;
+  border-top: 1px solid var(--border); padding-top: 14px;
+}
+.al-group-title {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--black); margin: 16px 0 4px;
+}
+.al-group-title:first-child { margin-top: 0; }
+.al-item {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 3px 0;
+}
+.al-item > span:last-child { font-weight: 600; color: var(--black); text-align: right; white-space: nowrap; }
+.al-item > span:last-child em { font-style: normal; font-weight: 300; color: #666; }
+.al-legend { margin-top: 4px; }
+.al-legend div { display: flex; gap: 10px; padding: 1px 0; }
+.al-legend b { font-weight: 600; color: var(--black); width: 14px; flex-shrink: 0; }
+
+/* ── FOOTER ── */
 .footer-minimal {
-  background: #fff;
-  color: rgba(0,0,0,.45);
-  padding: 24px 48px;
-  border-top: 1px solid var(--border);
-  margin-top: auto; 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  font-size: 12px;
-  letter-spacing: .02em;
+  background: #fff; color: rgba(0,0,0,.45); padding: 24px 48px;
+  border-top: 1px solid var(--border); margin-top: auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap; font-size: 12px; letter-spacing: .02em;
   transition: margin-left 0.35s cubic-bezier(0.25, 1, 0.5, 1), width 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
 body.menu-open .footer-minimal {
-  margin-left: 50%;
-  width: 50%;
+  margin-left: 50%; width: 50%;
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 10px; text-align: center; padding: 22px 16px;
 }
-
-.footer-legal {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
+body.menu-open .footer-copy { margin-left: 0; text-align: center; white-space: normal; }
+body.menu-open .footer-legal { justify-content: center; gap: 16px; }
+.footer-legal { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .footer-legal a {
-  color: rgba(0,0,0,.55);
-  text-decoration: underline;
-  text-decoration-color: rgba(0,0,0,.25);
-  transition: color .2s;
-  white-space: nowrap;
+  color: rgba(0,0,0,.55); text-decoration: underline;
+  text-decoration-color: rgba(0,0,0,.25); transition: color .2s; white-space: nowrap;
 }
 .footer-legal a:hover { color: var(--black); }
-.footer-copy {
-  white-space: nowrap;
-  margin-left: auto;
-  text-align: right;
+.footer-copy { margin-left: auto; text-align: right; }
+
+/* ── SHORT SCREENS ── */
+@media (max-height: 760px) {
+  .menu-title-header h1 { font-size: clamp(22px, 3.2vw, 30px); }
+  .menu-title-header p { margin-top: 4px; font-size: 10px; }
+  .menu-location { margin-top: 6px; font-size: 11px; }
+  .menu-img-crop { width: min(100%, max(320px, calc((100vh - 235px) * 1.392))); width: min(100%, max(320px, calc((100dvh - 235px) * 1.392))); }
 }
 
-/* ── RESPONSIVE MEDIA BREAKPOINTS ── */
+/* ── RESPONSIVE ── */
 @media(max-width:900px) {
   nav { padding: 18px 20px; }
-  main { padding-top: 85px; }
-  .menu-title-header { padding: 30px 24px 16px; }
-  .menu-page-wrap { padding: 8px 0 52px; }
-  .menu-img-container img { max-height: calc(100vh - 190px); }
+  main { padding-top: 72px; }
+  .menu-title-header { padding: 8px 24px 10px; }
+  .menu-page-wrap { padding: 4px 0 32px; }
   .footer-minimal { padding: 24px 24px; }
   .overlay-menu { padding-top: 100px; }
 }
+@media (max-width: 760px) {
+  .footer-minimal { flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+  .footer-copy { margin-left: 0; text-align: center; }
+  .footer-legal { justify-content: center; }
+}
 @media (max-width: 600px) {
   nav { padding: 16px 16px; }
-  main { padding-top: 70px; }
-  .menu-title-header { padding: 24px 16px 12px; }
-  .menu-img-container img { max-height: calc(100vh - 145px); }
-  
-  body.menu-open main {
-    margin-left: 0;
-    width: 100%;
-  }
-  body.menu-open .footer-minimal {
-    margin-left: 0;
-    width: 100%;
-  }
-  body.menu-open .menu-title-header {
-    margin-left: 0;
-    width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    display: none; 
-  }
-
-  .overlay-menu { 
-    width: 100%; 
-    padding: 90px 16px 40px;
-    border-right: none;
-  } 
-  
-  .menu-page-wrap { padding: 8px 0 44px; }
-  .menu-content-container { padding: 0 24px; }
-  .menu-note-container { 
-    max-width: 88%; 
-    padding: 0; 
-    margin: 35px auto 0 auto; 
-  }
-  .menu-note-text {
-    font-size: 13px;
-    line-height: 1.7;
-  }
-  .footer-minimal {
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    text-align: center;
-    padding: 20px 16px;
-  }
-  .footer-copy {
-    margin-left: 0;
-    text-align: center;
-  }
-  .footer-legal {
-    justify-content: center;
-    gap: 14px;
-  }
+  main { padding-top: 64px; }
+  .menu-title-header { padding: 8px 16px 8px; }
+  .menu-img-container img { max-height: none; }
+  body.menu-open main { margin-left: 0; width: 100%; }
+  body.menu-open .footer-minimal { margin-left: 0; width: 100%; }
+  body.menu-open .menu-title-header { margin-left: 0; width: 100%; opacity: 0; visibility: hidden; display: none; }
+  .overlay-menu { width: 100%; padding: 90px 16px 40px; border-right: none; }
+  .menu-page-wrap { padding: 4px 0 32px; }
+  .menu-content-container { padding: 0 20px; }
+  .allergen-box { margin-top: 12px; }
+  .menu-img-crop { width: 100%; }
+  .footer-minimal { flex-direction: column; align-items: center; gap: 8px; text-align: center; padding: 20px 16px; }
+  .footer-copy { margin-left: 0; text-align: center; }
+  .footer-legal { justify-content: center; gap: 14px; }
 }
 </style>
 </head>
@@ -456,7 +305,19 @@ body.menu-open .footer-minimal {
 <div class="overlay-menu" id="overlayMenu">
   <div class="overlay-inner-content">
     <a href="index.html" data-i18n="fhome">Home</a>
-    <a href="menu.html" data-i18n="nav-menu">Menü</a>
+
+    <!-- MENÜ DROPDOWN -->
+    <div class="nav-item open" id="navMenuItem">
+      <div class="nav-item-label">
+        <span data-i18n="nav-menu">Menü</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="nav-dropdown">
+        <a href="menu.html#isemarkt" data-menu="isemarkt" data-i18n="nav-menu-ise">Isemarkt Menü</a>
+        <a href="menu.html#sternschanze" data-menu="sternschanze" data-i18n="nav-menu-susi">Sternschanze Menü</a>
+      </div>
+    </div>
+
     <div class="nav-item" id="navLocItem">
       <div class="nav-item-label">
         <span data-i18n="nav-locations">Locations</span>
@@ -478,19 +339,105 @@ body.menu-open .footer-minimal {
   <div class="menu-title-header">
     <h1 data-i18n="nav-menu">MENÜ</h1>
     <p>SLOW FOOD — SERVED FAST</p>
+    <span class="menu-location" id="menuLocation" data-i18n="nav-isemarkt">Isemarkt</span>
   </div>
 
   <div class="menu-page-wrap">
     <div class="menu-content-container">
-      <div class="menu-img-container">
-        <img src="images/menu_daners.jpg" alt="DANERS’ Menü">
+
+      <!-- ISEMARKT MENU -->
+      <div class="menu-view active" id="view-isemarkt">
+        <div class="menu-img-crop">
+          <img class="crop-ise" src="images/menu_daners.jpg" alt="DANERS’ Menü Isemarkt">
+        </div>
+
+        <details class="allergen-box">
+          <summary>
+            <span data-i18n="al-title">Allergene</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+
+          <div class="allergen-content">
+            <div class="al-group-title" data-i18n="al-main">Hauptgerichte</div>
+            <div class="al-item"><span>Beef &amp; Brötchen</span><span>A, C, M</span></div>
+            <div class="al-item"><span>Beef &amp; Toast</span><span>A, C, M</span></div>
+            <div class="al-item"><span>Beef &amp; Bread</span><span>A, C, M</span></div>
+
+            <div class="al-group-title">Sides</div>
+            <div class="al-item"><span>Knusprige Kartoffelecken, <span data-i18n="al-pure">pur</span></span><span>–</span></div>
+            <div class="al-item"><span>Loaded Kartoffelecken</span><span>C, G, M</span></div>
+
+            <div class="al-group-title">Add-Ons</div>
+            <div class="al-item"><span>Extra Beef</span><span>–</span></div>
+            <div class="al-item"><span>Grana Padano</span><span>G, <em data-i18n="al-maybe">ggf.</em> C</span></div>
+
+            <div class="al-group-title" data-i18n="al-legend">Allergenlegende</div>
+            <div class="al-legend">
+              <div><b>A</b><span data-i18n="al-A">Glutenhaltiges Getreide (Weizen)</span></div>
+              <div><b>C</b><span data-i18n="al-C">Eier und Eierzeugnisse</span></div>
+              <div><b>G</b><span data-i18n="al-G">Milch und Milcherzeugnisse</span></div>
+              <div><b>M</b><span data-i18n="al-M">Senf und Senferzeugnisse</span></div>
+            </div>
+          </div>
+        </details>
       </div>
 
-      <div class="menu-note-container">
-        <div class="menu-note-text" data-i18n="menu-extra-note">
-          An unserem Standort in der Sternschanze wartet noch das eine oder andere Extra auf euch. Schaut vorbei und entdeckt es selbst
+      <!-- STERNSCHANZE MENU -->
+      <div class="menu-view" id="view-sternschanze">
+        <div class="menu-img-crop">
+          <img class="crop-ss" src="images/daners_menu_sternschanze.png" alt="DANERS’ Menü Sternschanze">
         </div>
+
+        <details class="allergen-box">
+          <summary>
+            <span data-i18n="al-title">Allergene</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+
+          <div class="allergen-content">
+            <div class="al-group-title" data-i18n="al-main">Hauptgerichte</div>
+            <div class="al-item"><span>Beef &amp; Brötchen</span><span>A, C, M</span></div>
+            <div class="al-item"><span>Beef &amp; Brötchen vegan</span><span>A, M</span></div>
+            <div class="al-item"><span>Beef &amp; Toast</span><span>A, C, M</span></div>
+            <div class="al-item"><span>Beef &amp; Toast vegan</span><span>A, M</span></div>
+            <div class="al-item"><span>Beef &amp; Baguette</span><span>A, C, M</span></div>
+            <div class="al-item"><span>Beef &amp; Baguette vegan</span><span>A, M</span></div>
+            <div class="al-item"><span>Beef &amp; Bread</span><span>A, C, M</span></div>
+            <div class="al-item"><span>Beef &amp; Bread vegan</span><span>A, M</span></div>
+            <div class="al-item"><span>Skip The Bread</span><span>G, O, <em data-i18n="al-maybe">ggf.</em> C</span></div>
+            <div class="al-item"><span>Skip The Bread vegan <span data-i18n="al-nocheese">(ohne Käse)</span></span><span>O</span></div>
+
+            <div class="al-group-title">Sides</div>
+            <div class="al-item"><span>Knusprige Kartoffelecken, <span data-i18n="al-pure">pur</span></span><span>–</span></div>
+            <div class="al-item"><span>Kartoffelecken mit Rouille &amp; Grana Padano</span><span>C, G, M</span></div>
+            <div class="al-item"><span>Loaded Kartoffelecken</span><span>C, G, M</span></div>
+
+            <div class="al-group-title">Add-Ons</div>
+            <div class="al-item"><span>Extra Beef</span><span>–</span></div>
+            <div class="al-item"><span>Grana Padano</span><span>G, <em data-i18n="al-maybe">ggf.</em> C</span></div>
+            <div class="al-item"><span data-i18n="al-egg">Spiegelei</span><span>C</span></div>
+
+            <div class="al-group-title" data-i18n="al-sauces">Saucen</div>
+            <div class="al-item"><span>Rouille</span><span>C, M</span></div>
+            <div class="al-item"><span data-i18n="al-vrouille">Vegane Rouille</span><span>M</span></div>
+
+            <div class="al-group-title" data-i18n="al-icecream">Softeis</div>
+            <div class="al-item"><span data-i18n="al-vanilla">Vanille</span><span>G</span></div>
+            <div class="al-item"><span data-i18n="al-choc">Schoko</span><span>G</span></div>
+            <div class="al-item"><span>Duo</span><span>G</span></div>
+
+            <div class="al-group-title" data-i18n="al-legend">Allergenlegende</div>
+            <div class="al-legend">
+              <div><b>A</b><span data-i18n="al-A">Glutenhaltiges Getreide (Weizen)</span></div>
+              <div><b>C</b><span data-i18n="al-C">Eier und Eierzeugnisse</span></div>
+              <div><b>G</b><span data-i18n="al-G">Milch und Milcherzeugnisse</span></div>
+              <div><b>M</b><span data-i18n="al-M">Senf und Senferzeugnisse</span></div>
+              <div><b>O</b><span data-i18n="al-O">Schwefeldioxid und Sulfite</span></div>
+            </div>
+          </div>
+        </details>
       </div>
+
     </div>
   </div>
 </main>
@@ -513,8 +460,7 @@ function closeMenu() {
   menuBtn.classList.remove('open');
   mainNavbar.classList.remove('open');
   document.body.classList.remove('menu-open');
-  /* Removed layout lock so content is interactable/viewable while open */
-  document.body.style.overflow=''; 
+  document.body.style.overflow='';
 }
 
 menuBtn.addEventListener('click',()=>{
@@ -527,44 +473,91 @@ menuBtn.addEventListener('click',()=>{
 overlayMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click', closeMenu));
 
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'&&overlayMenu.classList.contains('open')){
-    closeMenu();
-  }
+  if(e.key==='Escape'&&overlayMenu.classList.contains('open')) closeMenu();
 });
 
-const navLocItem=document.getElementById('navLocItem');
-if(navLocItem)navLocItem.querySelector('.nav-item-label').addEventListener('click',()=>navLocItem.classList.toggle('open'));
+/* dropdowns (Menü + Locations) */
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.querySelector('.nav-item-label').addEventListener('click',()=>item.classList.toggle('open'));
+});
+
+/* ── MENU SWITCHING ── */
+function showMenu(name){
+  if(name!=='sternschanze') name='isemarkt';
+  document.getElementById('view-isemarkt').classList.toggle('active', name==='isemarkt');
+  document.getElementById('view-sternschanze').classList.toggle('active', name==='sternschanze');
+  document.getElementById('menuLocation').setAttribute('data-i18n', name==='isemarkt'?'nav-isemarkt':'nav-susi');
+  applyLang(currentLang);
+}
+document.querySelectorAll('[data-menu]').forEach(a=>a.addEventListener('click',()=>showMenu(a.dataset.menu)));
+window.addEventListener('hashchange',()=>showMenu(location.hash.replace('#','')));
 
 const translations={
   "de": {
-    "nav-about": "Über uns", 
-    "menu-extra-note": "An unserem Standort in der Sternschanze wartet noch das eine oder andere Extra auf euch. Schaut vorbei und entdeckt es selbst", 
-    "nav-menu": "Menü", 
-    "nav-locations": "Locations", 
-    "nav-jobs": "Jobs", 
-    "nav-contact": "Kontakt", 
+    "nav-about": "Über uns",
+    "nav-menu": "Menü",
+    "nav-menu-ise": "Isemarkt Menü",
+    "nav-menu-susi": "Sternschanze Menü",
+    "nav-locations": "Locations",
+    "nav-jobs": "Jobs",
+    "nav-contact": "Kontakt",
     "nav-findus":"Findet uns",
-    "nav-isemarkt": "Isemarkt", 
-    "nav-susi": "Sternschanze", 
-    "fhome": "Home", 
-    "fcopy": "© 2026 DANERS – Beef & Bread GmbH", 
-    "f-imprint": "Impressum", 
-    "f-privacy": "Datenschutz"
-  }, 
+    "nav-isemarkt": "Isemarkt",
+    "nav-susi": "Sternschanze",
+    "fhome": "Home",
+    "fcopy": "© 2026 DANERS – Beef & Bread GmbH",
+    "f-imprint": "Impressum",
+    "f-privacy": "Datenschutz",
+    "al-title": "Allergene",
+    "al-main": "Hauptgerichte",
+    "al-maybe": "ggf.",
+    "al-nocheese": "(ohne Käse)",
+    "al-pure": "pur",
+    "al-egg": "Spiegelei",
+    "al-sauces": "Saucen",
+    "al-vrouille": "Vegane Rouille",
+    "al-icecream": "Softeis",
+    "al-vanilla": "Vanille",
+    "al-choc": "Schoko",
+    "al-legend": "Allergenlegende",
+    "al-A": "Glutenhaltiges Getreide (Weizen)",
+    "al-C": "Eier und Eierzeugnisse",
+    "al-G": "Milch und Milcherzeugnisse",
+    "al-M": "Senf und Senferzeugnisse",
+    "al-O": "Schwefeldioxid und Sulfite"
+  },
   "en": {
-    "nav-about": "About Us", 
-    "menu-extra-note": "We have a few extra things to offer at our Sternschanze location. Come by and find out", 
-    "nav-menu": "Menu", 
-    "nav-locations": "Locations", 
-    "nav-jobs": "Jobs", 
-    "nav-contact": "Contact", 
+    "nav-about": "About Us",
+    "nav-menu": "Menu",
+    "nav-menu-ise": "Isemarkt Menu",
+    "nav-menu-susi": "Sternschanze Menu",
+    "nav-locations": "Locations",
+    "nav-jobs": "Jobs",
+    "nav-contact": "Contact",
     "nav-findus":"Find us",
-    "nav-isemarkt": "Isemarkt", 
-    "nav-susi": "Sternschanze", 
-    "fhome": "Home", 
-    "fcopy": "© 2026 DANERS – Beef & Bread GmbH", 
-    "f-imprint": "Imprint", 
-    "f-privacy": "Data Privacy"
+    "nav-isemarkt": "Isemarkt",
+    "nav-susi": "Sternschanze",
+    "fhome": "Home",
+    "fcopy": "© 2026 DANERS – Beef & Bread GmbH",
+    "f-imprint": "Imprint",
+    "f-privacy": "Data Privacy",
+    "al-title": "Allergens",
+    "al-main": "Main dishes",
+    "al-maybe": "possibly",
+    "al-nocheese": "(without cheese)",
+    "al-pure": "plain",
+    "al-egg": "Fried egg",
+    "al-sauces": "Sauces",
+    "al-vrouille": "Vegan Rouille",
+    "al-icecream": "Soft serve",
+    "al-vanilla": "Vanilla",
+    "al-choc": "Chocolate",
+    "al-legend": "Allergen legend",
+    "al-A": "Cereals containing gluten (wheat)",
+    "al-C": "Eggs and egg products",
+    "al-G": "Milk and milk products",
+    "al-M": "Mustard and mustard products",
+    "al-O": "Sulphur dioxide and sulphites"
   }
 };
 let currentLang=localStorage.getItem('daners_lang')||'de';
@@ -578,6 +571,7 @@ function applyLang(lang){
 }
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
 applyLang(currentLang);
+showMenu(location.hash.replace('#',''));
 </script>
 </body>
 </html>
