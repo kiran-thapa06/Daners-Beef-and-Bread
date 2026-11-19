@@ -465,7 +465,19 @@ body.menu-open .footer-minimal {
 <div class="overlay-menu" id="overlayMenu">
   <div class="overlay-inner-content">
     <a href="index.html" data-i18n="fhome">Home</a>
-    <a href="menu.html" data-i18n="nav-menu">Menü</a>
+
+    <!-- MENÜ DROPDOWN -->
+    <div class="nav-item" id="navMenuItem">
+      <div class="nav-item-label">
+        <span data-i18n="nav-menu">Menü</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="nav-dropdown">
+        <a href="menu.html#isemarkt" data-i18n="nav-menu-ise">Isemarkt Menü</a>
+        <a href="menu.html#sternschanze" data-i18n="nav-menu-susi">Sternschanze Menü</a>
+      </div>
+    </div>
+
     <div class="nav-item" id="navLocItem">
       <div class="nav-item-label">
         <span data-i18n="nav-locations">Locations</span>
@@ -535,15 +547,17 @@ document.addEventListener('keydown',e=>{
   }
 });
 
-const navLocItem=document.getElementById('navLocItem');
-if(navLocItem){
-  navLocItem.querySelector('.nav-item-label').addEventListener('click',()=>navLocItem.classList.toggle('open'));
-}
+/* dropdowns (Menü + Locations) */
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.querySelector('.nav-item-label').addEventListener('click',()=>item.classList.toggle('open'));
+});
 
 const translations={
   "de": {
     "nav-about": "Über uns", 
     "nav-menu": "Menü", 
+    "nav-menu-ise": "Isemarkt Menü",
+    "nav-menu-susi": "Sternschanze Menü",
     "nav-locations": "Locations", 
     "nav-jobs": "Jobs", 
     "nav-contact": "Kontakt", 
@@ -558,6 +572,8 @@ const translations={
   "en": {
     "nav-about": "About Us", 
     "nav-menu": "Menu", 
+    "nav-menu-ise": "Isemarkt Menu",
+    "nav-menu-susi": "Sternschanze Menu",
     "nav-locations": "Locations", 
     "nav-jobs": "Jobs", 
     "nav-contact": "Contact", 
