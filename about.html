@@ -421,7 +421,19 @@ body.menu-open .footer-legal-bar {
 <div class="overlay-menu" id="overlayMenu">
   <div class="overlay-inner-content">
     <a href="index.html" data-i18n="fhome">Home</a>
-    <a href="menu.html" data-i18n="nav-menu">Menü</a>
+
+    <!-- MENÜ DROPDOWN -->
+    <div class="nav-item" id="navMenuItem">
+      <div class="nav-item-label">
+        <span data-i18n="nav-menu">Menü</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="nav-dropdown">
+        <a href="menu.html#isemarkt" data-i18n="nav-menu-ise">Isemarkt Menü</a>
+        <a href="menu.html#sternschanze" data-i18n="nav-menu-susi">Sternschanze Menü</a>
+      </div>
+    </div>
+
     <div class="nav-item" id="navLocItem">
       <div class="nav-item-label">
         <span data-i18n="nav-locations">Locations</span>
@@ -432,7 +444,7 @@ body.menu-open .footer-legal-bar {
         <a href="susi.html" data-i18n="nav-susi">Sternschanze</a>
       </div>
     </div>
-    <a href="findus.html" data-i18n="nav-findus" class="active-page">Findet uns</a>
+    <a href="findus.html" data-i18n="nav-findus">Findet uns</a>
     <a href="jobs.html" data-i18n="nav-jobs">Jobs</a>
     <a href="contact.html" data-i18n="nav-contact">Kontakt</a>
     <a href="about.html" data-i18n="nav-about" class="active-page">About Us</a>
@@ -511,15 +523,15 @@ document.addEventListener('keydown', e => {
   }
 });
 
-const navLocItem = document.getElementById('navLocItem');
-if (navLocItem) {
-  navLocItem.querySelector('.nav-item-label').addEventListener('click', () => navLocItem.classList.toggle('open'));
-}
+/* dropdowns (Menü + Locations) */
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.querySelector('.nav-item-label').addEventListener('click', () => item.classList.toggle('open'));
+});
 
 /* ── TRANSLATIONS DOCK ── */
 const translations = {
   de: {
-    "fhome":"Home","nav-menu":"Menü","nav-locations":"Locations","nav-jobs":"Jobs","nav-findus":"Findet uns",
+    "fhome":"Home","nav-menu":"Menü","nav-menu-ise":"Isemarkt Menü","nav-menu-susi":"Sternschanze Menü","nav-locations":"Locations","nav-jobs":"Jobs","nav-findus":"Findet uns",
     "nav-contact":"Kontakt","nav-isemarkt":"Isemarkt","nav-susi":"Sternschanze","nav-about":"Über uns",
     "fcopy":"© 2026 DANERS – Beef & Bread GmbH",
     "f-imprint":"Impressum","f-privacy":"Datenschutz",
@@ -544,7 +556,7 @@ const translations = {
     "chip-recipe":"Rezept für die Rouille?"
   },
   en: {
-    "fhome":"Home","nav-menu":"Menu","nav-locations":"Locations","nav-jobs":"Jobs","nav-findus":"Find us",
+    "fhome":"Home","nav-menu":"Menu","nav-menu-ise":"Isemarkt Menu","nav-menu-susi":"Sternschanze Menu","nav-locations":"Locations","nav-jobs":"Jobs","nav-findus":"Find us",
     "nav-contact":"Contact","nav-isemarkt":"Isemarkt","nav-susi":"Sternschanze","nav-about":"About Us",
     "fcopy":"© 2026 DANERS – Beef & Bread GmbH",
     "f-imprint":"Imprint","f-privacy":"Data Privacy",
@@ -578,12 +590,12 @@ const KB_DE = {
   'private': `Diese Information ist privat. Bitte wende dich direkt an unseren Manager — er hilft dir gerne weiter.`,
   'who': `Wir sind DANERS – Beef & Bread. Entstanden in Hamburg und gebaut um eine einfache Idee: verdammt gute Beef Sandwiches. Keine riesige Speisekarte, kein unnötiger Schnickschnack – einfach ein Produkt, das wir lieben und seit Jahren perfektionieren.`,
   'what': `Wir legen Rinderhüfte einen Monat lang ein, schneiden sie hauchdünn auf, grillen sie frisch und packen sie in gutes Brot. Das ist DANERS.`,
-  'where': `Hamburg. Du findest uns in der Sternschanze und jeden Dienstag und Donnerstag auf dem Isemarkt.`,
+  'where': `Hamburg. Du findest uns in der Sternschanze und jeden Dienstag und Freitag auf dem Isemarkt.`,
   'offer': `Unser Signature Sandwich besteht aus Rinderhüfte, die einen Monat lang in Salz und Gewürzen eingelegt wird. Anschließend wird sie hauchdünn aufgeschnitten, frisch gegrillt und mit Rucola sowie unserer hausgemachten Rouille serviert.\n\nJe nach Standort gibt es das Ganze im Brötchen, Toast, Sauerteigbrot oder – im Secret Menu – auch in Focaccia.\n\nFür alle, die es pflanzlich mögen, gibt es unsere Variante mit eingelegtem Portobello-Pilz und veganer Rouille.\n\nDazu passen unsere knusprigen Kartoffelecken – klassisch oder loaded mit Steakstreifen, Grana Padano und Rouille.`,
   'produce': `Unser Fleisch basiert auf einer alten Konservierungsmethode aus der Eifel. Früher wurde Fleisch mit Salz, Gewürzen und Wacholder haltbar gemacht und über das Jahr hinweg in dünnen Scheiben verzehrt. Daraus ist unsere Hausspezialität entstanden: ein Monat Reifezeit, hauchdünn geschnitten und frisch gegrillt.`,
   'source': `Unser Rindfleisch stammt von ausgewählten Lieferanten innerhalb der EU und wird nach unserer eigenen Rezeptur eingelegt und verarbeitet. Die Inspiration dafür kommt vom traditionellen „Eifeler Rand" und einem Familienrezept, das über Generationen weitergegeben wurde.`,
   'allergies': `Du hast Allergien oder Unverträglichkeiten? Sprich uns einfach vor deiner Bestellung an.\n\nHier ein Überblick über die wichtigsten Allergenen in unseren Produkten:\n\n• Eifeler Rand: Keine deklarationspflichtigen Hauptallergene\n• Rouille: Ei, Senf\n• Brot: Weizen (Gluten)\n• Grana Padano: Milch\n\nDa wir alle Speisen in derselben Küche zubereiten, können Spuren weiterer Allergene nicht vollständig ausgeschlossen werden.`,
-  'hours': `Unsere Öffnungszeiten:\n\n• Sternschanze (Susannenstraße 1, 20357 Hamburg):\n  Montag – Mittwoch: 11:00 – 21:00 Uhr\n  Donnerstag: 11:00 – 23:00 Uhr\n  Freitag – Samstag: 11:00 – 01:00 Uhr\n  Sonntag: 11:00 – 21:00 Uhr\n\n• Isemarkt:\n  Dienstag & Donnerstag: 09:00 – 14:00 Uhr`,
+  'hours': `Unsere Öffnungszeiten:\n\n• Sternschanze (Susannenstraße 1, 20357 Hamburg):\n  Montag – Mittwoch: 11:00 – 21:00 Uhr\n  Donnerstag: 11:00 – 23:00 Uhr\n  Freitag – Samstag: 11:00 – 01:00 Uhr\n  Sonntag: 11:00 – 21:00 Uhr\n\n• Isemarkt:\n  Dienstag & Freitag: 09:00 – 14:00 Uhr`,
   'menu': `Unsere Speisekarte ist bewusst klein. Wir konzentrieren uns auf wenige Produkte und versuchen, diese richtig gut zu machen: Beef & Bread, die vegane Portobello-Variante, knusprige Kartoffelecken und Loaded Wedges. Dazu kommen immer mal wieder saisonale Specials und Secret-Menu-Kreationen.`,
   'halal': `Nein, unser Fleisch ist nicht halal-zertifiziert.`,
   'recipe': `Pssst... Das Rezept für unsere legendäre Rouille ist ein streng behütetes Betriebsgeheimnis! 🤫 Schließlich macht die geheime Sauce unsere Sandwiches erst so richtig einzigartig. ✨`
@@ -594,12 +606,12 @@ const KB_EN = {
   'private': `That information is private. Please kindly reach out to our manager directly — they'll be happy to help you.`,
   'who': `We're DANERS – Beef & Bread. Born in Hamburg and built around one thing: ridiculously good beef sandwiches. No giant menu, no unnecessary extras – just a product we love and have been perfecting for years.`,
   'what': `We cure beef for a month, slice it paper-thin, grill it fresh and serve it in great bread. That's the heart of DANERS.`,
-  'where': `Hamburg. You'll find us in Sternschanze and at Isemarkt every Tuesday and Thursday.`,
+  'where': `Hamburg. You'll find us in Sternschanze and at Isemarkt every Tuesday and Friday.`,
   'offer': `Our signature sandwich is made from beef rump that has been cured for one month in salt and spices, sliced paper-thin and grilled fresh to order. It's served with fresh rocket and our homemade rouille.\n\nDepending on where you visit us, you can choose between different bread options – from classic rolls and toast to sourdough bread.\n\nLooking for a plant-based option? We've got a marinated Portobello version with vegan rouille.\n\nAnd if you're hungry, add our crispy potato wedges – either classic or loaded with beef, Grana Padano and rouille.`,
   'produce': `Our beef is inspired by an old preservation method from Germany's Eifel region. Back then, meat was cured with salt, spices and juniper berries to preserve it throughout the year. We've taken that idea and made it our own: one month of curing, paper-thin slices and fresh off the grill.`,
   'source': `Our beef comes from carefully selected suppliers within the EU and is prepared according to our own recipe and curing process. The inspiration comes from the traditional "Eifeler Rand" and a family recipe that has been passed down through generations.`,
   'allergies': `Got allergies or dietary restrictions? Just let us know before you order.\n\nHere's a quick overview of the main allergens in our products:\n\n• Eifeler Rand Beef: No declarable major allergens\n• Rouille: Egg, Mustard\n• Bread: Wheat (gluten)\n• Grana Padano: Milk\n\nAs all products are prepared in the same kitchen, traces of other allergens cannot be completely excluded.`,
-  'hours': `Our opening hours:\n\n• Sternschanze (Susannenstraße 1, 20357 Hamburg):\n  Monday – Wednesday: 11:00 AM – 9:00 PM\n  Thursday: 11:00 AM – 11:00 PM\n  Friday – Saturday: 11:00 AM – 1:00 AM\n  Sunday: 11:00 AM – 9:00 PM\n\n• Isemarkt:\n  Tuesday & Thursday: 9:00 AM – 2:00 PM`,
+  'hours': `Our opening hours:\n\n• Sternschanze (Susannenstraße 1, 20357 Hamburg):\n  Monday – Wednesday: 11:00 AM – 9:00 PM\n  Thursday: 11:00 AM – 11:00 PM\n  Friday – Saturday: 11:00 AM – 1:00 AM\n  Sunday: 11:00 AM – 9:00 PM\n\n• Isemarkt:\n  Tuesday & Friday: 9:00 AM – 2:00 PM`,
   'menu': `Our menu is small on purpose. We focus on a few things and try to do them really well: Beef & Bread, the vegan Portobello version, crispy wedges and loaded wedges. From time to time you'll also find seasonal specials and Secret Menu items.`,
   'halal': `No, our meat is not Halal-certified.`,
   'recipe': `Shhh... The recipe for our legendary Rouille is a top secret! 🤫 It's our special house blend that gives the sandwiches their signature kick. ✨`
@@ -632,6 +644,11 @@ const ALL_CHIPS = [
   { id: 'halal', i18n: 'chip-halal' },
   { id: 'recipe', i18n: 'chip-recipe' }
 ];
+
+/* ── AI ENDPOINT ──
+   Paste the URL of your Cloudflare Worker here (see daners-chat-worker.js).
+   While this is empty, the chat keeps using the built-in keyword answers. */
+const AI_ENDPOINT = "";
 
 let chatLogHistory = [];
 let isTypingActive = false; 
@@ -739,20 +756,49 @@ function respond(query, clickedId) {
   td.innerHTML = '<span></span><span></span><span></span>';
   tw.appendChild(td); c.appendChild(tw); c.scrollTop = c.scrollHeight;
 
-  setTimeout(() => {
-    document.getElementById('typing')?.remove();
-    
-    const targetId = clickedId || findAnswerId(query);
+  (async () => {
     const currentKB = currentLang === 'de' ? KB_DE : KB_EN;
-    
+    let aiText = null;
+
+    // Typed questions go to the AI (if configured). Suggestion chips stay instant and exact.
+    if (!clickedId && AI_ENDPOINT) {
+      try {
+        const history = chatLogHistory.slice(-10).map(item => {
+          if (item.role === 'user') {
+            return { role: 'user', content: item.type === 'chip' ? (currentLang === 'de' ? item.labelDe : item.labelEn) : item.value };
+          }
+          return { role: 'assistant', content: item.aiText || currentKB[item.kbId] || currentKB['private'] };
+        });
+        const res = await fetch(AI_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ lang: currentLang, messages: history })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.text) aiText = data.text.trim();
+        }
+      } catch (e) { /* fall back to keyword answers below */ }
+    }
+
+    document.getElementById('typing')?.remove();
+
+    if (aiText) {
+      chatLogHistory.push({ role: 'bot', aiText: aiText });
+      typeBotResponse(aiText, null);
+      return;
+    }
+
+    // Fallback / chip answers: built-in knowledge base
+    await new Promise(r => setTimeout(r, 750));
+    const targetId = clickedId || findAnswerId(query);
     let fullBotAnswer = currentKB[targetId] || currentKB['private'];
     if (targetId && targetId !== 'private') {
-       fullBotAnswer += `\n\n${translations[currentLang]['follow-up-text']}`;
+      fullBotAnswer += `\n\n${translations[currentLang]['follow-up-text']}`;
     }
-    
     chatLogHistory.push({ role: 'bot', kbId: targetId });
     typeBotResponse(fullBotAnswer, targetId);
-  }, 750);
+  })();
 }
 
 /* ── CHATGPT STREAMING TYPE EFFECT ── */
@@ -840,9 +886,14 @@ function rebuildChatDOM() {
       }
     } else {
       sender.textContent = translations[currentLang]['chat-sender-bot'] || "@danersbeefbread";
-      let botAnswer = currentKB[item.kbId] || currentKB['private'];
-      if (item.kbId && item.kbId !== 'private') {
-         botAnswer += `\n\n${translations[currentLang]['follow-up-text']}`;
+      let botAnswer;
+      if (item.aiText) {
+        botAnswer = item.aiText;
+      } else {
+        botAnswer = currentKB[item.kbId] || currentKB['private'];
+        if (item.kbId && item.kbId !== 'private') {
+           botAnswer += `\n\n${translations[currentLang]['follow-up-text']}`;
+        }
       }
       bubble.textContent = botAnswer;
     }
