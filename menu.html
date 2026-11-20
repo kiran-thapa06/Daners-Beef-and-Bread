@@ -151,12 +151,13 @@ main {
 body.menu-open main { margin-left: 50%; width: 50%; }
 
 .menu-page-wrap {
-  display: flex; flex-direction: column; align-items: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
   background: #ffffff; width: 100%; padding: 4px 0 32px;
+  flex: 1;
 }
 .menu-content-container {
   width: 100%; max-width: 900px; padding: 0 32px; box-sizing: border-box;
-  display: flex; flex-direction: column; align-items: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
 }
 
 .menu-view { width: 100%; display: none; flex-direction: column; align-items: center; }
@@ -190,8 +191,8 @@ body.menu-open main { margin-left: 50%; width: 50%; }
 .allergen-box summary {
   list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
   font-family: 'Poppins', sans-serif;
-  font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--black); padding: 8px 18px; user-select: none; transition: background .2s;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+  color: black; padding: 8px 18px; user-select: none; transition: background .2s;
   border: 1px solid var(--border); border-radius: 20px;
 }
 .allergen-box summary::-webkit-details-marker { display: none; }
@@ -205,8 +206,9 @@ body.menu-open main { margin-left: 50%; width: 50%; }
   border-top: 1px solid var(--border); padding-top: 14px;
 }
 .al-group-title {
-  font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--black); margin: 16px 0 4px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px; line-height: 1.9; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; color: black; margin: 18px 0 4px;
 }
 .al-group-title:first-child { margin-top: 0; }
 .al-item {
@@ -217,7 +219,7 @@ body.menu-open main { margin-left: 50%; width: 50%; }
 .al-item > span:last-child em { font-style: normal; font-weight: 300; color: #666; }
 .al-legend { margin-top: 4px; }
 .al-legend div { display: flex; gap: 10px; padding: 1px 0; }
-.al-legend b { font-weight: 600; color: var(--black); width: 14px; flex-shrink: 0; }
+.al-legend b { font-weight: 700; color: var(--black); width: 14px; flex-shrink: 0; }
 
 /* ── FOOTER ── */
 .footer-minimal {
@@ -274,7 +276,8 @@ body.menu-open .footer-legal { justify-content: center; gap: 16px; }
   body.menu-open .menu-title-header { margin-left: 0; width: 100%; opacity: 0; visibility: hidden; display: none; }
   .overlay-menu { width: 100%; padding: 90px 16px 40px; border-right: none; }
   .menu-page-wrap { padding: 4px 0 32px; }
-  .menu-content-container { padding: 0 20px; }
+  .menu-content-container { padding: 0 12px; }
+  .menu-page-wrap { padding: 0 0 24px; }
   .allergen-box { margin-top: 12px; }
   .menu-img-crop { width: 100%; }
   .footer-minimal { flex-direction: column; align-items: center; gap: 8px; text-align: center; padding: 20px 16px; }
@@ -328,7 +331,7 @@ body.menu-open .footer-legal { justify-content: center; gap: 16px; }
         <a href="susi.html" data-i18n="nav-susi">Sternschanze</a>
       </div>
     </div>
-    <a href="findus.html" data-i18n="nav-findus" class="active-page">Findet uns</a>
+    <a href="findus.html" data-i18n="nav-findus">Findet uns</a>
     <a href="jobs.html" data-i18n="nav-jobs">Jobs</a>
     <a href="contact.html" data-i18n="nav-contact">Kontakt</a>
     <a href="about.html" data-i18n="nav-about">Über uns</a>
